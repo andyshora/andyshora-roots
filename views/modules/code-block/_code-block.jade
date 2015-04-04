@@ -1,0 +1,12 @@
+//- andyshora.com
+//- Code Block Module
+//-
+//- 
+//- @author Andy Shora
+
+mixin code-block(lang, caption)
+  pre
+    code(class='language-' + lang)
+      if block
+        block
+  span.code-block__caption= caption

@@ -1,0 +1,20 @@
+---
+title: 'hello world'
+author: andyshora
+date: 3/04/2015
+_content: false
+---
+
+extends ../views/layouts/_base
+
+block header
+  h1= post.title
+
+block content
+  :markdown
+    hello world, this is my first blog post! **whoo!**
+
+  +quote-block('hello, this is a quote block','Andy Shora')
+
+  +bio-block('Andy Shora', 'andyshora', 'http://placehod.it/200x200')
+    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolor neque recusandae harum atque, hic sunt expedita quia explicabo quasi necessitatibus ad.

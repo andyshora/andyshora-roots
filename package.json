@@ -1,0 +1,17 @@
+{
+  "name": "andyshora-roots",
+  "description": "A blog created with roots",
+  "dependencies": {
+    "coffee-script": "1.8.x",
+    "css-pipeline": "0.2.x",
+    "dynamic-content": "^0.2.0",
+    "jade": "1.x",
+    "js-pipeline": "0.2.x",
+    "marked": "0.3.x"
+  },
+  "devDependencies": {
+    "node-sass": "^2.1.1",
+    "roots-config": "0.0.2",
+    "when": "^3.7.2"
+  }
+}

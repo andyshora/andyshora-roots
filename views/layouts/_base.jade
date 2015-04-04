@@ -1,0 +1,33 @@
+//- andyshora.com
+//- Base Layout
+//-
+//- 
+//- @author Andy Shora
+
+include ../_includes.jade
+doctype html
+html
+
+  head
+    meta(charset='utf8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+    meta(name='description', content='description of your site')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    script(src='/js/vendor/prism.js')
+    title= post.title
+    != css('/')
+
+  body
+    header(class='header')
+      block header
+    
+    div(class='content')
+      block content
+    div
+    block footer
+      p= post.author
+    div(class='overlay' onclick='app.onToggleClicked(\'nav\')' ontouchstart='app.onToggleClicked(\'nav\')')
+    div(class='loading')
+      div(class='spinner')
+    //- script!= "window.dynamic_content = " + JSON.stringify(site)
+    //- != js('/')
