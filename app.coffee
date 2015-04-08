@@ -2,19 +2,23 @@ js_pipeline  = require 'js-pipeline'
 css_pipeline = require 'css-pipeline'
 roots_config = require 'roots-config'
 dynamic_content = require 'dynamic-content'
-# = require 'node-sass'
+sass = require 'node-sass'
 
 siteFiles = []
 
-# var sass = require('node-sass');
+beforeHook = () ->
+  console.log 'beforeHook'
+  sass.render {
+    file: 'assets/css/main.scss',
+    outFile: 'zamain.css',
+    success: (result) -> console.log 'success', result.css
+    error: -> console.log 'error'
+  }
 
-# sass.render({
-#   file: scss_filename,
-#   success: callback
-#   [, options..]
-# });
 
 module.exports =
+
+  before: beforeHook,
 
   ignores: [
     'README.md',
