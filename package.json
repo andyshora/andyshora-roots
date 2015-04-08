@@ -7,10 +7,10 @@
     "dynamic-content": "^0.2.0",
     "jade": "1.x",
     "js-pipeline": "0.2.x",
-    "marked": "0.3.x"
+    "marked": "0.3.x",
+    "node-sass": "^2.0.1"
   },
   "devDependencies": {
-    "node-sass": "^2.1.1",
     "roots-config": "0.0.2",
     "when": "^3.7.2"
   }

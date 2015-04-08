@@ -2,13 +2,19 @@ js_pipeline  = require 'js-pipeline'
 css_pipeline = require 'css-pipeline'
 roots_config = require 'roots-config'
 dynamic_content = require 'dynamic-content'
-W            = require 'when'
+# = require 'node-sass'
 
 siteFiles = []
 
-module.exports =
+# var sass = require('node-sass');
 
-  debug: true
+# sass.render({
+#   file: scss_filename,
+#   success: callback
+#   [, options..]
+# });
+
+module.exports =
 
   ignores: [
     'README.md',
@@ -23,9 +29,9 @@ module.exports =
   ]
 
   extensions: [
-    dynamic_content(),
     js_pipeline(manifest: 'assets/js/manifest.yml', out: 'js/main.js'),
-    css_pipeline(files: 'assets/css/styles.scss', out: 'css/main.css'),
+    css_pipeline(files: 'assets/css/*.scss', out: 'css/main.css'),
+    dynamic_content(),
     roots_config(files: siteFiles)
   ]
 
