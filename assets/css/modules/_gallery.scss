@@ -1,0 +1,45 @@
+.gallery {
+  background: #f5f2f0;
+}
+.gallery__content {
+  padding: 20px 20px 30px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  ul {
+    > li {
+      list-style-type: none;
+      position: relative;
+      display: inline-block;
+      margin: 0;
+
+      &:after {
+        content: attr(data-caption);
+        display: inline-block;
+        position: absolute;
+        font-size: 12px;
+        font-style: italic;
+        color: $b1;
+        bottom: 20px;
+        right: 10px;
+
+        @include from-width($breakpoint-medium) {
+          bottom: 40px;
+          right: 20px;
+        }
+      }
+      > img {
+        border: 10px solid white;
+        border-bottom: 50px solid white;
+
+        @include from-width($breakpoint-medium) {
+          border: 20px solid white;
+          border-bottom: 100px solid white;
+        }
+
+        width: 100%;
+      }
+    }
+  }
+}
