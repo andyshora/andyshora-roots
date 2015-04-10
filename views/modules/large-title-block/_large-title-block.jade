@@ -1,13 +1,16 @@
 //- andyshora.com
-//- Code Block Module
+//- Large Title Block Module
 //-
 //- 
 //- @author Andy Shora
 
-mixin large-title-block(start, middle, end, subtitle)
+mixin large-title-block(start, middle, end, subtitle, tweetCounter)
   div.large-title-block
     h1
       span(class="large-title-block__start xxlarge")= start
       span(class="large-title-block__middle xxlarge")= middle
       span(class="large-title-block__end xxlarge")= end
     p(class="large")= subtitle
+    a(class="large-title-block__back" href="/") &larr; andyshora.com
+    if tweetCounter
+      +tweet-counter()

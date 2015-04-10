@@ -1,0 +1,30 @@
+.tweet-counter {
+  color: white;
+  padding: 1em 50px 1em 10px;
+  margin: 2em auto 0;
+  background: rgba(255,255,255,.1);
+  display: inline-block;
+  position: relative;
+}
+.tweet-counter__num {
+  margin: 0 5px 0 0;
+}
+.tweet-counter__tweet {
+  display: inline-block;
+  padding: 0 10px;
+  background: rgba(255,255,255,.3);
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  line-height: 3.5em;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255,255,255,.5);
+  }
+
+  &:active {
+    background: rgba(255,255,255,.4);
+  }
+}

@@ -9,13 +9,34 @@ _content: false
 extends ../views/layouts/_base
 
 block header
-  +large-title-block('Something', ' & ', 'Something', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, dolores.')
+  +large-title-block('Something', ' & ', 'Something else longer', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, dolores.', true)
 
 block content
-  :markdown
-    hello world, this is my first blog post! **whoo!**
+  section.section-gutter
+    :markdown
+      ##consectetur adipisicing elit
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati qui, incidunt cupiditate eligendi sequi consequuntur, inventore ipsa at neque fugiat velit quibusdam iste quaerat aspernatur.
 
-  +quote-block('hello, this is a quote block','Andy Shora')
+      Culpa perferendis repellat eligendi rem temporibus corrupti iste, aspernatur ab, unde amet velit quisquam? Quae ipsa perferendis, consequatur maiores iusto eos quaerat sunt!
+
+  +quote-block('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quisquam quia, dolorum.','Andy Shora')
+
+  section.section-gutter
+    :markdown
+      ##Rem ipsum dolor sit amet
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati qui, incidunt cupiditate eligendi sequi consequuntur, inventore ipsa at neque fugiat velit quibusdam iste quaerat aspernatur.
+
+      Pariatur voluptatum a accusantium sit necessitatibus ad? Officiis dolor neque, saepe dignissimos id, enim et labore quaerat cumque nostrum corrupti reprehenderit consectetur quod voluptatem. Eveniet error modi deleniti non, saepe commodi illum magnam quis omnis suscipit.
+
+      Debitis, praesentium distinctio quasi perferendis! Soluta, accusamus possimus sed, praesentium quos ea sunt beatae, esse provident deleniti quia consectetur modi! Ullam velit quod blanditiis recusandae, error, perferendis. Autem accusamus nulla illum delectus reiciendis eum enim, excepturi assumenda rerum!
+
+  +code-block('Lorem ipsum')
+    code(class='language-javascript')
+      |// this is a comment
+      |var a = 2;
+      |for (var i in arr) {
+      |   arr[i]
+      |}
 
   +bio-block('Andy Shora', 'andyshora', 'http://placehod.it/200x200')
     p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolor neque recusandae harum atque, hic sunt expedita quia explicabo quasi necessitatibus ad.

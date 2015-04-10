@@ -1,33 +1,13 @@
 .large-title-block {
-  padding: 50px 30px 66px;
+  padding: 80px 20px 66px;
   background: white;
   text-align: center;
   background: $c1;
   position: relative;
   overflow: hidden;
 
-  /*&:after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 16px;
-    background: $c2;
-    bottom: 0;
-    left: 0;
-  }*/
-
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 60%;
-    height: 300%;
-    background: rgba(0, 0, 0, .08);
-    bottom: -100px;
-    right: -150px;
-    @include prefix(transform, rotate(5deg));
-    z-index: 1;
+  @include from-width($breakpoint-medium) {
+    padding: 120px 30px 66px;
   }
 
   > h1 {
@@ -43,11 +23,23 @@
     color: $b1;
     font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
     font-style: italic;
+    width: 80%;
+
+    @include from-width($breakpoint-medium) {
+      width: 100%;
+    }
 
     &:before, &:after {
       content: '―';
       color: white;
       padding: 0 10px;
+      display: none;
+    }
+
+    @include from-width($breakpoint-medium) {
+      &:before, &:after {
+        display: inline;
+      }
     }
   }
 }
@@ -59,5 +51,13 @@
   padding: 0 10px;
 }
 .large-title-block__end {
-  color: $c3;
+  color: $c4;
+}
+.large-title-block__back {
+  color: $c4;
+  cursor: pointer;
+  text-decoration: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }

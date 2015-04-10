@@ -4,9 +4,10 @@
 //- 
 //- @author Andy Shora
 
-mixin code-block(lang, caption)
-  pre
-    code(class='language-' + lang)
+mixin code-block(caption)
+  div.code-block
+    pre
       if block
         block
-  span.code-block__caption= caption
+    div.code-block__caption
+      span= caption

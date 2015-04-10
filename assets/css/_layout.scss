@@ -13,9 +13,11 @@ $navTransitionDuration: .2s;
 
 $c1: rgb(231, 76, 60);
 $c2: rgb(192, 57, 43);
-$c3: rgb(252, 228, 224);
+$c3: rgb(255, 249, 248);
+$c4: rgb(255, 209, 208);
 
 $b1: rgb(48, 48, 48);
+$b2: rgb(65, 65, 65);
 
 $g1: #858585;
 $g2: #767676;
@@ -39,11 +41,22 @@ html, body {
 .content {
   vertical-align: top;
   overflow: auto;
-  padding: 40px 50px;
+  padding: 40px 0;
   background: white;
   min-height: 1000px;
   position: relative;
+}
+.section-gutter {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 
+  > h2 {
+    border-bottom: 1px dashed grey;
+    padding: 0 0 10px 0;
+    margin: 0 0 15px 0;
+    color: $b2;
+  }
 }
 .header {
   min-height: 50px;

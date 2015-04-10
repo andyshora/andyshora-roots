@@ -31,7 +31,7 @@ module.exports =
     sourcemap: true
 
   jade:
-    pretty: true
+    pretty: false
 
   server:
     clean_urls: true
