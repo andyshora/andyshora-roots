@@ -32,10 +32,6 @@ html
     div(class='content')
       block content
     div
-    block footer
-      p= post.author
-    div(class='overlay' onclick='app.onToggleClicked(\'nav\')' ontouchstart='app.onToggleClicked(\'nav\')')
-    div(class='loading')
-      div(class='spinner')
-    //- script!= "window.dynamic_content = " + JSON.stringify(site)
+    footer
+      p &copy; 2015 Andy Shora
     != js('/')

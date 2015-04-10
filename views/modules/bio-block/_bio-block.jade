@@ -6,13 +6,12 @@
 
 mixin bio-block(name, twitterHandle, imgSrc)
   div.bio-block
-    div.bio-block__image
-      img(src=imgSrc)
-    div.bio-block__info
-      h2= 'by ' + name
-      a.twitter-link(href='https://twitter.com/' + twitterHandle)= '@' + twitterHandle
-      //- long description will be a block
-      if block
-        block
-
-    
+    div.bio-block__content
+      div.bio-block__image
+        img(src=imgSrc)
+      div.bio-block__info
+        h3= 'by ' + name
+        a.twitter-link(href='https://twitter.com/' + twitterHandle)= '@' + twitterHandle
+        //- long description will be a block
+        if block
+          block

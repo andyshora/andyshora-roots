@@ -1,0 +1,50 @@
+.bio-block {
+  padding: 50px 0 0 0;
+  margin: 20px 0 0;
+  background: $b1;
+}
+
+.bio-block__content {
+  padding: 20px 0 30px 30px;
+  width: 100%;
+  max-width: 1000px;
+  text-align: left;
+  margin: 0 auto;
+  background: #fff;
+
+  .twitter-link {
+    padding: 10px 0;
+    display: block;
+  }
+}
+.bio-block__image {
+  width: 20%;
+  height: 0;
+  padding-top: 20%;
+  display: none;
+  position: relative;
+  border-top: 20px solid white;
+
+  @include from-width($breakpoint-medium) {
+    display: inline-block;
+  }
+
+  > img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+  }
+}
+.bio-block__info {
+  display: inline-block;
+  width: 100%;
+  padding: 0 40px;
+  vertical-align: top;
+  padding: 40px 0 0 0;
+
+  @include from-width($breakpoint-medium) {
+    width: 79%;
+    padding: 0 40px;
+  }
+}

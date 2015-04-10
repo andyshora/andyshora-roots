@@ -41,7 +41,7 @@ html, body {
 .content {
   vertical-align: top;
   overflow: auto;
-  padding: 40px 0;
+  padding: 40px 0 0;
   background: white;
   min-height: 1000px;
   position: relative;
@@ -65,10 +65,19 @@ html, body {
   > h1 {
     padding: 70px 60px;
   }
-
-
 }
+footer {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  background: $b1;
 
+  > p {
+    padding: 40px 0 30px 30px;
+    max-width: 1000px;
+    font-size: 10px;
+  }
+}
 
 .relative {
   position: relative;
