@@ -198,7 +198,11 @@ figure {
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  height: 0;
+  height: 1px;
+  border: none;
+  width: 100%;
+  background: rgba(0, 0, 0, .1);
+  margin: 3em auto;
 }
 
 /**
@@ -433,5 +437,5 @@ ul, ol {
   margin: 0;
 }
 li {
-  list-style-type: none;
+  margin-left: 40px;
 }

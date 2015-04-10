@@ -6,8 +6,8 @@
 
 mixin code-block(caption)
   div.code-block
+    div.code-block__caption
+      span= caption
     pre
       if block
         block
-    div.code-block__caption
-      span= caption
