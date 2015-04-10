@@ -1,0 +1,203 @@
+/**
+ *
+ * R/GA Styleguide Template
+ * Typography
+ *
+ * R/GA 2015
+ * @author Andy Shora
+ *
+**/
+$headingFont: 'Lato';
+$bodyFont: Helvetica, sans-serif;
+
+body {
+  font-family: $bodyFont;
+  font-size: 15px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-family: $headingFont;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+a, a:visited, a:hover {
+}
+
+.content {
+  a, a:visited, a:hover {
+    color: blue;
+
+    .theme--visual & {
+      color: white;
+    }
+  }
+}
+
+.small, small {
+  font-size: 13px;
+  line-height: 2em;
+  /* 26px */
+  padding-top: 2em;
+  padding-bottom: 0;
+  letter-spacing: 0;
+}
+
+.base, p, ul, ol, dl {
+  font-size: 16px;
+  line-height: 1.625em;
+  /* 26px */
+  padding-top: 1.625em;
+  padding-bottom: 0;
+  letter-spacing: 0;
+}
+
+.medium, h4, .subsection-title {
+  font-size: 16px;
+  line-height: 1.625em;
+  /* 26px */
+  padding-top: 1.625em;
+  padding-bottom: 0;
+  letter-spacing: 0;
+}
+@media only screen and (min-width: 800px) {
+  .medium, h4 {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.3em;
+    /* 26px */
+    padding-top: 1.3em;
+    padding-bottom: 0;
+    letter-spacing: -0.3px;
+  }
+}
+
+.large, h3 {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.3em;
+  /* 26px */
+  padding-top: 1.3em;
+  padding-bottom: 0;
+  letter-spacing: -0.3px;
+}
+@media only screen and (min-width: 800px) {
+  .large, h3 {
+
+    font-family: $headingFont;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1em;
+    /* 26px */
+    padding-top: 1em;
+    padding-bottom: 0;
+    letter-spacing: -0.3px;
+  }
+}
+
+.xlarge, h2 {
+
+  font-family: $headingFont;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1em;
+  /* 26px */
+  padding-top: 1em;
+  padding-bottom: 0;
+  letter-spacing: -0.3px;
+}
+@media only screen and (min-width: 800px) {
+  .xlarge, h2 {
+
+    font-family: $headingFont;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1.2381em;
+    /* 52px */
+    padding-top: 0.619em;
+    padding-bottom: 0;
+    letter-spacing: -0.3px;
+  }
+}
+
+.xxlarge, h1 {
+
+  font-family: $headingFont;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1.2381em;
+  /* 52px */
+  padding-top: 0.619em;
+  padding-bottom: 0;
+  letter-spacing: -0.3px;
+}
+@media only screen and (min-width: 800px) {
+  .xxlarge, h1 {
+
+    font-family: $headingFont;
+    font-size: 68px;
+    font-weight: 300;
+    line-height: 1.1471em;
+    /* 78px */
+    padding-top: 0.3824em;
+    padding-bottom: 0;
+    letter-spacing: -3px;
+  }
+}
+
+.huge {
+
+  font-family: $headingFont;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.1471em;
+  /* 78px */
+  padding-top: 0.3824em;
+  padding-bottom: 0;
+  letter-spacing: 1px;
+}
+@media only screen and (min-width: 600px) {
+  .huge {
+    font-size: 78px;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .huge {
+
+    font-size: 110px;
+    font-weight: 700;
+    line-height: 1.19em;
+    /* 130px */
+    padding-top: 0.2364em;
+    padding-bottom: 0;
+    letter-spacing: 1px;
+  }
+}
+
+.subsection-title {
+  text-transform: uppercase;
+  display: block;
+  font-size: 14px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.style-used {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: rgba(255,255,255,.1);
+  color: white;
+  padding: 10px 14px;
+  font-family:"Lucida Console", "Courier New", monospace;
+  font-size: 11px;
+}

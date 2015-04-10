@@ -1,0 +1,81 @@
+/**
+ *
+ * R/GA Styleguide Template
+ * Utils
+ *
+ * R/GA 2015
+ * @author Andy Shora
+ *
+**/
+
+
+/*
+  CSS Prefixer
+-----------------------------------------------------------------------*/
+
+@mixin prefix($property, $value...) {
+  -webkit-#{$property}: $value;
+     -moz-#{$property}: $value;
+      -ms-#{$property}: $value;
+          #{$property}: $value;
+}
+
+@mixin prefixAll($property, $value) {
+  -webkit-#{$property}: -webkit-#{$value};
+     -moz-#{$property}: -moz-#{$value};
+      -ms-#{$property}: -ms-#{$value};
+          #{$property}: #{$value};
+}
+
+/*
+  Effects & Animations
+-----------------------------------------------------------------------*/
+@mixin keyframes($animation-name){
+  @-webkit-keyframes $animation-name{
+    @content;
+  }
+
+  @-moz-keyframes $animation-name{
+    @content;
+  }
+
+  @-ms-keyframes $animation-name{
+    @content;
+  }
+
+  @keyframes $animation-name{
+    @content;
+  }
+}
+
+/*
+  Breakpoint management
+-----------------------------------------------------------------------*/
+@mixin from-height($min-height) {
+
+  @media (min-height: $min-height) {
+    @content;
+  }
+}
+
+@mixin from-width($min-width) {
+
+  @media (min-width: $min-width) {
+    @content;
+  }
+}
+
+@mixin up-to-width($max-width) {
+
+  @media (max-width: $max-width) {
+    @content;
+  }
+}
+
+@mixin between-width($min-width, $max-width) {
+
+  @media (min-width: $min-width) and (max-width: $max-width) {
+    @content;
+  }
+
+}

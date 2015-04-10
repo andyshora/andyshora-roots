@@ -1,0 +1,63 @@
+/**
+ *
+ * R/GA Styleguide Template
+ * Layout
+ *
+ * R/GA 2015
+ * @author Andy Shora
+ *
+**/
+
+$navWidth: 280px;
+$navTransitionDuration: .2s;
+
+$c1: rgb(231, 76, 60);
+$c2: rgb(192, 57, 43);
+$c3: rgb(252, 228, 224);
+
+$b1: rgb(48, 48, 48);
+
+$g1: #858585;
+$g2: #767676;
+
+* {
+  @include prefix(box-sizing, border-box);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  min-width: 320px;
+  background: white;
+  color: rgb(10,10,10);
+
+  &.nav--open {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+.content {
+  vertical-align: top;
+  overflow: auto;
+  padding: 40px 50px;
+  background: white;
+  min-height: 1000px;
+  position: relative;
+
+}
+.header {
+  min-height: 50px;
+  background: $g2;
+
+  > h1 {
+    padding: 70px 60px;
+  }
+
+
+}
+
+
+.relative {
+  position: relative;
+}
+

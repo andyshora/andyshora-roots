@@ -6,19 +6,7 @@ sass = require 'node-sass'
 
 siteFiles = []
 
-beforeHook = () ->
-  console.log 'beforeHook'
-  sass.render {
-    file: 'assets/css/main.scss',
-    outFile: 'zamain.css',
-    success: (result) -> console.log 'success', result.css
-    error: -> console.log 'error'
-  }
-
-
 module.exports =
-
-  before: beforeHook,
 
   ignores: [
     'README.md',
