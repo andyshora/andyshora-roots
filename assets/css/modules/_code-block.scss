@@ -10,7 +10,7 @@
       max-width: 1000px;
       text-align: left;
       margin: 0 auto;
-      background: #FCF9F7;
+      background: $n1;
     }
   }
 
@@ -22,7 +22,7 @@
   display: block;
   width: 100%;
   text-align: left;
-  background: #f5f2f0;
+  background: $n2;
   font-style: italic;
 
   @include from-width($breakpoint-large) {
@@ -35,6 +35,6 @@
     padding: 50px 40px 0;
     width: 100%;
     display: block;
-    background: #FCF9F7;
+    background: $n1;
   }
 }

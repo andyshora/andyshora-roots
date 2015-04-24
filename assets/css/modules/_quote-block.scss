@@ -1,12 +1,12 @@
 .quote-block {
   padding: 60px 0;
   margin: 0 auto;
-  background: $b1;
-  color: white;
+  background: $n1;
+  color: $b2;
   position: relative;
   overflow: hidden;
 
-  &:after {
+  /* &:after {
     content: '';
     height: 1px;
     top: 2px;
@@ -14,9 +14,9 @@
     position: absolute;
     display: block;
     width: 100%;
-  }
+  } */
 
-  &:before {
+  /* &:before {
     content: '';
     display: block;
     position: absolute;
@@ -28,7 +28,7 @@
     @include prefix(transform, rotate(5deg));
     z-index: 1;
     border-radius: 100%;
-  }
+  } */
 }
 .quote-block__text {
   max-width: 1000px;
@@ -38,7 +38,7 @@
 
   > blockquote {
     font-style: italic;
-    text-transform: uppercase;
+    text-transform: none;
 
     &:before {
       content: '“';

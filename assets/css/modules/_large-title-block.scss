@@ -7,19 +7,43 @@
   overflow: hidden;
 
   @include from-width($breakpoint-medium) {
-    padding: 120px 30px 66px;
+    padding: 280px 30px 66px;
   }
 
   > h1 {
     color: white;
-    padding-bottom: .3em;
+    padding: .3em 10px;
     position: relative;
     z-index: 2;
+
+    @include from-width($breakpoint-medium) {
+      padding: .3em 50px;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: black;
+      width: 20%;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      margin-left: -10%;
+    }
+
+    > span {
+      // font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+    }
   }
 
   > p {
     margin: 0 auto;
-    padding-top: 1em;
+    padding: 1em 10px;
+
+    @include from-width($breakpoint-medium) {
+      padding: 1em 50px;
+    }
     color: $b1;
     font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
     font-style: italic;
@@ -29,12 +53,12 @@
       width: 100%;
     }
 
-    &:before, &:after {
-      content: '―';
-      color: white;
-      padding: 0 10px;
-      display: none;
-    }
+    // &:before, &:after {
+    //   content: '―';
+    //   color: white;
+    //   padding: 0 10px;
+    //   display: none;
+    // }
 
     @include from-width($breakpoint-medium) {
       &:before, &:after {
@@ -47,11 +71,11 @@
   color: $c3;
 }
 .large-title-block__middle {
-  color: $b1;
+  color: $c4;
   padding: 0 10px;
 }
 .large-title-block__end {
-  color: $c4;
+  color: $c3;
 }
 .large-title-block__back {
   color: $c4;
@@ -60,4 +84,73 @@
   position: absolute;
   top: 10px;
   left: 10px;
+}
+
+
+.pattern {
+  width: 256px;
+  height: 256px;
+  margin-left: -128px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  border-radius: 128px;
+  opacity: .8;
+}
+.pattern > svg {
+  animation: rotateFlower 90s infinite;
+  -webkit-animation: rotateFlower 90s infinite;
+  border-radius: 128px;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 128px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .05);
+}
+
+.pattern > svg:nth-child(2) {
+  animation: rotateFlowerBackwards 180s infinite;
+  -webkit-animation: rotateFlowerBackwards 180s infinite;
+  border-radius: 128px;
+  overflow: hidden;
+  position: absolute;
+}
+
+@keyframes rotateFlower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotateFlower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateFlowerBackwards {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@-webkit-keyframes rotateFlowerBackwards {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }
