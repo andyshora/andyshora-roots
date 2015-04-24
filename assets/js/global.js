@@ -1,29 +1,30 @@
-var app = {};
-
 
 var w = h = 256;
 var svgs = [];
 
-var colors = ['#FFFFFF','#FFFFFF','#FFFFFF','#FF988E','#FF7364','#C92918','#A01507','#FFC58E','#FFB064','#C96F18','#A05107','#BF3277','#D35392','#A7145C','#840644'];
+var colors = ['#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FF988E','#FF7364','#C92918','#A01507','#BF3277','#D35392','#A7145C','#840644'];
 
-var makeFlower = function() {
 
-  svgs[0] = d3.select('.pattern')
+var makeFlower = function(elm, size) {
+
+  console.log('makeFlower', size);
+
+  svgs[0] = d3.select(elm)
     .append('svg')
-    .attr('width', w)
-    .attr('height', h);
+    .attr('width', size)
+    .attr('height', size);
   
-  svgs[1] = d3.select('.pattern')
+  svgs[1] = d3.select(elm)
     .append('svg')
-    .attr('width', w)
-    .attr('height', h);
+    .attr('width', size)
+    .attr('height', size);
   
-  for (var i = 0; i < 20; i++) {
-    drawRandomPattern(0);
+  for (var i = 0; i < 100; i++) {
+    drawRandomPattern(0, size);
   }
   
-  for (var i = 0; i < 20; i++) {
-    drawRandomPattern(1);
+  for (var i = 0; i < 100; i++) {
+    drawRandomPattern(1, size);
   }
 }
 
@@ -33,29 +34,25 @@ function getRandomColor() {
 }
 
 
-function drawRandomPattern(i) {
+function drawRandomPattern(i, maxSize) {
   var hX = w / 2;
   var hY = h / 2;
   
   var startAngle = getRandomNumberBetween(0, 10);
-  var spread = getRandomNumberBetween(10, 180);
+  var spread = getRandomNumberBetween(10, maxSize - 20);
   
   var color = getRandomColor();
   
   var arr = [4, 6, 8, 10, 12, 16];
   var indx = Math.floor(Math.random() * arr.length);
   
-  if (spread < 40) {
-    indx = Math.floor(Math.random() * arr.length - 3);
-  }
-  
   var step = 2 * Math.PI / arr[indx];
-  var r = getRandomNumberBetween(2, 12);
+  var r = getRandomNumberBetween(2, 4 * (maxSize / 256));
   
   for(var theta = startAngle;  theta < (2 * Math.PI) + startAngle;  theta += step) {
     svgs[i].append('circle')
-      .attr('cx', 128 + (Math.cos(theta) * spread))
-      .attr('cy', 128 - (Math.sin(theta) * spread))
+      .attr('cx', (maxSize / 2) + (Math.cos(theta) * spread))
+      .attr('cy', (maxSize / 2) - (Math.sin(theta) * spread))
       .attr('r', r)
       .attr('fill', color)
       .attr('opacity', getRandomNumberBetween(50, 80) / 100)
@@ -66,4 +63,16 @@ function getRandomNumberBetween(a, b) {
   return Math.floor(Math.random() * b) + a;
 }
 
-makeFlower();
+
+var app = {};
+
+app.drawFlowers = function() {
+
+  $('.flower').each(function() {
+    var size = $(this).attr('size');
+    makeFlower(this, size);
+  });
+
+};
+
+app.drawFlowers();

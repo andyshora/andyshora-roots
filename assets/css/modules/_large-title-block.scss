@@ -6,8 +6,16 @@
   position: relative;
   overflow: hidden;
 
+  .flower {
+    opacity: .2;
+
+    @include from-width($breakpoint-medium) {
+      opacity: .8;
+    }
+  }
+
   @include from-width($breakpoint-medium) {
-    padding: 280px 30px 66px;
+    padding: 300px 30px 66px;
   }
 
   > h1 {
@@ -22,7 +30,7 @@
 
     &:after {
       content: '';
-      display: block;
+      display: none;
       height: 1px;
       background: black;
       width: 20%;
@@ -30,6 +38,11 @@
       left: 50%;
       bottom: 0;
       margin-left: -10%;
+    }
+
+    @include from-width($breakpoint-medium) {
+      display: block;
+      
     }
 
     > span {
@@ -84,73 +97,4 @@
   position: absolute;
   top: 10px;
   left: 10px;
-}
-
-
-.pattern {
-  width: 256px;
-  height: 256px;
-  margin-left: -128px;
-  display: inline-block;
-  position: absolute;
-  left: 50%;
-  top: 40px;
-  border-radius: 128px;
-  opacity: .8;
-}
-.pattern > svg {
-  animation: rotateFlower 90s infinite;
-  -webkit-animation: rotateFlower 90s infinite;
-  border-radius: 128px;
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  border-radius: 128px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, .05);
-}
-
-.pattern > svg:nth-child(2) {
-  animation: rotateFlowerBackwards 180s infinite;
-  -webkit-animation: rotateFlowerBackwards 180s infinite;
-  border-radius: 128px;
-  overflow: hidden;
-  position: absolute;
-}
-
-@keyframes rotateFlower {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes rotateFlower {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotateFlowerBackwards {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-
-@-webkit-keyframes rotateFlowerBackwards {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
 }
