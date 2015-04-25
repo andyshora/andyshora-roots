@@ -1,40 +1,106 @@
 .large-title-block {
-  padding: 80px 20px 66px;
+  padding: 180px 20px 66px;
   background: white;
   text-align: center;
   background: $c1;
   position: relative;
   overflow: hidden;
 
+  .flower {
+    opacity: .2;
+
+    @include from-width($breakpoint-medium) {
+      opacity: .8;
+    }
+  }
+
   @include from-width($breakpoint-medium) {
-    padding: 120px 30px 66px;
+    padding: 340px 30px 66px;
   }
 
   > h1 {
     color: white;
-    padding-bottom: .3em;
+    padding: .3em 10px;
     position: relative;
     z-index: 2;
+    border: none;
+    width: 90%;
+    margin: 0 auto;
+
+    @include from-width($breakpoint-medium) {
+      padding: 0 50px 0;
+    }
+
+    /* &:after {
+      content: '';
+      display: none;
+      height: 1px;
+      background: black;
+      width: 20%;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      margin-left: -10%;
+    } */
+
+    &:before {
+      content: '';
+      display: none;
+      background: $c1;
+      width: 84%;
+      position: absolute;
+      left: 8%;
+      top: -5px;
+      height: 5px;
+    }
+
+    &:after {
+      content: '';
+      display: none;
+      background: $c1;
+      width: 94%;
+      position: absolute;
+      left: 3%;
+      bottom: -5px;
+      height: 5px;
+    }
+
+    @include from-width($breakpoint-medium) {
+      display: block;
+      border: 1px solid $c2;
+
+      &:before, &:after {
+        display: block;
+      }
+    }
+
+    > span {
+      position: relative;
+      top: -30px;
+    }
   }
 
   > p {
-    margin: 0 auto;
-    padding-top: 1em;
+    margin: -15px auto 0;
+    padding: 0 10px 1em;
+    position: relative;
+    z-index: 2;
+
+    @include from-width($breakpoint-medium) {
+      padding: 0 50px 1em;
+      width: 90%;
+    }
     color: $b1;
     font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
     font-style: italic;
     width: 80%;
 
-    @include from-width($breakpoint-medium) {
-      width: 100%;
-    }
-
-    &:before, &:after {
-      content: '―';
-      color: white;
-      padding: 0 10px;
-      display: none;
-    }
+    // &:before, &:after {
+    //   content: '―';
+    //   color: white;
+    //   padding: 0 10px;
+    //   display: none;
+    // }
 
     @include from-width($breakpoint-medium) {
       &:before, &:after {
@@ -47,11 +113,11 @@
   color: $c3;
 }
 .large-title-block__middle {
-  color: $b1;
+  color: $c4;
   padding: 0 10px;
 }
 .large-title-block__end {
-  color: $c4;
+  color: $c3;
 }
 .large-title-block__back {
   color: $c4;

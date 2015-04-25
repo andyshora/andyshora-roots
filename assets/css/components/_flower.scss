@@ -1,0 +1,80 @@
+/**
+ *
+ * Flower
+ *
+ * R/GA 2015
+ * @author Andy Shora
+ *
+**/
+
+.flower {
+  width: 256px;
+  height: 256px;
+  margin-left: -128px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  border-radius: 50%;
+  opacity: .8;
+
+  &.flower--128 {
+    width: 128px;
+    height: 128px;
+    margin-left: -64px;
+  }
+}
+.flower > svg {
+  animation: rotateFlower 180s infinite;
+  -webkit-animation: rotateFlower 180s infinite;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.flower > svg:nth-child(2) {
+  animation: rotateFlowerBackwards 180s infinite;
+  -webkit-animation: rotateFlowerBackwards 180s infinite;
+  border-radius: 128px;
+  overflow: hidden;
+  position: absolute;
+}
+
+@keyframes rotateFlower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotateFlower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateFlowerBackwards {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@-webkit-keyframes rotateFlowerBackwards {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}

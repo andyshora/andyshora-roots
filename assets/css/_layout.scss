@@ -22,6 +22,9 @@ $b2: rgb(65, 65, 65);
 $g1: #858585;
 $g2: #767676;
 
+$n1: #FCF9F7;
+$n2: #f5f2f0;
+
 * {
   @include prefix(box-sizing, border-box);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -50,12 +53,19 @@ html, body {
   padding: 60px 20px;
   max-width: 1000px;
   margin: 0 auto;
+  
+  @include from-width($breakpoint-medium) {
+    padding: 60px 20% 60px 20px;
+  }
 
   > h2 {
-    border-bottom: 1px dashed grey;
     padding: 0 0 10px 0;
     margin: 0 0 15px 0;
     color: $b2;
+
+    @include from-width($breakpoint-medium) {
+      width: 40%;
+    }
   }
 }
 .header {
@@ -70,12 +80,14 @@ footer {
   width: 100%;
   text-align: center;
   margin: 0 auto;
-  background: $b1;
+  // background: $b1;
 
   > p {
-    padding: 40px 0 30px 30px;
+    margin: 0 auto;
+    padding: 40px 30px 30px 30px;
     max-width: 1000px;
     font-size: 10px;
+    display: block;
   }
 }
 
