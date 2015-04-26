@@ -4,14 +4,23 @@
   > pre {
     text-align: center;
     background: $n3;
+    
+    overflow: auto;
+    
 
     > code {
       padding: 30px 40px 30px;
       width: 100%;
+      min-width: 600px;
       max-width: 1000px;
       text-align: left;
       margin: 0 auto;
       background: white;
+      font-size: .8em;
+
+      @include from-width($breakpoint-medium) {
+        font-size: 1em;
+      }
     }
   }
 

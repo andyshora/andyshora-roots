@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <script>window.prettyPrint=function(){};</script>
+<title>The Inevitable Failure of Side Projects</title>
+<meta name="description" content="The Inevitable Failure of Side Projects">
+    <link rel="stylesheet" href="css/m.min.css">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="author" content="Andy Shora">
+    <link rel="author" href="https://plus.google.com/115209922186713310205/posts"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:site_name" content="andyshora.com"/>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+/* Modernizr 2.7.1 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-cssanimations-touch-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ */
+;window.Modernizr=function(a,b,c){function y(a){i.cssText=a}function z(a,b){return y(l.join(a+";")+(b||""))}function A(a,b){return typeof a===b}function B(a,b){return!!~(""+a).indexOf(b)}function C(a,b){for(var d in a){var e=a[d];if(!B(e,"-")&&i[e]!==c)return b=="pfx"?e:!0}return!1}function D(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:A(f,"function")?f.bind(d||b):f}return!1}function E(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+n.join(d+" ")+d).split(" ");return A(b,"string")||A(b,"undefined")?C(e,b):(e=(a+" "+o.join(d+" ")+d).split(" "),D(e,b,c))}var d="2.7.1",e={},f=b.documentElement,g="modernizr",h=b.createElement(g),i=h.style,j,k={}.toString,l=" -webkit- -moz- -o- -ms- ".split(" "),m="Webkit Moz O ms",n=m.split(" "),o=m.toLowerCase().split(" "),p={},q={},r={},s=[],t=s.slice,u,v=function(a,c,d,e){var h,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:g+(d+1),l.appendChild(j);return h=["&#173;",'<style id="s',g,'">',a,"</style>"].join(""),l.id=g,(m?l:n).innerHTML+=h,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=f.style.overflow,f.style.overflow="hidden",f.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),f.style.overflow=k),!!i},w={}.hasOwnProperty,x;!A(w,"undefined")&&!A(w.call,"undefined")?x=function(a,b){return w.call(a,b)}:x=function(a,b){return b in a&&A(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=t.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(t.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(t.call(arguments)))};return e}),p.touch=function(){var c;return"ontouchstart"in a||a.DocumentTouch&&b instanceof DocumentTouch?c=!0:v(["@media (",l.join("touch-enabled),("),g,")","{#modernizr{top:9px;position:absolute}}"].join(""),function(a){c=a.offsetTop===9}),c},p.cssanimations=function(){return E("animationName")};for(var F in p)x(p,F)&&(u=F.toLowerCase(),e[u]=p[F](),s.push((e[u]?"":"no-")+u));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)x(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof enableClasses!="undefined"&&enableClasses&&(f.className+=" "+(b?"":"no-")+a),e[a]=b}return e},y(""),h=j=null,e._version=d,e._prefixes=l,e._domPrefixes=o,e._cssomPrefixes=n,e.testProp=function(a){return C([a])},e.testAllProps=E,e.testStyles=v,e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
+    </script>
+
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--[if lt IE 7 ]><script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})});</script><![endif]-->
+
+</head>
+<body>
+
+<div id="body_wrap">
+    <header class="page-header">
+        <div class="page-header__title">
+            <h1>The Inevitable Failure of Side Projects</h1>
+            <p>You're probably nailing your side projects. Here's a different take. By <a href="#author">Andy Shora</a></p>
+            <a href="/">&larr; back to andyshora.com</a> | <a class="twitter-share-button-placeholder" data-via="andyshora">Tweet this article<i class="icon icon-twitter"></i></a>
+        </div>
+        <div class="header_twitter"><a href="http://twitter.com/andyshora" title="Follow me on Twitter @andyshora"></a></div>
+    </header>
+    <div class="page-article">
+        <section class="page-article__heading">
+            <h2>That False Sense of Achievement</h2>
+            <p>It's 8pm, drinks after work. I'm busy telling my new friend about my latest side project, apparently just for that false sense of achievement that I've recently become addicted to. What I somehow fail to mention is that my 'startup' exists purely in napkin form. However, I'm confident, as this one is very much at the top of a pile of similarly remarkable ideas that represent me, as an entrepreneur.</p>
+
+            <p>My real friends know me well enough now to respond over-enthusiastically to my latest venture. Now I just have to design, build and launch the thing. The only problem is, those parts aren't as fun as sitting in a coffee shop imagining my notepad scribbles come to life and take over the world.</p>
+
+
+            <div class="large-quote large-quote--long">
+                <strong>If you're interested in the living heart of what you do, focus on building things rather than talking about them.</strong>
+                <p>- Ryan Freitas, Co-founder, About.me</p>
+            </div>
+
+
+            <p>They say ideas are worth nothing without execution. I disagree. <strong>I think they are worth less than nothing.</strong> Ideas can easily disguise themselves as hundreds of tiny balls and chains that together weigh you down and lead you to question your own commitment to launching something of your own.</p>
+        </section>
+        <section>
+            <h2>Motivation, and the Core of Shit.</h2>
+            <p><i>I found a tree, full of life. Hundreds and thousands of healthy green leaves glistening in the sun. This is my new side project. It's like a Trello board of tasks. All of the fun little jobs are fluttering around at me, and I gleefully accept their call to start pruning them. Working on these tasks is fun! I'm making great progress doodling some wireframes, hacking together a few little CSS animations, and buying some great-sounding domain names.</i></p>
+
+            <p><i>Weeks pass, and there aren't many leaves left. In fact, there's only a few brown leaves which look dead, and now all that remains is the bark, and the wood (I've been delaying picking these tasks). I stupidly trusted myself to do these ones when I had a full weekend to nail them all in one go. Suddenly I realise, what is left is nothing but a core of shit. I've got to build some tech infrastructure, set up a server, secure it, consider writing some proper integration tests, create a CMS, setup an email account, and get my marketing plan to materialise - and this is just my MVP! These things don't sound fun at all! Why the hell did I leave all these horrible tasks for the end? All of a sudden I'm busy scraping bark off this impossibly big tree trunk, and I never realised it was going to be this difficult.</i></p>
+
+            <p><i>I take a break from slowly sludging through the core of shit that my once sparkling app idea has turned into. What's that I see on the horizon, glistening at me in the sun? Another tree, one full of healthy leaves. I'll take a walk over there, and leave this one for now. It's clearly going nowhere.</i></p>
+        </section>
+
+        <section>
+            <div class="large-quote">
+                <strong>Tomorrow <i>(noun)</i></strong>
+                <p>A mystical land where 99% of all human productivity, motivation and achievement is stored.</p>
+            </div>
+        </section>
+
+        <section class="section--d3">
+
+            <script></script>
+        </section>
+
+
+
+        <section>
+            <h2>The Side Project Motivation Curve</h2>
+            <p>For me, it goes a bit like this:<p>
+            <ul>
+                <li><strong>Phase 1: Extremely motivated.</strong> So motivated you're daydreaming at work, drawing diagrams and stuff on your latest hipster cartridge paper/moleskin/napkin with your new Japanese fineliner.</li>
+                <li><strong>Phase 2: Motivated.</strong> Picking the attractive tasks and making an MVP which you've convinced yourself is easily transformable into the real thing.</li>
+                <li><strong>Phase 3: Motivated but defensive.</strong> Telling a select group of people your idea - the ones who you know will react positively. Breaking off relationships with the <i>that already exists</i> crowd.</li>
+                <li><strong>Phase 4: Struggling.</strong> Realising you're defining new tasks quicker than you can implement them. Getting less excited all of a sudden.</li>
+                <li><strong>Phase 5: Reboot.</strong> Uncovering a new idea, one which seems a lot simpler and profitable than the last one. Park previous project, get out the notepad again.</li>
+            </ul>
+        </section>
+        <section class="images-section">
+            <img class="img--full" src="https://farm5.staticflickr.com/4048/4648355702_14087d4a7d_b.jpg" alt="">
+        </section>
+
+
+        <section>
+            <h2>The Graveyard</h2>
+            <p>Well, there's two actually. One is for your code repos, and the other is for all those shitty domain names you bought late that one night when you reinvented cool-sounding startup names.</p>
+            <p>Do we clean up the graveyard of 80% complete apps? HELL, NO. That could be some pretty valuable php code you wrote all those years ago, and you might yet get a chance to finish. Oh, and keep renewing those domain names too, just in case ;-)</p>
+        </section>
+
+        <section>
+            <div class="large-quote">
+                <strong><u>Please be patient</u></strong>
+                <p>I'm fucking things up as fast as I can.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Aiming to Fail</h2>
+
+            <p>There's an easy way out of the side project you're struggling with. Class it as a failure and move on.</p>
+            <p>Due to most successful entrepreneurs having failed before they made it, there's been a ridiculous recent trend of startup douchebags stating this as a prerequisite for being successful, or even getting funding! I've personally seen this taken way too far, making people adopt the completely wrong mentality of aiming to fail as quickly as possible, just so they can claim to have one under their belt. Failure is not something to be ashamed of, but it's certainly not a badge of honour. If you lack persistance in any way, and you're a big fan of the latest trend in the startup failure community, then this is an easy way out of pulling all nighters.</p>
+            <p>If you set the bar low, you'll never be disappointed.</p>
+        </section>
+        <section>
+            <h2>I Need a Hero</h2>
+            <p>We all need inspiration. The truth is, we often know where to get inspiration from, but looking for that video/book/story that normally does the job requires motivation itself. I once started <a href="https://www.pinterest.com/andyshora/words-to-live-by/" title="words to live by" target="_blank">pinning motivational quotes</a> like crazy, but I soon lost the motivation to do it. I even started an app called Motiy once, ironically that went straight to the graveyard too!</p>
+            <p>I believe that the majority of people have dreams of their own, and can get motivated from time-to-time, but most of us lack the persistance required to finish the things we start. You, reading this. You've probably got a few projects you've parked. God knows I have. What was the last thing you persevered through and launched?</p>
+            <p>It's too easy to go take a normal job and have them tell you you're great every week. To me, it's no surprise that a lot of successful entrepreneurs are born out of adversity. Are you sitting comfortably? Yeah? Well, that's why maybe, your side projects will inevitably fail.</p>
+        </section>
+    </div>
+
+</div>
+<div class="author-wrap" id="author">
+    <section class="author">
+        <div class="author__pic"></div>
+        <div class="author__desc">
+            <p>Hi, I'm <strong>Andy Shora</strong>. I'm a <strong>Frontend Web Developer</strong> based in London and I currently work with some very talented people over at <a href="http://www.rga.com">R/GA</a>. On the side, I recently built <a href="http://www.stackey.com" target="_blank" title="Stackey.com, a place where you can stack things that go together">Stackey</a> and <a href="http://www.thecityawards.com" target="_blank" title="Vote for your favourite places">The City Awards</a>.</p>
+            <div class="author__links">
+                <a class="author__link" href="http://twitter.com/andyshora"><i class="icon-twitter"></i> andyshora</a>
+                <a class="author__link" href="http://www.facebook.com/andyshora"><i class="icon-facebook"></i> fb<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" href="http://www.pinterest.com/andyshora"><i class="icon-pinterest"></i> pinterest<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" href="http://www.github.com/andyshora"><i class="icon-github"></i> github<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" onclick="revealEmail()"><i class="icon-envelope"></i> contact<span class="link__extra"> me</span></a>
+            </div>
+        </div>
+    </section>
+</div>
+<section class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'andyshora'; // required: replace example with your forum shortname
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            if ((window.location+'').match(/dev\./g)) return;
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $('.twitter-share-button-placeholder').bind('mouseover', function() {
+                enableShareButton($(this));
+            });
+
+            if (Modernizr.touch) {
+                enableShareButton($('.twitter-share-button-placeholder'));
+            }
+
+
+
+            window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+            Modernizr.load({
+            load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+            });
+
+            prettyPrint();
+        });
+
+
+
+        function enableShareButton(elm) {
+
+                elm.addClass('twitter-share-button')
+                    .removeClass('twitter-share-button-placeholder')
+                    .attr('href', 'https://twitter.com/share')
+                    .unbind('click');
+
+                !function(d,s,id){
+                    var js,
+                    fjs=d.getElementsByTagName(s)[0],
+                    p=/^http:/.test(d.location)?'http':'https';
+
+                    if(!d.getElementById(id)){
+                        js=d.createElement(s);
+                        js.id=id;
+                        js.src=p+'://platform.twitter.com/widgets.js';
+                        fjs.parentNode.insertBefore(js,fjs);
+                    }
+                }(document, 'script', 'twitter-wjs');
+
+        }
+        function revealEmail() {
+            alert('andyshora' + '@gmail.com');
+        }
+    </script>
+
+<!-- footer -->
+<footer>
+    <p>Andy Shora &copy; 2014</p>
+</footer>
+<!-- end footer -->
+<script type="text/javascript" src="assets/js/prettify.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        // tracking
+        window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+        Modernizr.load({
+          load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+
+        prettyPrint();
+    });
+
+</script>
+</body>
+</html>

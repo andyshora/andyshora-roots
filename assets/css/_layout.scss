@@ -61,7 +61,7 @@ html, body {
   margin: 0 auto;
   
   @include from-width($breakpoint-medium) {
-    padding: 60px 20% 60px 20px;
+    padding: 50px 20% 50px 20px;
 
     &.section-gutter--alt {
       padding: 60px 20px 60px 20%;
