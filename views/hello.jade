@@ -1,15 +1,15 @@
 ---
-title: 'hello world'
+title: 'hello'
 author: andyshora
 date: 3/04/2015
 og_image: http://placehod.it/600x200
 _content: false
 ---
 
-extends ../views/layouts/_base
+extends layouts/_base
 
 block header
-  +large-title-block('the title of the really', ' interesting ', 'article', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, dolores.', true)
+  +large-title-block('the title of the really', ' interesting ', 'article 2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, dolores.', true)
 
 block content
   section.section-gutter
@@ -22,7 +22,7 @@ block content
 
   +quote-block('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quisquam quia, dolorum.','Some dude')
 
-  section.section-gutter
+  section.section-gutter.section-gutter--alt
     :markdown
       ##Rem ipsum dolor sit amet
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati qui, incidunt cupiditate eligendi sequi consequuntur, inventore ipsa at neque fugiat velit quibusdam iste quaerat aspernatur.
@@ -43,19 +43,25 @@ block content
       Debitis, praesentium distinctio quasi perferendis! Soluta, accusamus possimus sed, praesentium quos ea sunt beatae, esse provident deleniti quia consectetur modi! Ullam velit quod blanditiis recusandae, error, perferendis. Autem accusamus nulla illum delectus reiciendis eum enim, excepturi assumenda rerum!
   +gallery()
     ul
-      li(data-caption='This is a picture of a city.')
-        img(src='http://lorempixel.com/640/480/city/')
+      li()
+        .gallery__caption
+          strong This is the caption title
+          p Debitis, praesentium distinctio quasi perferendis 
+        img(class='gallery__image' src='http://lorempixel.com/640/480/city/')
+  +quote-block('Adipisicing elit et illo quisquam quia dolorum et illo quisquam quia dolorum.','Some gal')
   section.section-gutter
     :markdown
-      ___
+      ##praesentium distinctio quasi
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati.
+      
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati. Orem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati.
       ###Provident deleniti quia:
       - Lorem ipsum dolor
       - Autem accusamus nulla
       - Illum delectus reiciendis eum
-  +quote-block('Adipisicing elit et illo quisquam quia dolorum.','Some gal')
   section.section-gutter
     :markdown
-      ##tl;dr
+      ##Summary
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati qui, incidunt cupiditate eligendi sequi consequuntur, inventore ipsa at neque fugiat velit quibusdam iste quaerat aspernatur cupiditate eligendi sequi consequuntur, inventore ipsa at neque fugiat velit quibusdam iste quaerat aspernatur cupiditate eligendi sequi consequuntur, inventore ipsa at neque fugiat velit quibusdam iste quaerat aspernatur.
 
   +bio-block('Andy Shora', 'andyshora', 'https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg')

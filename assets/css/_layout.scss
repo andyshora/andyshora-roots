@@ -22,8 +22,14 @@ $b2: rgb(65, 65, 65);
 $g1: #858585;
 $g2: #767676;
 
-$n1: #FCF9F7;
-$n2: #f5f2f0;
+$w1: #fafafa;
+
+// $n1: #FCF9F7;
+// $n2: #f5f2f0;
+
+$n1: #FFF1F1;
+$n2: #FAE1DE;
+$n3: #F9F5F5;
 
 * {
   @include prefix(box-sizing, border-box);
@@ -56,6 +62,10 @@ html, body {
   
   @include from-width($breakpoint-medium) {
     padding: 60px 20% 60px 20px;
+
+    &.section-gutter--alt {
+      padding: 60px 20px 60px 20%;
+    }
   }
 
   > h2 {

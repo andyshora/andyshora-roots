@@ -25,8 +25,8 @@
   }
 }
 .flower > svg {
-  animation: rotateFlower 180s infinite;
-  -webkit-animation: rotateFlower 180s infinite;
+  // animation: rotateFlower 180s infinite;
+  // -webkit-animation: rotateFlower 180s infinite;
   border-radius: 50%;
   overflow: hidden;
   position: absolute;
@@ -36,8 +36,8 @@
 }
 
 .flower > svg:nth-child(2) {
-  animation: rotateFlowerBackwards 180s infinite;
-  -webkit-animation: rotateFlowerBackwards 180s infinite;
+  // animation: rotateFlowerBackwards 180s infinite;
+  // -webkit-animation: rotateFlowerBackwards 180s infinite;
   border-radius: 128px;
   overflow: hidden;
   position: absolute;

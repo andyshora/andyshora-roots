@@ -7,7 +7,7 @@
   overflow: hidden;
 
   .flower {
-    opacity: .2;
+    opacity: .4;
 
     @include from-width($breakpoint-medium) {
       opacity: .8;
@@ -23,7 +23,6 @@
     padding: .3em 10px;
     position: relative;
     z-index: 2;
-    border: none;
     width: 90%;
     margin: 0 auto;
 
@@ -43,31 +42,10 @@
       margin-left: -10%;
     } */
 
-    &:before {
-      content: '';
-      display: none;
-      background: $c1;
-      width: 84%;
-      position: absolute;
-      left: 8%;
-      top: -5px;
-      height: 5px;
-    }
-
-    &:after {
-      content: '';
-      display: none;
-      background: $c1;
-      width: 94%;
-      position: absolute;
-      left: 3%;
-      bottom: -5px;
-      height: 5px;
-    }
+    
 
     @include from-width($breakpoint-medium) {
       display: block;
-      border: 1px solid $c2;
 
       &:before, &:after {
         display: block;

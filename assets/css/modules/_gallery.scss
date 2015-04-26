@@ -1,8 +1,13 @@
 .gallery {
-  background: #f5f2f0;
+  background: white;
+  padding: 30px 0;
+
+  @include from-width($breakpoint-medium) {
+    padding: 80px 0;
+  }
 }
 .gallery__content {
-  padding: 20px 20px 30px;
+  padding: 0 20px;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
@@ -13,8 +18,10 @@
       position: relative;
       display: inline-block;
       margin: 0;
+      width: 100%;
+      text-align: right;
 
-      &:after {
+      /* &:after {
         content: attr(data-caption);
         display: inline-block;
         position: absolute;
@@ -28,18 +35,58 @@
           bottom: 40px;
           right: 20px;
         }
-      }
-      > img {
-        border: 10px solid white;
-        border-bottom: 50px solid white;
+      } */
 
-        @include from-width($breakpoint-medium) {
-          border: 20px solid white;
-          border-bottom: 100px solid white;
-        }
+      
+    }
+  }
+}
+.gallery__image {
+  
+  display: block;
+  vertical-align: top;
+  width: 100%;
+  margin: 20px 0;
 
-        width: 100%;
+  @include from-width($breakpoint-small) {
+    width: 80%;
+  }
+  
+
+  @include from-width($breakpoint-medium) {
+    display: inline-block;
+    width: 60%;
+    margin: 0;
+  }
+}
+.gallery__caption {
+  display: block;
+  vertical-align: top;
+  padding: 0 10% 0 0;
+  text-align: left;
+
+  @include from-width($breakpoint-medium) {
+    display: inline-block;
+    width: 40%;
+  }
+
+  > strong {
+    padding-top: 0;
+
+    &:after {
+      content: ' ↓';
+    }
+
+    @include from-width($breakpoint-medium) {
+      &:after {
+        content: ' →';
       }
     }
   }
+
+  > p {
+    font-style: italic;
+    padding-top: .5em;
+  }
+  
 }

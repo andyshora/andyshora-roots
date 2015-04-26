@@ -1,7 +1,7 @@
 .quote-block {
   padding: 60px 0;
   margin: 0 auto;
-  background: $n1;
+  background: $n3;
   color: $b2;
   position: relative;
   overflow: hidden;
@@ -31,10 +31,11 @@
   } */
 }
 .quote-block__text {
-  max-width: 1000px;
   margin: 0 auto;
   text-align: right;
-  padding: 40px 20px 10px;
+  padding: 40px 20% 10px;
+  text-align: center;
+  
 
   > blockquote {
     font-style: italic;
@@ -51,11 +52,15 @@
   }
 
   > footer {
-    text-align: right;
+    text-align: center;
+
     > cite {
       > p {
+        color: $g1;
+        font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+
         &:before {
-          content: '—';
+          content: '/ ';
         }
       }
     }

@@ -3,6 +3,7 @@
 
   > pre {
     text-align: center;
+    background: $n3;
 
     > code {
       padding: 30px 40px 30px;
@@ -10,7 +11,7 @@
       max-width: 1000px;
       text-align: left;
       margin: 0 auto;
-      background: $n1;
+      background: white;
     }
   }
 
@@ -22,7 +23,7 @@
   display: block;
   width: 100%;
   text-align: left;
-  background: $n2;
+  background: $n3;
   font-style: italic;
 
   @include from-width($breakpoint-large) {
@@ -35,6 +36,6 @@
     padding: 50px 40px 0;
     width: 100%;
     display: block;
-    background: $n1;
+    background: white;
   }
 }

@@ -19,13 +19,13 @@ var makeFlower = function(elm, size) {
     .attr('width', size)
     .attr('height', size);
   
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 20; i++) {
     drawRandomPattern(0, size);
   }
   
-  for (var i = 0; i < 100; i++) {
-    drawRandomPattern(1, size);
-  }
+  // for (var i = 0; i < 50; i++) {
+  //   drawRandomPattern(1, size);
+  // }
 }
 
 function getRandomColor() {
@@ -39,7 +39,7 @@ function drawRandomPattern(i, maxSize) {
   var hY = h / 2;
   
   var startAngle = getRandomNumberBetween(0, 10);
-  var spread = getRandomNumberBetween(10, maxSize - 20);
+  var spread = getRandomNumberBetween(10, maxSize/2 - 20);
   
   var color = getRandomColor();
   
@@ -51,10 +51,15 @@ function drawRandomPattern(i, maxSize) {
   
   for(var theta = startAngle;  theta < (2 * Math.PI) + startAngle;  theta += step) {
     svgs[i].append('circle')
+      .attr('cx', hX)
+      .attr('cy', hY)
+      .attr('fill', color)
+      .attr('opacity', 0)
+      .transition()
+      .duration(5000)
       .attr('cx', (maxSize / 2) + (Math.cos(theta) * spread))
       .attr('cy', (maxSize / 2) - (Math.sin(theta) * spread))
       .attr('r', r)
-      .attr('fill', color)
       .attr('opacity', getRandomNumberBetween(50, 80) / 100)
   }
 }

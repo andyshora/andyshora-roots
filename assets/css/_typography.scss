@@ -39,6 +39,10 @@ h2 {
 a, a:visited, a:hover {
 }
 
+strong {
+  font-weight: bold;
+}
+
 .content {
   a, a:visited, a:hover {
     color: blue;
@@ -79,7 +83,7 @@ a, a:visited, a:hover {
   .medium, h4 {
     font-size: 20px;
     font-weight: 400;
-    line-height: 1.3em;
+    line-height: 1.2381em;
     /* 26px */
     padding-top: 1.3em;
     padding-bottom: 0;
@@ -90,7 +94,7 @@ a, a:visited, a:hover {
 .large, h3 {
   font-size: 20px;
   font-weight: 400;
-  line-height: 1.3em;
+  line-height: 1.2381em;
   /* 26px */
   padding-top: 1.3em;
   padding-bottom: 0;
@@ -102,7 +106,7 @@ a, a:visited, a:hover {
     font-family: $headingFont;
     font-size: 26px;
     font-weight: 400;
-    line-height: 1em;
+    line-height: 1.2381em;
     /* 26px */
     padding-top: 1em;
     padding-bottom: 0;
@@ -116,7 +120,7 @@ a, a:visited, a:hover {
   text-transform: uppercase;
   font-size: 26px;
   font-weight: 400;
-  line-height: 1em;
+  line-height: 1.2381em;
   /* 26px */
   padding-top: 1em;
   padding-bottom: 0;
