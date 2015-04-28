@@ -66,6 +66,10 @@ html, body {
     &.section-gutter--alt {
       padding: 60px 20px 60px 20%;
     }
+
+    &.section-gutter--full {
+      padding: 60px 20px 60px;
+    }
   }
 
   > h2 {
