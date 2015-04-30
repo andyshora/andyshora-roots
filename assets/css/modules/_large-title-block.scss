@@ -15,7 +15,7 @@
   }
 
   @include from-width($breakpoint-medium) {
-    padding: 340px 30px 66px;
+    padding: 160px 30px 66px;
   }
 
   > h1 {
@@ -92,7 +92,7 @@
 }
 .large-title-block__middle {
   color: $c4;
-  padding: 0 10px;
+  padding: 0 .1em;
 }
 .large-title-block__end {
   color: $c3;
@@ -104,4 +104,45 @@
   position: absolute;
   top: 10px;
   left: 10px;
+}
+
+.andy {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: -30px;
+  right: 0;
+
+  &:before {
+    width: 300px;
+    height: 300px;
+    top: -160px;
+    right: -150px;
+    background: black;
+    display: block;
+    content: '';
+    position: absolute;
+    @include prefix(transform, rotate(-45deg));
+  }
+
+  @include from-width($breakpoint-medium) {
+    width: 180px;
+    height: 180px;
+
+    &:before {
+      width: 380px;
+      height: 380px;
+      top: -180px;
+      right: -190px;
+    }
+  }
+}
+.andy__svg {
+  width: 60%;
+  margin-top: 20%;
+  position: relative;
+
+  svg {
+    fill: blue;
+  }
 }

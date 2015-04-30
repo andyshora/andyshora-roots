@@ -14,4 +14,6 @@ mixin large-title-block(start, middle, end, subtitle, tweetCounter)
     a(class="large-title-block__back" href="/") &larr; andyshora.com
     if tweetCounter
       +tweet-counter()
-    +flower(256)
+    if block
+      block
+
