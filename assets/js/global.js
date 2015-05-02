@@ -80,19 +80,14 @@ app.drawFlowers = function() {
 
 };
 
-app.drawFlowers();
-
-
-function init_animations(){
-
+app.initAnimations = function() {
   animationsOn = true;
   $('#buildings_wrap,#pods_wrap').show();
   $('#pods').addClass('spin');
   $('#stop_css3').show();
+};
 
-}
-
-function stop_animations(fade){
+app.stopAnimations = function(fade) {
   animationsOn = false;
   $('#pods').removeClass('spin');
 
@@ -103,6 +98,8 @@ function stop_animations(fade){
   }
 
   $('#stop_css3').hide();
-}
+};
 
-init_animations();
+app.drawFlowers();
+app.initAnimations();
+

@@ -56,7 +56,7 @@
   }
 
   > p {
-    margin: -15px auto 0;
+    margin: 15px auto 0;
     padding: 0 10px 1em;
     position: relative;
     z-index: 2;
@@ -114,7 +114,7 @@
   color: $c3;
 }
 .large-title-block__back {
-  color: $c4;
+  color: white !important;
   cursor: pointer;
   text-decoration: none;
   position: absolute;

@@ -8,8 +8,7 @@
 <meta name="description" content="Andy Shora, Front-end Web Developer in London">
     <link rel="stylesheet" href="css/m.min.css">
     <link rel="shortcut icon" href="/favicon.ico" />
-    <meta name="author" content="Andy Shora">
-    <link rel="author" href="https://plus.google.com/115209922186713310205/posts"/>
+    <meta name="og:image" content="http://i.imgur.com/fjqwiWi.png"><meta name="author" content="Andy Shora"><link rel="author" href="https://plus.google.com/115209922186713310205/posts"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta property="og:site_name" content="andyshora.com"/>
 
@@ -52,7 +51,7 @@
             </ul>
 
             <h2>Mobile Problems/Considerations</h2>
-            <a href="https://developer.apple.com/library/ios/#DOCUMENTATION/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html" title="Handling events on touch devices"><img class="fl-r panning-figure" src="/img/events_panning.jpg" alt="Handling events on touch devices" /></a>
+            <a href="https://developer.apple.com/library/ios/#DOCUMENTATION/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html" title="Handling events on touch devices"><img class="fl-r panning-figure" src="/img/pages/events_panning.jpg" alt="Handling events on touch devices" /></a>
             <p>Previously I've referred to scroll events. Unfortunately, we have to deal with the following problem: <strong>iOS devices freeze DOM manipulation during scroll, queuing them to apply when the scroll finishes.</strong>. This is going to result in extremely jerky animations if we rely on the position of these events. Instead, we have to tie our animation logic to touch events if the browser supports them.</p>
 
             <h3 class="inline">Binding <i>scroll</i> and <i>touchmove</i> events</h3>
@@ -456,7 +455,7 @@ function parallax(scrollTop) {
     <p>Andy Shora &copy; 2014</p>
 </footer>
 <!-- end footer -->
-<script type="text/javascript" src="assets/js/prettify.js"></script>
+<script type="text/javascript" src="/js/vendor/archive/prettify.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function() {

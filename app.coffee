@@ -8,6 +8,9 @@ siteFiles = []
 
 module.exports =
 
+  # after: () ->
+  # copy /archive to public/ 
+
   ignores: [
     'README.md',
     '**/layout.*',
