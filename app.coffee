@@ -20,7 +20,8 @@ module.exports =
     '.divshot-cache/*',
     '.editorconfig',
     '.DS_Store',
-    'layouts/*'
+    'layouts/*',
+    'archive/*'
   ]
 
   extensions: [
