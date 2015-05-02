@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <script>window.prettyPrint=function(){};</script>
+<title>The Myth of the Full-stack Developer</title>
+<meta name="description" content="The Myth of the Full-stack Developer">
+    <link rel="stylesheet" href="css/m.min.css">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="og:image" content="http://i.imgur.com/fjqwiWi.png"><meta name="author" content="Andy Shora"><link rel="author" href="https://plus.google.com/115209922186713310205/posts"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:site_name" content="andyshora.com"/>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+/* Modernizr 2.7.1 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-cssanimations-touch-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ */
+;window.Modernizr=function(a,b,c){function y(a){i.cssText=a}function z(a,b){return y(l.join(a+";")+(b||""))}function A(a,b){return typeof a===b}function B(a,b){return!!~(""+a).indexOf(b)}function C(a,b){for(var d in a){var e=a[d];if(!B(e,"-")&&i[e]!==c)return b=="pfx"?e:!0}return!1}function D(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:A(f,"function")?f.bind(d||b):f}return!1}function E(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+n.join(d+" ")+d).split(" ");return A(b,"string")||A(b,"undefined")?C(e,b):(e=(a+" "+o.join(d+" ")+d).split(" "),D(e,b,c))}var d="2.7.1",e={},f=b.documentElement,g="modernizr",h=b.createElement(g),i=h.style,j,k={}.toString,l=" -webkit- -moz- -o- -ms- ".split(" "),m="Webkit Moz O ms",n=m.split(" "),o=m.toLowerCase().split(" "),p={},q={},r={},s=[],t=s.slice,u,v=function(a,c,d,e){var h,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:g+(d+1),l.appendChild(j);return h=["&#173;",'<style id="s',g,'">',a,"</style>"].join(""),l.id=g,(m?l:n).innerHTML+=h,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=f.style.overflow,f.style.overflow="hidden",f.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),f.style.overflow=k),!!i},w={}.hasOwnProperty,x;!A(w,"undefined")&&!A(w.call,"undefined")?x=function(a,b){return w.call(a,b)}:x=function(a,b){return b in a&&A(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=t.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(t.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(t.call(arguments)))};return e}),p.touch=function(){var c;return"ontouchstart"in a||a.DocumentTouch&&b instanceof DocumentTouch?c=!0:v(["@media (",l.join("touch-enabled),("),g,")","{#modernizr{top:9px;position:absolute}}"].join(""),function(a){c=a.offsetTop===9}),c},p.cssanimations=function(){return E("animationName")};for(var F in p)x(p,F)&&(u=F.toLowerCase(),e[u]=p[F](),s.push((e[u]?"":"no-")+u));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)x(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof enableClasses!="undefined"&&enableClasses&&(f.className+=" "+(b?"":"no-")+a),e[a]=b}return e},y(""),h=j=null,e._version=d,e._prefixes=l,e._domPrefixes=o,e._cssomPrefixes=n,e.testProp=function(a){return C([a])},e.testAllProps=E,e.testStyles=v,e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
+    </script>
+
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--[if lt IE 7 ]><script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})});</script><![endif]-->
+
+</head>
+<body>
+
+<div id="body_wrap">
+    <header class="page-header">
+        <div class="page-header__title">
+            <h1>The Myth of the Full-stack Developer</h1>
+            <p>A well-balanced article/controversial rant about the term 'full-stack developer'. By <a href="#author">Andy Shora</a></p>
+            <a href="/">&larr; back to andyshora.com</a> | <a class="twitter-share-button-placeholder" data-via="andyshora">Tweet this article<i class="icon icon-twitter"></i></a>
+        </div>
+        <div class="header_twitter"><a href="http://twitter.com/andyshora" title="Follow me on Twitter @andyshora"></a></div>
+    </header>
+    <div class="page-article">
+
+        <section class="images-section">
+            <img src="img/full-stack.jpg" alt="The Full-stack Developer">
+        </section>
+
+        <section>
+
+            <h1>"Full-stack."</h1>
+            <p>My defensive tendencies are normally put on high alert when I hear that magic phrase. Stacks are a lot bigger than what they used to be, and being able to claim one has acquired refined skills at every layer of web development is certainly not a small claim. Does this mean you have a broad range of skills or you specialise in everything?</p>
+
+            <p>For a time (allegedly) Facebook only hired full-stack engineers. This was of course when they were building the first few versions of Facebook, which, lets face it had a relatively simple php backend and wasn't anything special design-wise.</p>
+
+        </section>
+
+        <section class="images-section">
+            <img src="img/stacks-change.jpg" alt="Stacks are a lot bigger than they used to be">
+            <p>Stacks are a lot bigger than they used to be...</p>
+        </section>
+
+        <section>
+            <h2>Full-stack used to mean less layers.</h2>
+
+            <p>Coding php or Python, jQuery, HTML, CSS then transferring a few files via FTP to your shared hosting account or dedicated server? You were full-stack. HTML was trivial, and even thinking of implementing any proper application code in JavaScript wasn't possible.</p>
+
+            <p>My beef is not with people who can do all of the above, it's with the label 'full-stack developer'. <strong>What does it mean in 2014?</strong></p>
+            <p>At the level of a senior full-stack engineer we're perhaps talking about architecting a modular Backbone/AngularJS front-end whilst optimising content delivery and tweaking hardware accelerated layers in CSS, followed by implementing an async non-blocking backend (which also pre-renders templates on the server), and pushing to an AWS cluster which has been built with security and scaleability in mind. Not to mention design. Designing UI responsively and mobile-first is essential, utilising a CSS pre-processor to save time. And remember to setup Nagios for monitoring. Oh, and ideally when the Continuous Integration server detects a bad build because your end-to-end tests have failed, get it to send you an SMS with the build error messages. Well, the last two are probably for bonus points.</p>
+
+        <p>Ask someone who labels themselves 'full-stack'. Do they believe they have familiarity with different layers, or true mastery?</p>
+        </section>
+        <section>
+            <h2>Identifying mastery</h2>
+
+            <p>I used to work with a very smart guy who when interviewing junior web developers, used to draw a spider diagram with each of the spikes being different layers of web development; UX, HTML, CSS, JavaScript, backend scripting language, and SQL. When the young developers were asked to grade themselves out of 10 for each of the skill areas, most went for a good spread, but a rather high spread. It seemed <strong>nobody wanted to exceed an 8, or drop below a 5 in any of the layers</strong>. We can ignore the scale at which they were grading themselves, because we were simply interpreting the grades relatively against each other so we could get a good idea of what kind of developer the individual saw themselves as. I didn't hear the term 'full-stack' being used even once, but we got a feel that everyone was an all-round web developer. What happened next was more interesting.</p>
+
+            <p>On the second iteration the interviewees were given a maximum of 30 points to distribute as they pleased. After some frowning, some internal arguing, and finally the self-grading we saw a lot more skewed graphs. <strong>The 7-5 well-spread ratings turned into more skewed 8-2's</strong>. It seemed when faced with the harsh reality of admitting what they were really good at, they delivered, giving themselves 8's in their favoured areas and 2's in others. If the candidates really believed in their initial relative spread, we would see the same weighting in the second round, but instead <strong>we saw front-end and back-end developers emerge from the crowd</strong>.</p>
+
+            <p>Of course 99% of web developers have probably never sat through this test, and have perhaps have never been forced to reveal what their real spread of skills is.</p>
+
+        </section>
+        <section class="images-section images-section--split">
+            <img src="img/unlimited.jpg" alt="The Full-stack Developer"><img src="img/limited.jpg" alt="The Full-stack Developer">
+            <p>Asking web developers to allocate points to their skillset.</p>
+        </section>
+        <section>
+            <h2>How skilled are you in each discipline?</h2>
+
+            <p>The basics of the languages/frameworks we learn today can often be picked up in a matter of hours. We no longer add skills to our CVs by taking a course, we simply download some code and start hacking through tutorials and demo code. The problem is, I feel the difference between knowing something in web development and truly mastering it is now becoming an increasingly blurred line.</p>
+            <p>It's very easy to become disillusioned with your own skills when you've deployed some code which has been consumed by lots of users. Let's say you've written a web application which has scaled well under load, and you've received great feedback. Are you a master of everything you used in this stack? Or are you simply good at implementing the layers you needed to make things work together? Because that's an entirely different skill, and in fact a very valuable one.</p>
+        </section>
+        <section>
+            <h2>The skill of acquiring new skills</h2>
+
+            <p>In my eyes the most valuable skill to have is the ability to learn, closely followed by the ability to know when you don't know something. I'm sure we've all met people who decide to put brakes on their own learning because they believe they've become a master at something. I don't know about you, but the smartest people I know (and the ones I have most respect for) are the ones who are still eager to learn new things every day, from everyone they meet. These people just don't stop growing, in terms of both ability and character.</p>
+
+        </section>
+        <section>
+            <h2>Why I'm not a full-stack developer</h2>
+
+            <p>At one point (probably when I was about twenty-two) I heard this phrase 'full-stack' and I thought "yeah, I'm one of them". Five years later after working in roles with ASP, php, .Net, Node and finally JavaScript and CSS, I only label myself as a front-end developer. Maybe I just wasn't that good at previous disciplines, or maybe since spending the last 2-3 years in pure JavaScript roles I just actually realised how high the limits are when you specialise. This is simply opportunity I did not have when I was busy in cross-discipline roles at smaller companies.</p>
+
+            <p>Sure, I've got some broad skills like a lot of developers. However, I'd like to think being a front-end developer now assumes some knowledge of UX, design, and how data is modelled and served on the backend, and this is why I think the term full-stack is old fashioned (if five years is old) and perhaps a bit smug.</p>
+
+            <p>Maybe, I just don't like the term.</p>
+
+        </section>
+        <section>
+            <h2>Some people are willing to have a go at everything</h2>
+            <p>Perhaps most respectable about all people who claim to be full-stack, is that is conveys ambition and persistance. The ideal developer should be willing to have a go at learning anything, but also acknowledge when they need help from a specialist in the team.</p>
+            <p>Perhaps I was too defensive at first, I've met too many people who pronounce the term in a smug way, instantly causing me to discredit them. However, say you're full-stack in a normal way, and there will be no scrutiny from my part. It won't be at all like meeting an investment banker or recruiter.</p>
+        </section>
+        <section>
+            <h2>The employability of a true full-stack developer: HIGH.</h2>
+
+            <p>The chances of finding a good full-stack developer: LOW.</p>
+
+            <p>Smaller companies and startups NEED full-stack developers. Developers are often forced to acquire new skills when the resources simply aren't available. I feel the problem for companies desperate to hire these guys and girls, is that the real multi-skilled developers are often lost in a sea of douchebags, claiming they know it all.</p>
+        </section>
+        <section>
+            <h2>Please harass me in the comments</h2>
+
+            <p>As I wait for the inevitable backlash of a thousand-strong army of full-stack developers on Hacker News, I sit here tinkering with a piece of JavaScript for my next 'big app', which will no doubt be undone by a security flaw that I've overlooked due to my lack of sysadmin skills.</p>
+        </section>
+    </div>
+
+</div>
+<div class="author-wrap" id="author">
+    <section class="author">
+        <div class="author__pic"></div>
+        <div class="author__desc">
+            <p>Hi, I'm <strong>Andy Shora</strong>. I'm a <strong>Frontend Web Developer</strong> based in London and I currently work with some very talented people over at <a href="http://www.rga.com">R/GA</a>. On the side, I recently built <a href="http://www.stackey.com" target="_blank" title="Stackey.com, a place where you can stack things that go together">Stackey</a> and <a href="http://www.thecityawards.com" target="_blank" title="Vote for your favourite places">The City Awards</a>.</p>
+            <div class="author__links">
+                <a class="author__link" href="http://twitter.com/andyshora"><i class="icon-twitter"></i> andyshora</a>
+                <a class="author__link" href="http://www.facebook.com/andyshora"><i class="icon-facebook"></i> fb<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" href="http://www.pinterest.com/andyshora"><i class="icon-pinterest"></i> pinterest<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" href="http://www.github.com/andyshora"><i class="icon-github"></i> github<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" onclick="revealEmail()"><i class="icon-envelope"></i> contact<span class="link__extra"> me</span></a>
+            </div>
+        </div>
+    </section>
+</div>
+<section class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'andyshora'; // required: replace example with your forum shortname
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            if ((window.location+'').match(/dev\./g)) return;
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $('.twitter-share-button-placeholder').bind('mouseover', function() {
+                enableShareButton($(this));
+            });
+
+            if (Modernizr.touch) {
+                enableShareButton($('.twitter-share-button-placeholder'));
+            }
+
+
+
+            window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+            Modernizr.load({
+            load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+            });
+
+            prettyPrint();
+        });
+
+
+        function enableShareButton(elm) {
+
+            elm.addClass('twitter-share-button')
+                .removeClass('twitter-share-button-placeholder')
+                .attr('href', 'https://twitter.com/share')
+                .unbind('click');
+
+            !function(d,s,id){
+                var js,
+                fjs=d.getElementsByTagName(s)[0],
+                p=/^http:/.test(d.location)?'http':'https';
+
+                if(!d.getElementById(id)){
+                    js=d.createElement(s);
+                    js.id=id;
+                    js.src=p+'://platform.twitter.com/widgets.js';
+                    fjs.parentNode.insertBefore(js,fjs);
+                }
+            }(document, 'script', 'twitter-wjs');
+
+        }
+        function revealEmail() {
+            alert('andyshora' + '@gmail.com');
+        }
+    </script>
+
+<!-- footer -->
+<footer>
+    <p>Andy Shora &copy; 2014</p>
+</footer>
+<!-- end footer -->
+<script type="text/javascript" src="/js/vendor/archive/prettify.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        // tracking
+        window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+        Modernizr.load({
+          load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+
+        prettyPrint();
+    });
+
+</script>
+</body>
+</html>

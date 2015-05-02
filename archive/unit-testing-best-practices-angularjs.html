@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <script>window.prettyPrint=function(){};</script>
+<title>Unit Testing Best Practices in AngularJS</title>
+<meta name="description" content="Unit Testing Best Practices in AngularJS">
+    <link rel="stylesheet" href="css/m.min.css">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="og:image" content="http://i.imgur.com/fjqwiWi.png"><meta name="author" content="Andy Shora"><link rel="author" href="https://plus.google.com/115209922186713310205/posts"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:site_name" content="andyshora.com"/>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+/* Modernizr 2.7.1 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-cssanimations-touch-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ */
+;window.Modernizr=function(a,b,c){function y(a){i.cssText=a}function z(a,b){return y(l.join(a+";")+(b||""))}function A(a,b){return typeof a===b}function B(a,b){return!!~(""+a).indexOf(b)}function C(a,b){for(var d in a){var e=a[d];if(!B(e,"-")&&i[e]!==c)return b=="pfx"?e:!0}return!1}function D(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:A(f,"function")?f.bind(d||b):f}return!1}function E(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+n.join(d+" ")+d).split(" ");return A(b,"string")||A(b,"undefined")?C(e,b):(e=(a+" "+o.join(d+" ")+d).split(" "),D(e,b,c))}var d="2.7.1",e={},f=b.documentElement,g="modernizr",h=b.createElement(g),i=h.style,j,k={}.toString,l=" -webkit- -moz- -o- -ms- ".split(" "),m="Webkit Moz O ms",n=m.split(" "),o=m.toLowerCase().split(" "),p={},q={},r={},s=[],t=s.slice,u,v=function(a,c,d,e){var h,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:g+(d+1),l.appendChild(j);return h=["&#173;",'<style id="s',g,'">',a,"</style>"].join(""),l.id=g,(m?l:n).innerHTML+=h,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=f.style.overflow,f.style.overflow="hidden",f.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),f.style.overflow=k),!!i},w={}.hasOwnProperty,x;!A(w,"undefined")&&!A(w.call,"undefined")?x=function(a,b){return w.call(a,b)}:x=function(a,b){return b in a&&A(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=t.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(t.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(t.call(arguments)))};return e}),p.touch=function(){var c;return"ontouchstart"in a||a.DocumentTouch&&b instanceof DocumentTouch?c=!0:v(["@media (",l.join("touch-enabled),("),g,")","{#modernizr{top:9px;position:absolute}}"].join(""),function(a){c=a.offsetTop===9}),c},p.cssanimations=function(){return E("animationName")};for(var F in p)x(p,F)&&(u=F.toLowerCase(),e[u]=p[F](),s.push((e[u]?"":"no-")+u));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)x(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof enableClasses!="undefined"&&enableClasses&&(f.className+=" "+(b?"":"no-")+a),e[a]=b}return e},y(""),h=j=null,e._version=d,e._prefixes=l,e._domPrefixes=o,e._cssomPrefixes=n,e.testProp=function(a){return C([a])},e.testAllProps=E,e.testStyles=v,e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
+    </script>
+
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--[if lt IE 7 ]><script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})});</script><![endif]-->
+
+</head>
+<body>
+
+<div id="body_wrap">
+
+    <header class="page-header">
+        <div class="page-header__title">
+            <h1>Unit Testing Best Practices in AngularJS</h1>
+            <p>What should I be testing and when should I be writing tests? A frontend development article by <a href="#author">Andy Shora</a></p>
+            <a href="/">&larr; back to andyshora.com</a> | <a class="twitter-share-button-placeholder" data-via="andyshora">Tweet this article<i class="icon icon-twitter"></i></a>
+        </div>
+        <div class="header_twitter"><a href="http://twitter.com/andyshora" title="Follow me on Twitter @andyshora"></a></div>
+    </header>
+
+
+    <section>
+        <h2>Why do you need to write tests?</h2>
+        <p><strong>Because you're not Chuck Norris.</strong> Chuck Norris' code tests itself, and it always passes, with 0ms execution time.</p>
+        <p><strong>Ok, seriously, writing tests feels good!</strong> I think it's essential that you learn to love the feeling of having a water-tight app. One which you know is not going to, you know, suddenly die the moment someone else starts making changes.</p>
+        <p>It might just be me, but when you've written a nice function, and you've verified it works the way it should, it feels solid. You see green ticks on a command line, all tests passed. BOOM! You've just written some of the most solid, reliable code that's ever been written!</p>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Level 1. Unit Testing</h2>
+        <p>Welcome to the first level of testing. Everyone has to reach level 1! Breaking down the logic of your application into small chunks or 'units', and verifying that each unit works as desired, makes for a very happy and resilient app lifecycle!</p>
+        <p>Imagine the developer you were five years ago, imagine he or she inheriting your codebase, and imagine how it would be massacred into a small pile of excrement the moment urgent changes are made. Ok, maybe you weren't that bad. Still, you need to <strong>write at least basic unit tests to make sure regressions don't spring up because some new developer doesn't understand what's going on.</strong></p>
+        <p>The core units which make up features should be verified with accompanying unit tests. In JavaScript apps, the smallest units of code you can test are usually individual functions.</p>
+
+        <div class="takeaway-tip"><p>The core units which make up features should be verified with accompanying unit tests. In JavaScript apps, the smallest units of code you can test are usually individual functions.</p></div>
+
+        <h3>Recommended Unit Testing Tools</h3>
+        <ul>
+            <li><a href="http://pivotal.github.io/jasmine/" title="Jasmine - Jasmine is a behavior-driven development framework for testing JavaScript code">Jasmine</a> - <i>"Jasmine is a behavior-driven development framework for testing JavaScript code." <strong>(personal favourite, awesome docs)</strong></i></li>
+            <li><a href="http://visionmedia.github.io/mocha/" title="Mocha - the fun, simple, flexible JavaScript test framework">Mocha</a> - <i>"The fun, simple, flexible JavaScript test framework."</i></li>
+            <li><a href="" title="QUnit: A JavaScript Unit Testing framework.">QUnit</a> - <i>"A JavaScript Unit Testing framework, used by jQuery."</i></li>
+        </ul>
+
+        <h4>Examples</h4>
+        <ul>
+            <li>A function which displays an error message.</li>
+            <li>A function which validates an email address.</li>
+            <li>A function which sorts a list of names.</li>
+            <li>A function which changes the state of a product to 'out of stock'.</li>
+            <li>A function which adds a list of numbers together.</li>
+        </ul>
+
+        <p>In the grand scheme of things, these units may be very abstracted away from the users of the app, they may even be unaware of this level of functionality happening under the hood. Still, it's our job to verify that each of the chunks of an app work individually, so when they are joined together they have a good chance of working as a whole.</p>
+
+        <div class="takeaway-tip">...it's our job to verify that each of the chunks of an app <u>work individually</u>, so when they are joined together they have a good chance of working as a whole.</div>
+    </section>
+
+    <section>
+
+        <h2>When is a good time to write Unit Tests?</h2>
+<p>It's easy for a semi-technical manager to say <i>"write all tests at the start"</i>, but the truth is, you often don't know all the small components which are required when presented with a high-level user story.</p>
+
+<p>I usually write unit tests as I go along, as I develop all the 'units' required to implement a user story. You're going to constantly be changing functions around, refactoring and abstracting parts away, tidying up what's going in and coming out of functions, trying to preempt any of this is going to cause a lot of wasted time.</p>
+
+<h4>Scenario</h4>
+<ul><li>User story: "As a user, when I login to my app, I am taken to the dashboard page."</li></ul>
+
+<h4>How do we break it down into tests? Break it down like this: &nbsp;Story &rarr; Features &rarr; Units</h4>
+<p>I'll immediately select the 'login form' as a feature of this story which I can test, and I'll add the following test outlines for the important units that are required to implement this feature correctly:</p>
+
+<pre class="prettyprint lang-js">describe('user login form', function() {
+
+    // critical
+    it('ensure invalid email addresses are caught', function() {});
+    it('ensure valid email addresses pass validation', function() {});
+    it('ensure submitting form changes path', function() { });
+
+    // nice-to-haves
+    it('ensure client-side helper shown for empty fields', function() { });
+    it('ensure hitting enter on password field submits form', function() { });
+
+});</pre>
+    </section>
+
+    <section>
+        <p>Depending on your time constraints, you may decide to skip some of those tests, but hopefully you can see how critical the first three are, as if they failed, they could completely block people from using the app.</p>
+
+        <div class="takeaway-tip">Consider building a car from start to finish, each of the parts which make the engine, the chassis, the wheels, must be individually vefiried to be in working order before they are to be assembled into a 'car'.</div>
+
+<p><i>Consider building a car from start to finish, each of the parts which make the engine, the chassis, the wheels, must be individually vefiried to be in working order before they are to be assembled into a 'car'.</i></p>
+
+<p><i>If you've been told time is off the essence, less important parts can be de-prioritised. For example, tyres might not be checked for pressure, the stitching in the interior may not be checked for damage. This could result is a slightly shoddy car, but hey that's not your problem, you don't manage your time! (Always best to confirm its ok to skip these things first though, could be dangerous!)</i></p>
+    </section>
+
+    <section>
+        <h2>Writing Good Unit Tests for AngularJS</h2>
+        <p>Let's go through some actual examples.</p>
+
+<pre class="prettyprint lang-js">describe("Unit Testing Examples", function() {
+
+  beforeEach(angular.mock.module('App'));
+
+  it('should have a LoginCtrl controller', function() {
+    expect(App.LoginCtrl).toBeDefined();
+  });
+
+  it('should have a working LoginService service', inject(['LoginService',
+    function(LoginService) {
+      expect(LoginService.isValidEmail).not.to.equal(null);
+
+      // test cases - testing for success
+      var validEmails = [
+        'test@test.com',
+        'test@test.co.uk',
+        'test734ltylytkliytkryety9ef@jb-fe.com'
+      ];
+
+      // test cases - testing for failure
+      var invalidEmails = [
+        'test@testcom',
+        'test@ test.co.uk',
+        'ghgf@fe.com.co.',
+        'tes@t@test.com',
+        ''
+      ];
+
+      // you can loop through arrays of test cases like this
+      for (var i in validEmails) {
+        var valid = LoginService.isValidEmail(validEmails[i]);
+        expect(valid).toBeTruthy();
+      }
+      for (var i in invalidEmails) {
+        var valid = LoginService.isValidEmail(invalidEmails[i]);
+        expect(valid).toBeFalsy();
+      }
+
+    }])
+  );
+});</pre>
+
+
+    </section>
+
+    <hr>
+    <section>
+        <h2>Level 2. Integration Testing</h2>
+
+        <p>Integration testing is where we write end-to-end tests, performing a sequence of a workflow or user journey, and verifying the state of the app/UI along the way.</p>
+
+        <p>This task is still mostly done manually by QA, and good QA engineers do automate tests using tools like <a href="http://docs.seleniumhq.org/" title="Selinium">Selinium</a> or <a href="http://phantomjs.org/" title="PhantomJS is a headless WebKit scriptable with a JavaScript API">PhantomJS</a> to make their life easier, but we're seeing a shift in responsibility now that developers have easy access to the tools required to automate end-to-end integration tests right from a task runner such as <a href="http://gruntjs.com/" title="Grunt, the JavaScript Task Runner">Grunt</a>.</p>
+        <h4>Use Grunt Y'all</h4>
+        <p>Quite simply, if you're not yet using <a href="http://gruntjs.com/" title="Grunt, the JavaScript Task Runner">Grunt</a> for your test and build process, you either haven't heard of it yet, haven't heard exactly how awesome it is, or you're potentially an old, stubborn developer who doesn't like change.</p>
+        <p>Grunt allows us to install testing frameworks like Jasmine or Karma in a single command, and then execute all tests within a project when files change, or during the build process. Simply executing a command like <strong>grunt test</strong> can lint your code and peform all unit and integration tests. Also take a look at <a href="http://yeoman.io/">Yeoman</a> as a complete solution for setting up an app skeleton as well as full build and testing procedures, which uses Grunt by default.</p>
+        <p>Anyway, back to testing... we're essentially going to program the interactions needed to perform a task, and our headless browser is going to do all the work.
+
+        <h2>Recommended Integration Testing Tools</h2>
+        <ul>
+            <li><a href="http://karma-runner.github.io/" title="Karma - Spectacular Test Runner for JavaScript">Karma</a> - <i>"Spectacular Test Runner for JavaScript."</i> <strong>(my favourite + uses real browsers!)</strong></li>
+            <li><a href="http://casperjs.org/" title="CasperJS">CasperJS</a> - <i>"CasperJS is a navigation scripting &amp; testing utility which uses headless browsers."</i></li>
+        </ul>
+
+        <h4>Examples</h4>
+        <ul>
+            <li>User logs into a website via the homepage, and sees a dashboard.</li>
+            <li>User searches for a product, clicks on a search result, and is taken to a product page.</li>
+            <li>User opens the basket, removes an item, and sees the number of items and the subtotal decrease.</li>
+            <li>User clicks '2', then '+', then '3', then '=', and sees '5' in the result area.</li>
+        </ul>
+
+        <p><i>Going back to our car example, integration testing is a bit like automating a robot to perform some function like drive the car. We consider the car as a whole, we tell the robot to get in, turn on the engine, and see if the car moved forward after a set sequence of operations.</i></p>
+
+        <h2>When is a good time to write Integration Tests?</h2>
+        <p>When user stories are being created, it's a good idea to flesh out integration tests which will correspond to user journeys. A good thing about higher level testing like this, is that the tests will be pretty resilient to changes in your code. As long as the elements rendered on a page, and the routing stays the same, if you change the underlying implementation one day, your E2E tests should still pass.</p>
+
+        <div class="takeaway-tip">When user stories are being created, it's a good idea to flesh out integration tests which will correspond to user journeys.</div>
+
+        <h4>Scenario</h4>
+        <ul><li>User story: "As a user, when I login to my app, I am taken to the dashboard page."</li></ul>
+
+        <p>At this point, I've literally just heard about the user story, I might decide my integration tests will look something like this:</p>
+<pre class="prettyprint lang-js">describe('user login', function() {
+
+  it('ensures user can log in', function() {
+    // expect current scope to contain username
+  });
+  it('ensures path has changed', function() {
+    // expect path to equal '/dashboard'
+  });
+
+});</pre>
+    </section>
+
+    <section>
+        <h2>What about verifying visual aspects?</h2>
+        <p>If you wanted to programatically vefiry the design is pixel perfect when rendered, you're actually asking for the world! Although integration testing frameworks such as PhantomJS has become advanced enough to take screenshots at different points in a test, you're always going to need a manual stage to tests where someone can verify the  rendered design against a visual design.</p>
+
+        <p>Developers have even started creating image diff tools to detect regressions in design, which is fantastic, but also comes with the burden of having to mock all content which is rendered, to prevent image diff libraries mistakenly detecting different content as visual regressions.</p>
+
+        <p>I recently saw a talk at LondonJS by <a href="http://twitter.com/jamescryer">James Cryer</a> who wrote a really cool CSS Regression Testing tool, <a href="http://tldr.huddle.com/blog/css-testing/">PhantomCSS</a>, which can produce screenshots of various parts of an app, overlayed with a bright colour indicating visual regressions. Amazing stuff, but perhaps a bit out of scope for this article.</p>
+    </section>
+
+
+    <section>
+        <h2>Writing Good Integration/E2E Tests for AngularJS</h2>
+        <p>Here's some examples of higher-level Integration Tests, which interact with the application level, as opposed to the actual functions in your app.</p>
+        <pre class="prettyprint lang-js">describe("Integration/E2E Testing", function() {
+
+  // start at root before every test is run
+  beforeEach(function() {
+    browser().navigateTo('/');
+  });
+
+  // test default route
+  it('should jump to the /home path when / is accessed', function() {
+    browser().navigateTo('#/');
+    expect(browser().location().path()).toBe("/login");
+  });
+
+  it('ensures user can log in', function() {
+    browser().navigateTo('#/login');
+    expect(browser().location().path()).toBe("/login");
+
+    // assuming inputs have ng-model specified, and this conbination will successfully login
+    input('email').enter('test@test.com');
+    input('password').enter('password');
+    element('submit').click();
+
+    // logged in route
+    expect(browser().location().path()).toBe("/dashboard");
+
+    // my dashboard page has a label for the email address of the logged in user
+    expect(element('#email').html()).toContain('test@test.com');
+  });
+
+  it('should keep invalid logins on this page', function() {
+    browser().navigateTo('#/login');
+    expect(browser().location().path()).toBe("/login");
+
+    // assuming inputs have ng-model specified, and this conbination will successfully login
+    input('email').enter('invalid@test.com');
+    input('password').enter('wrong password');
+    element('submit').click();
+
+    expect(element('#message').html().toLowerCase()).toContain('failed');
+
+    // logged out route
+    expect(browser().location().path()).toBe("/login");
+
+  });
+
+});</pre>
+    </section>
+
+    <hr>
+
+    <section>
+
+        <h2>Mocking Services and Modules in AngularJS</h2>
+
+        <p>Instead of our tests talking to real services, it will often suffice to speak to the 'mock' versions of the services, which will respond to calls accurately, but rather unintelligently. We use mocks because if we started relying on a real service writing real data, or a service changing the location in the address bar, or an unreliable external API, then it may interfere with the execution of our test runner in its own potentially sandboxed environment.</p>
+
+        <p>In fact, it's a lot better to mock as we concentrate test code coverage purely on our module. Stubbing out endpoints which our module is interacting with is a really good way of ensuring the reliability of our tests is dependent purely on how well the code inside our module performs.</p>
+        <p><strong>The aim of mocking objects is to remove dependencies on any external factors that module X may be interfacing with, such as a browser's API, or an external API endpoint. We can assume this stuff has already been tested.</strong></p>
+
+        <p>The important thing to remember is that we aren't testing this external service 'Y', it's an abstracted-away module which we assume has its own tests. If this service Y ships with a mock version, then we can assume that all essential logic is still included, and we are simply interfacing a dumb version which will act as a static endpoint to satisfy our tests.</p>
+
+        <p><i>In our car example, objects we may decide to mock out would be pedestrians, maybe other cars, even passengers are 'mocked out' in the form of crash test dummies!</i></p>
+
+        <div class="takeaway-tip">Stubbing out endpoints which our module is interacting with is a really good way of ensuring the reliability of our tests is dependent purely on how well the code <u>inside</u> our module performs.</div>
+
+        <p>Consider the $location service which should do the following things when it's path() function is called with a path string as a param:</p>
+
+        <ul>
+            <li>Change the path in the address bar.</li>
+            <li>Fire a '$routeChangeSuccess' event.</li>
+        </ul>
+
+        <p>In this situation it would be ok for the mock $location service to store the new path in the instance, and fire the '$routeChangeSuccess' event when it's updated, but not actually redirect the browser. We assume this will already work, and has been tested by the person who wrote this service.</p>
+
+        <h2>Mocking HTTP Requests with $httpBackend</h2>
+        <p>Here's an example showing how to mock a http request, using the $httpBackend service to intercept the request if it meets certain conditions. Note that the LoginService.login method uses the $http service to send a POST request, and this service relies on $httpBackend in Angular.</p>
+<pre class="prettyprint lang-js">it('should get login success',
+  inject(function(LoginService, $httpBackend) {
+
+    $httpBackend.expect('POST', 'https://api.mydomain.com/login')
+      .respond(200, "[{ success : 'true', id : 123 }]");
+
+    LoginService.login('test@test.com', 'password')
+      .then(function(data) {
+        expect(data.success).toBeTruthy();
+    });
+
+  $httpBackend.flush();
+});</pre>
+
+
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Summary</h2>
+        <p>To round things up, remember to keep these rules in mind when writing Unit Tests and Integration Tests for your application:</p>
+        <ul>
+            <li>Try and flesh out outlines for the Integration Tests at the point where your user stories are becoming formalised.</li>
+            <li>When writing E2E/Integration Tests, always bear in mind they should be application-level, so they should be pretty resistant to changes in the underlying implementation.</li>
+            <li>Break components down into units/chunks (which will often be single functions), and identify the units which are critical to the reliability of your component. Write unit tests for these chunks.</li>
+            <li>Remember to test for failure, as well as success. For example, check that an invalid email address doesn't pass an email validation function. Set up some test cases with really bizzare input as well as just a slightly invalid email address.</li>
+            <li>Consider using <a href="http://pivotal.github.io/jasmine/" title="Jasmine - Jasmine is a behavior-driven development framework for testing JavaScript code">Jasmine</a> for unit tests, and  <a href="http://karma-runner.github.io/" title="Karma - Spectacular Test Runner for JavaScript">Karma</a> for performing end-to-end integration tests.</li>
+            <li>Mock external modules and services which simply act as endpoints for the code in your module. Don't test things like third party services which should have their own tests.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>That's all for now!</h3>
+        <p>Thanks for reading, as always please leave your questions and comments below!</p>
+    </section>
+
+
+</div>
+<script>
+    $(document).ready(function() {
+
+        $('.twitter-share-button-placeholder').bind('mouseover', function() {
+            enableShareButton($(this));
+        });
+
+        prettyPrint();
+
+        enableShareButton($('.twitter-share-button-placeholder'));
+
+
+        window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+        Modernizr.load({
+        load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+
+
+
+
+    });
+
+    function enableShareButton(elm) {
+
+        elm.addClass('twitter-share-button')
+            .removeClass('twitter-share-button-placeholder')
+            .attr('href', 'https://twitter.com/share')
+            .unbind('click');
+
+        !function(d,s,id){
+            var js,
+            fjs=d.getElementsByTagName(s)[0],
+            p=/^http:/.test(d.location)?'http':'https';
+
+            if(!d.getElementById(id)){
+                js=d.createElement(s);
+                js.id=id;
+                js.src=p+'://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js,fjs);
+            }
+        }(document, 'script', 'twitter-wjs');
+
+    }
+
+    function revealEmail() {
+        alert('andyshora' + '@gmail.com');
+    }
+</script>
+<div class="author-wrap" id="author">
+    <section class="author">
+        <div class="author__pic"></div>
+        <div class="author__desc">
+            <p>Hi, I'm <strong>Andy Shora</strong>. I'm a <strong>Frontend Web Developer</strong> based in London and I currently work with some very talented people over at <a href="http://www.rga.com">R/GA</a>. On the side, I recently built <a href="http://www.stackey.com" target="_blank" title="Stackey.com, a place where you can stack things that go together">Stackey</a> and <a href="http://www.thecityawards.com" target="_blank" title="Vote for your favourite places">The City Awards</a>.</p>
+            <div class="author__links">
+                <a class="author__link" href="http://twitter.com/andyshora"><i class="icon-twitter"></i> andyshora</a>
+                <a class="author__link" href="http://www.facebook.com/andyshora"><i class="icon-facebook"></i> fb<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" href="http://www.pinterest.com/andyshora"><i class="icon-pinterest"></i> pinterest<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" href="http://www.github.com/andyshora"><i class="icon-github"></i> github<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" onclick="revealEmail()"><i class="icon-envelope"></i> contact<span class="link__extra"> me</span></a>
+            </div>
+        </div>
+    </section>
+</div>
+<section class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'andyshora'; // required: replace example with your forum shortname
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            if ((window.location+'').match(/dev\./g)) return;
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+<!-- footer -->
+<footer>
+    <p>Andy Shora &copy; 2014</p>
+</footer>
+<!-- end footer -->
+<script type="text/javascript" src="/js/vendor/archive/prettify.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        // tracking
+        window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+        Modernizr.load({
+          load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+
+        prettyPrint();
+    });
+
+</script>
+</body>
+</html>

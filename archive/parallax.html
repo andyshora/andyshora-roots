@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <script>window.prettyPrint=function(){};</script>
+<title>Parallax Tutorial using CSS and jQuery</title>
+<meta name="description" content="Andy Shora, Front-end Web Developer in London">
+    <link rel="stylesheet" href="css/m.min.css">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="og:image" content="http://i.imgur.com/fjqwiWi.png"><meta name="author" content="Andy Shora"><link rel="author" href="https://plus.google.com/115209922186713310205/posts"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:site_name" content="andyshora.com"/>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+/* Modernizr 2.7.1 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-cssanimations-touch-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ */
+;window.Modernizr=function(a,b,c){function y(a){i.cssText=a}function z(a,b){return y(l.join(a+";")+(b||""))}function A(a,b){return typeof a===b}function B(a,b){return!!~(""+a).indexOf(b)}function C(a,b){for(var d in a){var e=a[d];if(!B(e,"-")&&i[e]!==c)return b=="pfx"?e:!0}return!1}function D(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:A(f,"function")?f.bind(d||b):f}return!1}function E(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+n.join(d+" ")+d).split(" ");return A(b,"string")||A(b,"undefined")?C(e,b):(e=(a+" "+o.join(d+" ")+d).split(" "),D(e,b,c))}var d="2.7.1",e={},f=b.documentElement,g="modernizr",h=b.createElement(g),i=h.style,j,k={}.toString,l=" -webkit- -moz- -o- -ms- ".split(" "),m="Webkit Moz O ms",n=m.split(" "),o=m.toLowerCase().split(" "),p={},q={},r={},s=[],t=s.slice,u,v=function(a,c,d,e){var h,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:g+(d+1),l.appendChild(j);return h=["&#173;",'<style id="s',g,'">',a,"</style>"].join(""),l.id=g,(m?l:n).innerHTML+=h,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=f.style.overflow,f.style.overflow="hidden",f.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),f.style.overflow=k),!!i},w={}.hasOwnProperty,x;!A(w,"undefined")&&!A(w.call,"undefined")?x=function(a,b){return w.call(a,b)}:x=function(a,b){return b in a&&A(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=t.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(t.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(t.call(arguments)))};return e}),p.touch=function(){var c;return"ontouchstart"in a||a.DocumentTouch&&b instanceof DocumentTouch?c=!0:v(["@media (",l.join("touch-enabled),("),g,")","{#modernizr{top:9px;position:absolute}}"].join(""),function(a){c=a.offsetTop===9}),c},p.cssanimations=function(){return E("animationName")};for(var F in p)x(p,F)&&(u=F.toLowerCase(),e[u]=p[F](),s.push((e[u]?"":"no-")+u));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)x(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof enableClasses!="undefined"&&enableClasses&&(f.className+=" "+(b?"":"no-")+a),e[a]=b}return e},y(""),h=j=null,e._version=d,e._prefixes=l,e._domPrefixes=o,e._cssomPrefixes=n,e.testProp=function(a){return C([a])},e.testAllProps=E,e.testStyles=v,e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
+    </script>
+
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--[if lt IE 7 ]><script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})});</script><![endif]-->
+
+</head>
+<body>
+
+<div id="body_wrap">
+
+    <header class="page-header">
+        <div class="page-header__title">
+            <h1>Parallax Tutorial using CSS and jQuery</h1>
+            <p>How to create parallax effects on scroll, in web design. By <a href="#author">Andy Shora</a></p>
+            <a href="/">&larr; back to andyshora.com</a> | <a class="twitter-share-button-placeholder" data-via="andyshora">Tweet this article<i class="icon icon-twitter"></i></a>
+        </div>
+        <div class="header_twitter"><a href="http://twitter.com/andyshora" title="Follow me on Twitter @andyshora"></a></div>
+    </header>
+
+    <div class="page-article">
+
+        <section>
+            <h2>How to implement parallax effects on scroll using CSS &amp; jQuery</h2>
+            <p>Ever wondered how to achieve parallax effects on scroll? I'll show you how simple it can be, using CSS &amp; a bit of jQuery. I'm not a fan of long intros, so feel free to scroll straight down for the demo!</p>
+            <h2>Performance Aims</h2>
+            <ul>
+                <li><strong>Minimise DOM interactions on scroll events.</strong><br>Ideally we should only be interacting with the parallax elements at the breakpoints (start &amp; stop positions), so we can try to make use of CSS fixed positioning to accomplish the desired parallax effect. Obviously if we're adding a speed to the effect later on, whereby the element moves at say double the speed of scroll, we're going to need to update the position on every scroll event.<br>Another important way of reducing the DOM interactions is to store all the static values from the parallax elements straight away when the page is loaded. The parallax settings defined in the HTML of each element will not change, so we would be sacrificing performance if we were grabbing these values on every scroll event.</li>
+                <li><strong>For more complex animations, use hardware accelleration where possible.</strong><br>Mobile devices are less powerful, which can cause jerkyness when dealing with animations applied dynamically through JavaScript. When we get to dealing with the speed property, we'll look at using <i>transform</i> properties to enable supported mobile devices to use the more powerful GPU to perform the animations.</li>
+            </ul>
+
+            <h2>Mobile Problems/Considerations</h2>
+            <a href="https://developer.apple.com/library/ios/#DOCUMENTATION/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html" title="Handling events on touch devices"><img class="fl-r panning-figure" src="/img/pages/events_panning.jpg" alt="Handling events on touch devices" /></a>
+            <p>Previously I've referred to scroll events. Unfortunately, we have to deal with the following problem: <strong>iOS devices freeze DOM manipulation during scroll, queuing them to apply when the scroll finishes.</strong>. This is going to result in extremely jerky animations if we rely on the position of these events. Instead, we have to tie our animation logic to touch events if the browser supports them.</p>
+
+            <h3 class="inline">Binding <i>scroll</i> and <i>touchmove</i> events</h3>
+            <p>As <i>touchmove</i> events stop when your finger leaves the screen, but the browser will continue to scroll for around a second as part of the 'slowing down' easing effect. For this reason, I've decided to bind both the touchmove event and the scroll event. The bug you'll see is when you swipe past the end of the container and release your touch before the brick has hit the bottom, it overflows the container, and <i>position: relative</i> is only applied when the queued scroll events are fired when the scroll transition has ended.</p>
+            <p>A solution for this problem (well, more of a workaround), is to design your parallax effects with this in mind. Consider placing an overlapping element with a higher <i>z-index</i> at the end point, so even if the brick overruns, it will be behind the higher element. If the overlapping element is tall enough, it should provide enough time for the scroll events to fire and position the brick relatively in the correct position.</p>
+
+            <p><strong>Update: haven't been able to get this working correctly on iOS devices yet :-(</strong><br>I've investigated using setInterval hacks to keep checking the scrollTop position of the window, but this feels dirty, and is still unreliable considering how infrequently the value is updated. RequestAnimationFrame is only available in iOS6, so stay tuned for an update for mobile performance, or feel free to help me out in the comments!</p>
+
+            <p><strong>Update 2: <a title="Mobile scroll events demo" href="mobile-scroll-event-problems.html">Check out my demo showing the scroll event problems on mobile!</a></strong></p>
+
+        </section>
+
+        <h2>Demo time: Let's make the red brick fall down the page as we scroll!</h2>
+        <p>We'll set bounds on the parallax effect, so the brick always stays within it's container.</p>
+        <ul>
+            <li>The CSS position value is shown inside the brick.</li>
+            <li>For learning purposes, I've also shown the distance the viewport (the window) has been scrolled, and the distance of the element from the bottom of the viewport, as these values are used in the logic to start/stop/calculate the position of parallax elements.</li>
+        </ul>
+        <section class="demo parallax1">
+            <div class="parallax brick" data-id="brick-1" data-start="200" data-stop="1150">
+                <span class="content"></span>
+            </div>
+        </section>
+
+        <div id="offset-bottom"></div>
+        <div id="scroll-top"></div>
+
+        <section>
+            <h3>HTML markup for the parallax element</h3>
+            <p>For this demo we are using a simple &lt;div&gt;, which has the following data attributes set which define the parallax effect (all values are in pixels):</p>
+            <ul>
+                <li><strong>data-start:</strong> The element will become fixed when the viewport bottom offset has reached this distance. You could change this to use the distance from the top, but personally I prefer it this way.</li>
+                <li><strong>data-stop:</strong> When the viewport has been scrolled this distance, the parallax effect should end, leaving the element positioned relatively where it was at the end of the scroll. i.e. at the bottom of the container.</li>
+                <li><strong>data-id:</strong> A unique id is used as a key in the <i>parallaxElements</i> array which stores these values on initialisation.</li>
+            </ul>
+
+<pre>
+&lt;div class="parallax brick" data-id="brick-1" data-start="200" data-stop="1150"&gt;&lt;/div&gt;
+</pre>
+</section>
+<section>
+<h3>CSS styles for the parallax element</h3>
+<p>The styles are pretty normal, but note the <i>top</i> property will be updated for the parallax effect.</p>
+<pre class="prettyprint lang-css">
+.brick {
+    width: 100px;
+    height: 38px;
+    padding: 10px 0 0 0;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+</pre>
+</section>
+<section>
+    <h3>JavaScript (jQuery) for setting things up</h3>
+    <p>We need to initialise all of the parallax effects when the document is ready, to try and minimise the amount of processing and DOM interaction done during scrolling.</p>
+    <ul>
+        <li><strong>Store all of the parallax elements</strong> as objects inside an array.</li>
+        <li><strong>Attach a window resize event handler</strong> which updates values used during calculations.</li>
+        <li><strong>Auto-scroll to the top</strong> of the page on load.</li>
+    </ul>
+<pre class="prettyprint lang-js">
+var parallaxElements = [];
+var windowHeight = 0;
+
+$(document).ready(function() {
+
+    windowHeight = $(window).height();
+    $('html,body').scrollTop(1); // auto scroll to top
+
+    // touch event check stolen from Modernizr
+    var touchSupported = (('ontouchstart' in window) ||
+                            window.DocumentTouch && document instanceof DocumentTouch);
+
+    // if touch events are supported, tie our animation to the position to these events as well
+    if (touchSupported) {
+
+        $(window)
+            .bind('touchmove', function(e) {
+                var val = e.currentTarget.scrollY;
+                parallax(val);
+            });
+    }
+
+    $(window)
+        .bind('scroll', function(e) {
+            var val = $(this).scrollTop();
+            parallax(val);
+        });
+
+    // update vars used in parallax calculations on window resize
+    $(window).resize(function() {
+        windowHeight = $(this).height();
+
+        for (var id in parallaxElements) {
+            parallaxElements[id].initialOffsetY = $(parallaxElements[id].elm).offset().top;
+            parallaxElements[id].height = $(parallaxElements[id].elm).height();
+        }
+    });
+
+
+    // get parallax elements straight away as they wont change
+    // this will minimise DOM interactions on scroll events
+    $('.parallax').each(function(){
+
+        $elm = $(this);
+        var id = $elm.data('id');
+
+        // use data-id as key
+        parallaxElements[id] = {
+            id: $elm.data('id'),
+            start: $elm.data('start'),
+            stop: $elm.data('stop'),
+            speed: $elm.data('speed'),
+            elm: $elm[0],
+            initialOffsetY: $elm.offset().top,
+            height: $elm.height(),
+            width: $elm.outerWidth()
+        };
+
+    });
+});
+</pre>
+</section>
+<section>
+    <h3>JavaScript (jQuery) for achieving the parallax effects on scroll</h3>
+    <p>Our aim is to scroll down to the element (the red brick), and achieve the following behaviour:</p>
+    <ul>
+        <li>When the distance between the bottom of the viewport and the brick reaches the <i>data-start</i> value, we set <i>position: fixed</i> so the brick then scrolls with with window.</li>
+        <li>When it reaches the <i>data-stop</i> value, it becomes <i>position: relative</i> again, appearing to rest on the bottom of the container.</li>
+        <li>For this example, we are not setting a speed, we just want the brick to appear to move at the same speed as the scroll.</li>
+    </ul>
+<pre class="prettyprint lang-js">
+function parallax(scrollTop) {
+
+    for (var id in parallaxElements) {
+
+        // distance of element from top of viewport
+        var viewportOffsetTop = parallaxElements[id].initialOffsetY - scrollTop;
+
+        // distance of element from bottom of viewport
+        var viewportOffsetBottom = windowHeight - viewportOffsetTop;
+
+        if ((viewportOffsetBottom >= parallaxElements[id].start) && (viewportOffsetBottom <= parallaxElements[id].stop)) {
+            // element is now active, fix the position so when we scroll it stays fixed
+
+            var speedMultiplier = parallaxElements[id].speed || 1;
+            var pos = (windowHeight - parallaxElements[id].start);
+
+            $(parallaxElements[id].elm)
+                .css({
+                    position: 'fixed',
+                    top: pos+'px',
+                    left: '50%',
+                    marginLeft: -(parallaxElements[id].width/2) +'px'
+                });
+
+        } else if (viewportOffsetBottom > parallaxElements[id].stop) {
+            // scrolled past the stop value, make position relative again
+
+            $(parallaxElements[id].elm)
+                .css({
+                    position: 'relative',
+                    top: (parallaxElements[id].stop-parallaxElements[id].start)+'px',
+                    left: 'auto',
+                    marginLeft: 'auto'
+                });
+
+        } else if (viewportOffsetBottom < parallaxElements[id].start) {
+            // scrolled up back past the start value, reset position
+
+            $(parallaxElements[id].elm)
+                .css({
+                    position: 'relative',
+                    top: 0,
+                    left: 'auto',
+                    marginLeft: 'auto'
+                });
+
+        }
+    }
+}
+</pre>
+</section>
+        <!--<section>
+            <h2>Grab the code from Github!</h2>
+            <p>If you want to hack around with a stripped-down version of the demo on this page, you can download a standalone example here: <a href="http://github.com/andyshora/parallax-tutorial">Parallax Tutorial</a>.</p>
+
+        </section>-->
+
+        <section>
+            <h2>Over and out.</h2>
+            <p>I hope you've enjoyed this tutorial. I'll add some more advanced effects in the coming weeks, introducing speed, direction and rotation to parallax animations. In the mean time, I would love you to share the f*ck out of this article, it's my first proper tutorial for a while now, and don't forget to <a href="http://twitter.com/andyshora">hit me up on twitter! @andyshora</a></p>
+        </section>
+
+    </div>
+
+</div>
+<div class="author-wrap" id="author">
+    <section class="author">
+        <div class="author__pic"></div>
+        <div class="author__desc">
+            <p>Hi, I'm <strong>Andy Shora</strong>. I'm a <strong>Frontend Web Developer</strong> based in London and I currently work with some very talented people over at <a href="http://www.rga.com">R/GA</a>. On the side, I recently built <a href="http://www.stackey.com" target="_blank" title="Stackey.com, a place where you can stack things that go together">Stackey</a> and <a href="http://www.thecityawards.com" target="_blank" title="Vote for your favourite places">The City Awards</a>.</p>
+            <div class="author__links">
+                <a class="author__link" href="http://twitter.com/andyshora"><i class="icon-twitter"></i> andyshora</a>
+                <a class="author__link" href="http://www.facebook.com/andyshora"><i class="icon-facebook"></i> fb<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" href="http://www.pinterest.com/andyshora"><i class="icon-pinterest"></i> pinterest<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" href="http://www.github.com/andyshora"><i class="icon-github"></i> github<span class="link__extra">.com/andyshora</span></a>
+                <a class="author__link" onclick="revealEmail()"><i class="icon-envelope"></i> contact<span class="link__extra"> me</span></a>
+            </div>
+        </div>
+    </section>
+</div>
+<section class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'andyshora'; // required: replace example with your forum shortname
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            if ((window.location+'').match(/dev\./g)) return;
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+    <script type="text/javascript">
+
+        var parallaxElements = [];
+        var windowHeight = 0;
+
+        $(document).ready(function() {
+
+            $('.twitter-share-button-placeholder').bind('mouseover', function() {
+                enableShareButton($(this));
+            });
+
+            if (Modernizr.touch) {
+                enableShareButton($('.twitter-share-button-placeholder'));
+            }
+
+            windowHeight = $(window).height();
+            $('html,body').scrollTop(1); // auto scroll to top
+
+            // touch event check stolen from Modernizr
+            var touchSupported = (('ontouchstart' in window) ||
+                                    window.DocumentTouch && document instanceof DocumentTouch);
+
+            // if touch events are supported, tie our animation to the position to these events as well
+            if (touchSupported) {
+
+                $(window)
+                    .bind('touchmove', function(e) {
+                        var val = e.currentTarget.scrollY;
+                        parallax(val);
+                    });
+            }
+
+            $(window)
+                .bind('scroll', function(e) {
+                    var val = $(this).scrollTop();
+                    parallax(val);
+                });
+
+
+            // update vars used in parallax calculations on window resize
+            $(window).resize(function() {
+                windowHeight = $(this).height();
+
+                for (var id in parallaxElements) {
+                    parallaxElements[id].initialOffsetY = $(parallaxElements[id].elm).offset().top;
+                    parallaxElements[id].height = $(parallaxElements[id].elm).height();
+                }
+            });
+
+
+            // get parallax elements straight away as they wont change
+            // this will minimise DOM interactions on scroll events
+            $('.parallax').each(function(){
+
+                $elm = $(this);
+                var id = $elm.data('id');
+
+                // use data-id as key
+                parallaxElements[id] = {
+                    id: $elm.data('id'),
+                    start: $elm.data('start'),
+                    stop: $elm.data('stop'),
+                    speed: $elm.data('speed'),
+                    elm: $elm[0],
+                    initialOffsetY: $elm.offset().top,
+                    height: $elm.height(),
+                    width: $elm.outerWidth()
+                };
+
+            });
+
+
+            window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+            Modernizr.load({
+            load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+            });
+
+            prettyPrint();
+        });
+
+        function parallax(scrollTop) {
+
+            if (scrollTop===undefined) return;
+
+            // update UI
+            $('#scroll-top').html('scroll top: ' + scrollTop);
+
+            for (var id in parallaxElements) {
+
+                // distance of element from top of viewport
+                var viewportOffsetTop = parallaxElements[id].initialOffsetY - scrollTop;
+
+                // distance of element from bottom of viewport
+                var viewportOffsetBottom = windowHeight - viewportOffsetTop;
+
+                // update UI
+                $('#offset-bottom').html('viewport bottom offset: ' + viewportOffsetBottom);
+
+                if ((viewportOffsetBottom >= parallaxElements[id].start) && (viewportOffsetBottom <= parallaxElements[id].stop)) {
+                    // element is now active, fix the position so when we scroll it stays fixed
+
+                    var speedMultiplier = parallaxElements[id].speed || 1;
+                    var pos = (windowHeight - parallaxElements[id].start);
+
+                    $(parallaxElements[id].elm)
+                        .css({
+                            position: 'fixed',
+                            top: pos+'px',
+                            left: '50%',
+                            marginLeft: -(parallaxElements[id].width/2) +'px'
+                        })
+                        .find('.content').html(parallaxElements[id].elm.style.position);
+
+                } else if (viewportOffsetBottom > parallaxElements[id].stop) {
+                    // scrolled past the stop value, make position relative again
+
+                    $(parallaxElements[id].elm)
+                        .css({
+                            position: 'relative',
+                            top: (parallaxElements[id].stop-parallaxElements[id].start)+'px',
+                            left: 'auto',
+                            marginLeft: 'auto'
+                        })
+                        .find('.content').html(parallaxElements[id].elm.style.position);
+
+                } else if (viewportOffsetBottom < parallaxElements[id].start) {
+                    // scrolled up back past the start value, reset position
+
+                    $(parallaxElements[id].elm)
+                        .css({
+                            position: 'relative',
+                            top: 0,
+                            left: 'auto',
+                            marginLeft: 'auto'
+                        })
+                        .find('.content').html(parallaxElements[id].elm.style.position);
+
+                }
+            }
+        }
+
+        function enableShareButton(elm) {
+
+                elm.addClass('twitter-share-button')
+                    .removeClass('twitter-share-button-placeholder')
+                    .attr('href', 'https://twitter.com/share')
+                    .unbind('click');
+
+                !function(d,s,id){
+                    var js,
+                    fjs=d.getElementsByTagName(s)[0],
+                    p=/^http:/.test(d.location)?'http':'https';
+
+                    if(!d.getElementById(id)){
+                        js=d.createElement(s);
+                        js.id=id;
+                        js.src=p+'://platform.twitter.com/widgets.js';
+                        fjs.parentNode.insertBefore(js,fjs);
+                    }
+                }(document, 'script', 'twitter-wjs');
+
+        }
+        function revealEmail() {
+            alert('andyshora' + '@gmail.com');
+        }
+    </script>
+
+<!-- footer -->
+<footer>
+    <p>Andy Shora &copy; 2014</p>
+</footer>
+<!-- end footer -->
+<script type="text/javascript" src="/js/vendor/archive/prettify.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        // tracking
+        window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+        Modernizr.load({
+          load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+
+        prettyPrint();
+    });
+
+</script>
+</body>
+</html>
