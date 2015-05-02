@@ -1,6 +1,6 @@
 /**
  *
- * R/GA Styleguide Template
+ * Roots Blog
  * Layout
  *
  * R/GA 2015
@@ -82,6 +82,13 @@ html, body {
     }
   }
 }
+.home__intro > ul {
+  > li {
+    > a {
+      margin-right: 10px;
+    }
+  }
+}
 .header {
   min-height: 50px;
   background: $g2;
@@ -108,4 +115,18 @@ footer {
 .relative {
   position: relative;
 }
+.post-tag {
+  font-size: 12px;
+  padding: 0 2px;
+  display: inline-block;
+  background: $c1;
+  color: white;
+  margin: 0 0 0 5px;
+  line-height: 1.2em; 
+  position: relative;
+  top: -2px; 
 
+  &:before {
+    content: '#';
+  }
+}

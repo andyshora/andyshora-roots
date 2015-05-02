@@ -1,6 +1,6 @@
 /**
  *
- * R/GA Styleguide Template
+ * Roots Blog
  * Typography
  *
  * R/GA 2015
@@ -37,20 +37,12 @@ h2 {
 }
 
 a, a:visited, a:hover {
+  text-decoration: none;
+  color: $c2;
 }
 
 strong {
   font-weight: bold;
-}
-
-.content {
-  a, a:visited, a:hover {
-    color: blue;
-
-    .theme--visual & {
-      color: white;
-    }
-  }
 }
 
 .small, small {

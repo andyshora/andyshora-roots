@@ -1,5 +1,5 @@
 .large-title-block {
-  padding: 180px 20px 66px;
+  padding: 150px 20px 96px;
   background: white;
   text-align: center;
   background: $c1;
@@ -15,7 +15,7 @@
   }
 
   @include from-width($breakpoint-medium) {
-    padding: 160px 30px 66px;
+    padding: 130px 30px 96px;
   }
 
   > h1 {

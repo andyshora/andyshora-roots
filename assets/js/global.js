@@ -81,3 +81,29 @@ app.drawFlowers = function() {
 };
 
 app.drawFlowers();
+
+
+function init_animations(){
+
+  animationsOn = true;
+  //$('#buildings_wrap,#pods_wrap').show();
+  $('#buildings_wrap,#pods_wrap').show();
+  $('#pods').addClass('spin');
+  $('#stop_css3').show();
+
+}
+
+function stop_animations(fade){
+  animationsOn = false;
+  $('#pods').removeClass('spin');
+
+  if ((fade!==undefined)&& fade) {
+    $('#buildings_wrap').fadeOut(2000);
+  } else {
+    $('#buildings_wrap').hide();
+  }
+
+  $('#stop_css3').hide();
+}
+
+init_animations();
