@@ -879,24 +879,13 @@ pre[class*='language-'] > code[data-language]::before {
     position: relative;
     z-index: 2;
     width: 90%;
-    margin: 0 auto;
-    /* &:after {
-      content: '';
-      display: none;
-      height: 1px;
-      background: black;
-      width: 20%;
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      margin-left: -10%;
-    } */ }
+    margin: 0 auto; }
+    .page--home .large-title-block > h1 > .xxlarge {
+      text-transform: none !important; }
     @media (min-width: 768px) {
       .large-title-block > h1 {
-        padding: 0 50px 0; } }
-    @media (min-width: 768px) {
-      .large-title-block > h1 {
-        display: block; }
+        display: block;
+        padding: 0 50px 0; }
         .large-title-block > h1:before, .large-title-block > h1:after {
           display: block; } }
   .large-title-block > p {
