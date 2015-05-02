@@ -1,5 +1,5 @@
 .large-title-block {
-  padding: 150px 20px 96px;
+  padding: 150px 20px 120px;
   background: white;
   text-align: center;
   background: $c1;
@@ -15,7 +15,7 @@
   }
 
   @include from-width($breakpoint-medium) {
-    padding: 130px 30px 96px;
+    padding: 150px 30px 120px;
   }
 
   > h1 {
@@ -52,10 +52,7 @@
       }
     }
 
-    > span {
-      position: relative;
-      top: -30px;
-    }
+    
   }
 
   > p {
@@ -86,12 +83,31 @@
       }
     }
   }
+
+  > .home__subtitle {
+    margin: -15px auto 0;
+    padding: 0 10px 1em;
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+    color: $b1;
+    width: 80%;
+    font-size: 18px;
+    font-family: 'Lato';
+    font-style: normal;
+
+    @include from-width($breakpoint-medium) {
+      padding: 0 50px 1em;
+      width: 90%;
+    }
+  }
 }
+
 .large-title-block__start {
   color: $c3;
 }
 .large-title-block__middle {
-  color: $c4;
+  color: $b1;
   padding: 0 .1em;
 }
 .large-title-block__end {

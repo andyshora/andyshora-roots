@@ -86,7 +86,6 @@ app.drawFlowers();
 function init_animations(){
 
   animationsOn = true;
-  //$('#buildings_wrap,#pods_wrap').show();
   $('#buildings_wrap,#pods_wrap').show();
   $('#pods').addClass('spin');
   $('#stop_css3').show();

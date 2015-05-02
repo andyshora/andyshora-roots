@@ -32,10 +32,10 @@
 }
 #buildings_wrap {
   height: 100px;
-  width: 300px;
+  width: 100%;
   position: absolute;
-  left: 223px;
-  top: -23px;
+  left: 0;
+  top: 0;
   display: none;
 }
 .building {
@@ -44,127 +44,35 @@
   border-radius: 2px;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAAGCAIAAADfZyPcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RUE0MTA5MDQ0NDc3MTFFMkFFN0I4NzZERDIwOEI0RkMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RUE0MTA5MDU0NDc3MTFFMkFFN0I4NzZERDIwOEI0RkMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFQTQxMDkwMjQ0NzcxMUUyQUU3Qjg3NkREMjA4QjRGQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFQTQxMDkwMzQ0NzcxMUUyQUU3Qjg3NkREMjA4QjRGQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkOMA1sAAAGLSURBVHja7JZbbsQgDEVtltT9L6SrGbeThISHMSRVpfk4RxGyLxcykBFYv75N5Y3a1m7Pnh7BrtgRaO2sbFaJ60Fylc6ZzPMXaYrFPMM5zzs+g7Kr8XjOZvI0/gHTse4mpHr5Kd7Dqdh/LC+t/gD1d5er3Xw5yOn+L/KVrT2DUdp3TXub+C9KfjTsrWzBI9nw8t/r946nvaUvik9ssjbV7/Jf1TbqaAea7XLfUqbifSZxlNYv41QcRfves0sudBDomuGuqAvmeLjenPn/2meGB1sdB0HcpZaV5vCK28UgPtfaI8mGYqRYPcTqM8iigXH8shvm6tVT8/JsMluFeF3iptde5XPEtDg4jnbzaD56utauC9aKksrOy9a0EYve6k42a29sGxVTdqPyOmJL41IieaXEVZvkNTYVSoqGBKm5vY2S+rpmNqRYmiVHdJ2emKeVmV86XaRao1jnLOpo/7AuhyQBAAAAAICPh8IdAAAAAIDCHQAAAAAAKNwBAAAAACjcAQAAAADgU/gRYAD2lfwkeKQPWQAAAABJRU5ErkJggg==) 0 0 repeat;
   box-shadow: 0 0 9px white;
-  position: relative;
-  float: left;
+  position: absolute;
   left: 50px;
   top: 10px;
   animation-name:bgSlide;
   animation-duration:5s;
   animation-iteration-count:infinite;
-  animation-timing-function:linear;
+  animation-timing-function:steps(4, end);
 
   -o-animation-name:bgSlide;
   -o-animation-duration:5s;
   -o-animation-iteration-count:infinite;
-  -o-animation-timing-function:linear;
+  -o-animation-timing-function:steps(4, end);
 
   -webkit-animation-name:bgSlide;
   -webkit-animation-duration:5s;
   -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
+  -webkit-animation-timing-function:steps(4, end);
   -moz-animation-name:bgSlide;
   -moz-animation-duration:5s;
   -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
+  -moz-animation-timing-function:steps(4, end);
   -ms-animation-name:bgSlide;
   -ms-animation-duration:5s;
   -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
-}
-.car {
-  width:2px;
-  height:2px;
-  border-radius: 2px;
-  background: #fff;
-  box-shadow: 0 0 5px white;
-  position: relative;
-  float: left;
-  top: 83px;
-  left: 118px;
-}
-@keyframes carDrive1 {
-  from{ left:118px;opacity:1;}
-  to{left:142px;opacity:1;}
-}
-@-o-keyframes carDrive1 {
-  from{ left:118px;opacity:1;}
-  to{left:142px;opacity:1;}
-}
-@-webkit-keyframes carDrive1 {
-  from{ left:118px;opacity:1;}
-  to{left:142px;opacity:1;}
-}
-@-moz-keyframes carDrive1 {
-  from{ left:118px;opacity:1;}
-  to{left:142px;opacity:1;}
-}
-@-ms-keyframes carDrive1 {
-  from{ left:118px;opacity:1;}
-  to{left:142px;opacity:1;}
-}
-@-o-keyframes carDrive2 {
-  from{ left:158px;opacity:1;}
-  to{left:182px;opacity:1;}
-}
-@keyframes carDrive2 {
-  from{ left:158px;opacity:1;}
-  to{left:182px;opacity:1;}
-}
-@-webkit-keyframes carDrive2 {
-  from{ left:158px;opacity:1;}
-  to{left:182px;opacity:1;}
-}
-@-moz-keyframes carDrive2 {
-  from{ left:158px;opacity:1;}
-  to{left:182px;opacity:1;}
-}
-@-ms-keyframes carDrive2{
-  from{ left:158px;opacity:1;}
-  to{left:182px;opacity:1;}
-}
-@keyframes carDrive3 {
-  from{ left:179px;opacity:1;}
-  to{left:158px;opacity:1;}
-}
-@-o-keyframes carDrive3 {
-  from{ left:179px;opacity:1;}
-  to{left:158px;opacity:1;}
-}
-@-webkit-keyframes carDrive3 {
-  from{ left:179px;opacity:1;}
-  to{left:158px;opacity:1;}
-}
-@-moz-keyframes carDrive3 {
-  from{ left:179px;opacity:1;}
-  to{left:158px;opacity:1;}
-}
-@-ms-keyframes carDrive3{
-  from{ left:179px;opacity:1;}
-  to{left:158px;opacity:1;}
-}
-@keyframes carDrive4 {
-  from{ left:136px;opacity:1;}
-  to{left:113px;opacity:1;}
-}
-@-o-keyframes carDrive4 {
-  from{ left:136px;opacity:1;}
-  to{left:113px;opacity:1;}
-}
-@-webkit-keyframes carDrive4 {
-  from{ left:136px;opacity:1;}
-  to{left:113px;opacity:1;}
-}
-@-moz-keyframes carDrive4 {
-  from{ left:136px;opacity:1;}
-  to{left:113px;opacity:1;}
-}
-@-ms-keyframes carDrive4{
-  from{ left:136px;opacity:1;}
-  to{left:113px;opacity:1;}
+  -ms-animation-timing-function:steps(4, end);
 }
 #building1 {
-  left: 176px;
-  top: 60px;
+  left: 186px;
+  top: 37px;
   animation-name:bgSlide2;
   -o-animation-name:bgSlide2;
   -webkit-animation-name:bgSlide2;
@@ -172,13 +80,13 @@
   -ms-animation-name:bgSlide2;
 }
 #building2 {
-  left: 207px;
-  top: 60px;
+  left: 433px;
+  top: 37px;
 }
 
 #building3 {
-  left: 124px;
-  top: 64px;
+  left: 354px;
+  top: 41px;
   animation-name:bgSlide3;
   -o-animation-name:bgSlide3;
   -webkit-animation-name:bgSlide3;
@@ -187,13 +95,13 @@
 }
 
 #building4 {
-  left: 96px;
-  top: 32px;
+  left: 331px;
+  top: 9px;
 
 }
 #building5 {
-  left: 265px;
-  top: 34px;
+  left: 505px;
+  top: 11px;
   animation-name:bgSlide3;
   -o-animation-name:bgSlide3;
   -webkit-animation-name:bgSlide3;
@@ -202,236 +110,40 @@
 
 }
 #building6 {
-  top: 83px;
-  left: 118px;
-  animation-name:carDrive1;
-  animation-duration:12s;
-  animation-iteration-count:infinite;
-  animation-timing-function:linear;
-  -o-animation-name:carDrive1;
-  -o-animation-duration:12s;
-  -o-animation-iteration-count:infinite;
-  -o-animation-timing-function:linear;
-  -webkit-animation-name:carDrive1;
-  -webkit-animation-duration:12s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
-  -moz-animation-name:carDrive1;
-  -moz-animation-duration:12s;
-  -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
-  -ms-animation-name:carDrive1;
-  -ms-animation-duration:12s;
-  -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
+  left: 20px;
+  top: 51px;
+  animation-name:bgSlide3;
+  -o-animation-name:bgSlide3;
+  -webkit-animation-name:bgSlide3;
+  -moz-animation-name:bgSlide3;
+  -ms-animation-name:bgSlide3;
 }
 #building7 {
-  top: 83px;
-  left: 161px;
-  animation-name:carDrive2;
-  animation-duration:12s;
-  animation-iteration-count:infinite;
-  animation-timing-function:linear;
-  -o-animation-name:carDrive2;
-  -o-animation-duration:12s;
-  -o-animation-iteration-count:infinite;
-  -o-animation-timing-function:linear;
-  -webkit-animation-name:carDrive2;
-  -webkit-animation-duration:12s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
-  -moz-animation-name:carDrive2;
-  -moz-animation-duration:12s;
-  -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
-  -ms-animation-name:carDrive2;
-  -ms-animation-duration:12s;
-  -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
+  left: 70px;
+  top: 61px;
+  animation-name:bgSlide3;
+  -o-animation-name:bgSlide3;
+  -webkit-animation-name:bgSlide3;
+  -moz-animation-name:bgSlide3;
+  -ms-animation-name:bgSlide3;
 }
 #building8 {
-  top: 83px;
-  left: 161px;
-  margin-left:-2px;
-  opacity:0;
-  animation-name:carDrive2;
-  animation-duration:4s;
-  animation-iteration-count:infinite;
-  animation-timing-function:linear;
-  animation-delay:2s;
-  -o-animation-delay:2s;
-  -o-animation-name:carDrive2;
-  -o-animation-duration:4s;
-  -o-animation-iteration-count:infinite;
-  -o-animation-delay:2s;
-  -webkit-animation-timing-function:linear;
-  -webkit-animation-delay:2s;
-  -webkit-animation-name:carDrive2;
-  -webkit-animation-duration:4s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
-  -webkit-animation-delay:2s;
-  -moz-animation-name:carDrive2;
-  -moz-animation-duration:4s;
-  -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
-  -moz-animation-delay:2s;
-  -ms-animation-name:carDrive2;
-  -ms-animation-duration:4s;
-  -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
-  -ms-animation-delay:2s;
+  left: 397px;
+  top: 33px;
+  animation-name:bgSlide3;
+  -o-animation-name:bgSlide3;
+  -webkit-animation-name:bgSlide3;
+  -moz-animation-name:bgSlide3;
+  -ms-animation-name:bgSlide3;
 }
 #building9 {
-  top: 83px;
-  left: 161px;
-  margin-left:-2px;
-  opacity:0;
-  animation-name:carDrive1;
-  animation-duration:4s;
-  animation-iteration-count:infinite;
-  animation-timing-function:linear;
-  animation-delay:1s;
-  -o-animation-delay:1s;
-  -o-animation-name:carDrive1;
-  -o-animation-duration:4s;
-  -o-animation-iteration-count:infinite;
-  -o-animation-delay:1s;
-  -webkit-animation-timing-function:linear;
-  -webkit-animation-delay:1s;
-  -webkit-animation-name:carDrive1;
-  -webkit-animation-duration:4s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
-  -webkit-animation-delay:1s;
-  -moz-animation-name:carDrive1;
-  -moz-animation-duration:4s;
-  -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
-  -moz-animation-delay:1s;
-  -ms-animation-name:carDrive1;
-  -ms-animation-duration:4s;
-  -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
-  -ms-animation-delay:1s;
-}
-#building10 {
-  top: 83px;
-  left: 179px;
-  background: #ff0000;
-  box-shadow: 0 0 5px red;
-  animation-name:carDrive3;
-  animation-duration:4s;
-  animation-iteration-count:infinite;
-  animation-timing-function:linear;
-  -o-animation-name:carDrive3;
-  -o-animation-duration:4s;
-  -o-animation-iteration-count:infinite;
-  -o-animation-timing-function:linear;
-  -webkit-animation-name:carDrive3;
-  -webkit-animation-duration:4s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
-  -moz-animation-name:carDrive3;
-  -moz-animation-duration:4s;
-  -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
-  -ms-animation-name:carDrive3;
-  -ms-animation-duration:4s;
-  -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
-}
-#building11 {
-  top: 83px;
-  left: 179px;
-  background: #ff0000;
-  box-shadow: 0 0 5px red;
-  margin-left:-2px;
-  opacity:0;
-  animation-name:carDrive3;
-  animation-duration:6s;
-  animation-iteration-count:infinite;
-  animation-timing-function:linear;
-  animation-delay:2s;
-  -o-animation-name:carDrive3;
-  -o-animation-duration:6s;
-  -o-animation-iteration-count:infinite;
-  -o-animation-timing-function:linear;
-  -o-animation-delay:2s;
-  -webkit-animation-name:carDrive3;
-  -webkit-animation-duration:6s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
-  -webkit-animation-delay:2s;
-  -moz-animation-name:carDrive3;
-  -moz-animation-duration:6s;
-  -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
-  -moz-animation-delay:2s;
-  -ms-animation-name:carDrive3;
-  -ms-animation-duration:6s;
-  -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
-  -ms-animation-delay:2s;
-}
-#building11 {
-  top: 83px;
-  left: 136px;
-  background: #ff0000;
-  box-shadow: 0 0 5px red;
-  animation-name:carDrive4;
-  animation-duration:6s;
-  animation-iteration-count:infinite;
-  animation-timing-function:linear;
-  -o-animation-name:carDrive4;
-  -o-animation-duration:6s;
-  -o-animation-iteration-count:infinite;
-  -o-animation-timing-function:linear;
-  -webkit-animation-name:carDrive4;
-  -webkit-animation-duration:6s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
-  -moz-animation-name:carDrive4;
-  -moz-animation-duration:6s;
-  -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
-  -ms-animation-name:carDrive4;
-  -ms-animation-duration:6s;
-  -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
-}
-#building12 {
-  margin-left:-2px;
-  opacity:0;
-  top: 83px;
-  left: 136px;
-  background: #ff0000;
-  box-shadow: 0 0 5px red;
-  animation-name:carDrive4;
-  animation-duration:6s;
-  animation-iteration-count:infinite;
-  animation-timing-function:linear;
-  animation-delay:2s;
-  -o-animation-name:carDrive4;
-  -o-animation-duration:6s;
-  -o-animation-iteration-count:infinite;
-  -o-animation-timing-function:linear;
-  -o-animation-delay:2s;
-  -webkit-animation-name:carDrive4;
-  -webkit-animation-duration:6s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
-  -webkit-animation-delay:2s;
-  -moz-animation-name:carDrive4;
-  -moz-animation-duration:6s;
-  -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
-  -moz-animation-delay:2s;
-  -ms-animation-name:carDrive4;
-  -ms-animation-duration:6s;
-  -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
-  -ms-animation-delay:2s;
+  left: 138px;
+  top: 1px;
+  animation-name:bgSlide3;
+  -o-animation-name:bgSlide3;
+  -webkit-animation-name:bgSlide3;
+  -moz-animation-name:bgSlide3;
+  -ms-animation-name:bgSlide3;
 }
 #pods_wrap {
   height:100px;
@@ -510,23 +222,23 @@
   animation-name:bgSlide;
   animation-duration:8s;
   animation-iteration-count:infinite;
-  animation-timing-function:linear;
+  animation-timing-function:steps(4, end);
   -o-animation-name:bgSlide;
   -o-animation-duration:8s;
   -o-animation-iteration-count:infinite;
-  -o-animation-timing-function:linear;
+  -o-animation-timing-function:steps(4, end);
   -webkit-animation-name:bgSlide;
   -webkit-animation-duration:8s;
   -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:linear;
+  -webkit-animation-timing-function:steps(4, end);
   -moz-animation-name:bgSlide;
   -moz-animation-duration:8s;
   -moz-animation-iteration-count:infinite;
-  -moz-animation-timing-function:linear;
+  -moz-animation-timing-function:steps(4, end);
   -ms-animation-name:bgSlide;
   -ms-animation-duration:8s;
   -ms-animation-iteration-count:infinite;
-  -ms-animation-timing-function:linear;
+  -ms-animation-timing-function:steps(4, end);
 }
 @keyframes bgSlide{
   from{ background-position:-500px 0; }

@@ -9,7 +9,8 @@ _content: false
 extends layouts/_base
 
 block header
-  +large-title-block('hi', ' I\'m ', 'Andy Shora.', 'I\'m a Front-end Web Developer based in London.', false)
+  +large-title-block('hi', ' I\'m ', 'Andy Shora.', '', false)
+      p.home__subtitle a Front-end Web Developer based in London.
       div#skyline
         div#buildings_wrap
           div.building#building1
@@ -17,16 +18,10 @@ block header
           div.building#building3
           div.building#building4
           div.building#building5
-          //- <!--white cars-->
-          div.car#building6
-          div.car#building9
-          div.car#building7
-          div.car#building8
-          //- <!--red cars-->
-          div.car#building10
-          div.car#building11
-          div.car#building12
-          div.car#building13
+          div.building#building6
+          div.building#building7
+          div.building#building8
+          div.building#building9
         div#pods_wrap
           div#pods
             div.pod#pod1
