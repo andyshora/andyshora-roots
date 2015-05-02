@@ -11,16 +11,21 @@ html
   head
     meta(charset='utf8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
-    meta(name='description', content='description of your site')
-    meta(name='og:image', content= post.og_image)
-    meta(name="author" content="Andy Shora")
+    title= post.title
+    meta(name='description', content= post.description)
+    meta(name='og:title', content= post.title)
+    meta(name='og:url', content= post.url)
+    meta(name='og:description', content= post.description)
+    meta(name='og:image', content= post.image)
+    meta(name='og:type', content= post.type)
+    meta(name='og:site_name', content='andyshora.com')
+    meta(name='author' content='Andy Shora')
     meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel="shortcut icon" href="/favicon.ico")
     script(src='/js/vendor/prism.js')
     //- script(src='http://d3js.org/d3.v3.min.js')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
     link(href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet')
-    title= post.title
     != css('/')
   //    ( ͡° ͜ʖ ͡°)       
   //                  
