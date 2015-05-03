@@ -1,0 +1,117 @@
+---
+title: 'Building a Static Website with Roots'
+description: 'How I built this website with Roots, the enlightening static site compiler'
+author: andyshora
+date: 03/05/2015
+image: http://i.imgur.com/bXONeC0.png
+url: 'http://www.andyshora.com/building-static-site-with-roots'
+type: article
+_content: false
+---
+
+extends layouts/_base
+
+block header
+  +large-title-block('Building a', ' static website ', 'with Roots', 'How I built this website with Roots, the enlightening static site compiler.', true, true)
+
+block content
+  section.section-gutter
+    :markdown
+      ##What is Roots?
+      **[Roots](http://roots.cx/ "Roots Static Site Compiler") is the hottest SSG (Static Site Generator) being poked by frontend developers right now.**
+
+      In short, if you haven't used an SSG before, they provide an easy way to compile a whole static website from content files and templates (e.g. Markdown, JS/Coffeescript, SASS, Jade templates), into highly optimized production ready static files (HTML, JS, CSS).
+
+      In their own words:
+
+  +quote-block('Roots is a static site compiler, that generates static html, css, and javascript files. It\'s very good at helping to build static front-ends.','Carrot Creative')
+
+  section.section-gutter.section-gutter--alt
+    :markdown
+      ##How do I get it?
+      1. Install roots globally by doing `npm i roots` *Note: you might need to sudo this command*
+      2. Check out how simple this website is [on my Github](https://github.com/andyshora/andyshora-roots "andyshora.com Roots Repo"). Fork this repo `git clone https://github.com/andyshora/andyshora-roots.git` and install the dev dependencies with `npm i`
+      3. Preview the site locally with `roots watch`
+  section.section-gutter.section-gutter--alt
+    :markdown
+      ##My Stack
+      Right now I'm using:
+      - **CoffeeScript** for some minor visual enhancements
+      - **SASS** for all styles
+      - **Jade templates** containing a mixture of markdown and Jade syntax
+
+  section.section-gutter
+    :markdown
+      ##Defining New Pages
+
+      The way I'm defining templates has caused a bit of a stir. Whilst some other SSG's favour using a plain markdown approach to define posts, I'm in favour of adding a bit more richness to the frontend. The way I've done this, is by defining [Jade mixins](http://jade-lang.com/reference/mixins/) as modules and components which can be called from a jade file like this:
+
+  +code-block('How I produced the code block module on this page:')
+    code(class='language-javascript')
+      |+quote-block('Roots is a static site compiler, that generates static html, css, and javascript files. It\'s very good at helping to build static front-ends.','Carrot Creative')
+  section.section-gutter
+    :markdown
+      You can check out [how I've implemented this quote block module right here](https://github.com/andyshora/andyshora-roots/blob/master/views/modules/quote-block/_quote-block.jade), I believe it's a great way to bake out rich modules with minimal definition in the content files. Whatever your approach, you should still define your posts/articles as Jade files containing front matter at the top, and either have one massive block of markdown, [or a mixture like I have](https://github.com/andyshora/andyshora-roots/blob/master/views/hello.jade).
+  +gallery()
+    ul
+      li()
+        .gallery__caption
+          strong Here's what the .jade file for this page looks like
+          :markdown
+            View the whole file [building-static-site-with-roots.jade](https://github.com/andyshora/andyshora-roots/blob/master/views/building-static-site-with-roots.jade)
+        img(class='gallery__image' src='http://i.imgur.com/AUy9ah4.png')
+  section.section-gutter
+      :markdown
+        ##Defining Page Variables with Front matter
+        I'm using the [Roots Dynamic Content](https://github.com/carrot/roots-dynamic-content/blob/master/docs/intro.md) extension which allows me to add front matter to the top of each jade file. *(That's all the metadata in between the --- at the top)* The keys specified here will then become available in the template, as well as any base templates which have been extended, under post.key_name.
+
+  +code-block('A snippet of the front matter for this page:')
+    code(class='language-jade')
+      |---
+      |title: 'Building a Static Website with Roots'
+      |description: 'How I built this website with Roots, the enlightening static site compiler'
+      |author: andyshora
+      |---
+  section.section-gutter
+      :markdown
+        For example, this page extends my base layout file [layouts/_base.jade](https://github.com/andyshora/andyshora-roots/blob/master/views/layouts/_base.jade), which contains references to variables like the title, description and author.
+
+        Now, take a look at how the front matter defined in the [jade template](https://github.com/andyshora/andyshora-roots/blob/master/views/building-static-site-with-roots.jade) populates this base template during the compilation phase. Magic!
+  
+  section.section-gutter
+    :markdown
+      ##Deployment
+      I deploy my Roots site to [Github Pages](https://pages.github.com/), and you should too! It's fast, free and easy to do. Assuming your repo is hosted on Github:
+      1. Push the public directory using a subtree in Git, to the branch gh-pages: `git subtree push --prefix public origin gh-pages`. Your site should now be available at the domain visible in the settings of your repo.
+      2. To use a custom domain, [follow the instructions here](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/). In short, you need to add a file called CNAME which contains the full domain name you want to use for the site (e.g. andyshora.com). You'll also need to alter your DNS to point the domain to your Github account. **I've shown mine below...**
+      
+      As the `roots clean` command can wipe the public directory, make sure you include any files which need to be copied to / in the [views](https://github.com/andyshora/andyshora-roots/tree/master/views) directory.
+  +gallery()
+    ul
+      li()
+        .gallery__caption
+          strong Here's the DNS I use for this site:
+          :markdown
+            I also have a [file called CNAME](https://github.com/andyshora/andyshora-roots/blob/master/public/CNAME) containing my domain name.
+        img(class='gallery__image' src='http://i.imgur.com/3bh1aSh.png')
+  +quote-block('Adipisicing elit et illo quisquam quia dolorum et illo quisquam quia dolorum.','Some gal')
+  section.section-gutter
+    :markdown
+      ##praesentium distinctio quasi
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati.
+      
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati. Orem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati.
+      ###Provident deleniti quia:
+      - Lorem ipsum dolor
+      - Autem accusamus nulla
+      - Illum delectus reiciendis eum
+  section.section-gutter
+    :markdown
+      ##Summary
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus fuga maxime, amet obcaecati qui, incidunt cupiditate eligendi sequi consequuntur, inventore ipsa at neque fugiat velit quibusdam iste quaerat aspernatur cupiditate eligendi sequi consequuntur, inventore ipsa at neque fugiat velit quibusdam iste quaerat aspernatur cupiditate eligendi sequi consequuntur, inventore ipsa at neque fugiat velit quibusdam iste quaerat aspernatur.
+
+  +bio-block('Andy Shora', 'andyshora', 'https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg')
+    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolor neque recusandae harum atque, hic sunt expedita quia explicabo quasi necessitatibus ad.
+  
+  section.section-gutter.section-gutter--full
+    +comments()
