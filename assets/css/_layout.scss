@@ -115,7 +115,7 @@ footer {
 .relative {
   position: relative;
 }
-.post-tag {
+.post-tag, .tweets-count {
   font-size: 12px;
   padding: 0 2px;
   display: inline-block;
@@ -128,5 +128,24 @@ footer {
 
   &:before {
     content: '#';
+  }
+}
+.tweets-count {
+  background: black;
+  opacity: 0;
+  @include prefix(transform, translateX(20px));
+  @include prefix(transition, all .6s);
+
+  &:before {
+    content: '';
+  }
+
+  &:after {
+    content: ' tweets';
+  }
+
+  &.tweets-count--show {
+    opacity: 1;
+    @include prefix(transform, translateX(0));
   }
 }

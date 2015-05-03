@@ -141,11 +141,27 @@ function getRTTotals() {
 
     var href = window.location.href;
     var url = encodeURIComponent(href);
-    console.log('url', url);
 
     $.getJSON('https://cdn.api.twitter.com/1/urls/count.json?url='+url+'&callback=?',{},
       function(data) {
         $('.tweet-counter__num').html(data.count);
+      });
+  });
+
+  $('.tweets-count').each(function() {
+
+    var href = $(this).parent().children('a').attr('href');
+    var url = 'http://andyshora.com/' + href;
+
+    var $target = $(this);
+
+    $.getJSON('https://cdn.api.twitter.com/1/urls/count.json?url='+url+'&callback=?',{},
+      function(data) {
+        $target.html(data.count);
+        if (data.count > 1) {
+          $target.addClass('tweets-count--show');
+        }
+          
       });
   });
 
