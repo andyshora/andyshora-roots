@@ -38,4 +38,4 @@ module.exports =
     pretty: false
 
   server:
-    clean_urls: true
+    clean_urls: false

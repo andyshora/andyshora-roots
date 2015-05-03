@@ -4,8 +4,8 @@
 //- 
 //- @author Andy Shora
 
-mixin tweet-counter()
-  div.tweet-counter
-    span.tweet-counter__num 128
+mixin tweet-counter(url)
+  a.tweet-counter(data-via='andyshora' dataurl= url)
+    span.tweet-counter__num -
     span.tweet-counter__label tweets
-    a.tweet-counter__tweet +1
+    span.tweet-counter__tweet +1
