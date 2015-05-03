@@ -82,7 +82,54 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
+<script type="text/javascript">
 
+    $(document).ready(function() {
+
+        $('.twitter-share-button-placeholder').bind('mouseover', function() {
+            enableShareButton($(this));
+        });
+
+        if (Modernizr.touch) {
+            enableShareButton($('.twitter-share-button-placeholder'));
+        }
+
+
+
+        window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+        Modernizr.load({
+        load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+
+        prettyPrint();
+    });
+
+
+    function enableShareButton(elm) {
+
+        elm.addClass('twitter-share-button')
+            .removeClass('twitter-share-button-placeholder')
+            .attr('href', 'https://twitter.com/share')
+            .unbind('click');
+
+        !function(d,s,id){
+            var js,
+            fjs=d.getElementsByTagName(s)[0],
+            p=/^http:/.test(d.location)?'http':'https';
+
+            if(!d.getElementById(id)){
+                js=d.createElement(s);
+                js.id=id;
+                js.src=p+'://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js,fjs);
+            }
+        }(document, 'script', 'twitter-wjs');
+
+    }
+    function revealEmail() {
+        alert('andyshora' + '@gmail.com');
+    }
+</script>
 
 <!-- footer -->
 <footer>
