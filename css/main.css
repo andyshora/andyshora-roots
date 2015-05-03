@@ -632,6 +632,12 @@ strong {
   font-family: "Lucida Console", "Courier New", monospace;
   font-size: 11px; }
 
+li > code, p > code, em > code, i > code {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 0 7px;
+  line-height: 1.2em; }
+
 /*
   Vendor Styles
 -----------------------------------------------------------------------*
