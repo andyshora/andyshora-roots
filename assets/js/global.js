@@ -167,6 +167,12 @@ function getRTTotals() {
 
 }
 $(document).ready(function() {
+
+  // tracking
+  window._gaq = [['_setAccount','UA-17716290-10'],['_trackPageview'],['_trackPageLoadTime']];
+  Modernizr.load({
+    load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+  });
  
   $('.tweet-counter').bind('mouseover', function() {
       enableShareButton($(this));
