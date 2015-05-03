@@ -1181,15 +1181,15 @@ pre[class*='language-'] > code[data-language]::before {
       width: 79%;
       padding: 0 40px; } }
 
-.twitter-share-button {
+.twitter-share-button, .tweet-counter {
   margin: 2em auto 0;
   display: inline-block;
-  position: relative; }
+  position: relative;
+  min-height: 54px; }
 
 .tweet-counter {
   color: white;
   padding: 1em 50px 1em 10px;
-  margin: 2em auto 0;
   background: rgba(255, 255, 255, 0.1);
   display: inline-block;
   position: relative; }

@@ -46,12 +46,13 @@ block content
 
       The way I'm defining templates has caused a bit of a stir. Whilst some other SSG's favour using a plain markdown approach to define posts, I'm in favour of adding a bit more richness to the frontend. The way I've done this, is by defining [Jade mixins](http://jade-lang.com/reference/mixins/) as modules and components which can be called from a jade file like this:
 
-  +code-block('How I produced the code block module on this page:')
+  +code-block('How I produced the quote block module on this page:')
     code(class='language-javascript')
       |+quote-block('Roots is a static site compiler, that generates static html, css, and javascript files. It\'s very good at helping to build static front-ends.','Carrot Creative')
   section.section-gutter
     :markdown
       You can check out [how I've implemented this quote block module right here](https://github.com/andyshora/andyshora-roots/blob/master/views/modules/quote-block/_quote-block.jade), I believe it's a great way to bake out rich modules with minimal definition in the content files. Whatever your approach, you should still define your posts/articles as Jade files containing front matter at the top, and either have one massive block of markdown, [or a mixture like I have](https://github.com/andyshora/andyshora-roots/blob/master/views/hello.jade).
+      *Note: you can use other template systems such as **ejs**, just make sure you've installed the node module as described in the [getting started](http://roots.cx/articles/getting-started) docs.*
   +gallery()
     ul
       li()
@@ -77,6 +78,8 @@ block content
         For example, this page extends my base layout file [layouts/_base.jade](https://github.com/andyshora/andyshora-roots/blob/master/views/layouts/_base.jade), which contains references to variables like the title, description and author.
 
         Now, take a look at how the front matter defined in the [jade template](https://github.com/andyshora/andyshora-roots/blob/master/views/building-static-site-with-roots.jade) populates this base template during the compilation phase. Magic!
+
+        *Note: if you want programmatic access to all of your posts in a template, for example to create a list of links to them on the homepage, then you'll need to group them into a seperate directory. They will then become available under a site.posts variable as described in the [Roots Dynamic Content Docs](https://github.com/carrot/roots-dynamic-content/blob/master/docs/intro.md).*
   
   section.section-gutter
     :markdown
