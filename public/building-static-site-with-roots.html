@@ -5,7 +5,7 @@
 </section><div class="quote-block"><div class="quote-block__text"><blockquote class="xlarge">Roots is a static site compiler, that generates static html, css, and javascript files. It's very good at helping to build static front-ends.</blockquote><footer><cite><p>Carrot Creative</p></cite></footer></div></div><section class="section-gutter section-gutter--alt"><h2 id="how-do-i-get-it-">How do I get it?</h2>
 <ol>
 <li>Install roots globally by doing <code>npm i roots</code> <em>Note: you might need to sudo this command</em></li>
-<li>Check out how simple this website is <a href="https://github.com/andyshora/andyshora-roots" title="andyshora.com Roots Repo">on my Github</a>. Fork this repo <code>git clone https://github.com/andyshora/andyshora-roots.git</code> and install the dev dependencies with <code>npm i</code></li>
+<li>Check out how simple this website is <a href="https://github.com/andyshora/andyshora-roots" title="andyshora.com Roots Repo">on my GitHub</a>. Fork this repo <code>git clone https://github.com/andyshora/andyshora-roots.git</code> and install the dev dependencies with <code>npm i</code></li>
 <li>Preview the site locally with <code>roots watch</code></li>
 </ol>
 </section><section class="section-gutter section-gutter--alt"><h2 id="my-stack">My Stack</h2>
@@ -30,10 +30,10 @@ author: andyshora
 <p>Now, take a look at how the front matter defined in the <a href="https://github.com/andyshora/andyshora-roots/blob/master/views/building-static-site-with-roots.jade">jade template</a> populates this base template during the compilation phase. Magic!</p>
 <p><em>Note: if you want programmatic access to all of your posts in a template, for example to create a list of links to them on the homepage, then you&#39;ll need to group them into a seperate directory. They will then become available under a site.posts variable as described in the <a href="https://github.com/carrot/roots-dynamic-content/blob/master/docs/intro.md">Roots Dynamic Content Docs</a>.</em></p>
 </section><section class="section-gutter"><h2 id="deployment">Deployment</h2>
-<p>I deploy my Roots site to <a href="https://pages.github.com/">Github Pages</a>, and you should too! It&#39;s fast, free and easy to do. Assuming your repo is hosted on Github:</p>
+<p>I deploy my Roots site to <a href="https://pages.github.com/">GitHub Pages</a>, and you should too! It&#39;s fast, free and easy to do. Assuming your repo is hosted on GitHub:</p>
 <ol>
 <li>Push the public directory using a subtree in Git, to the branch gh-pages: <code>git subtree push --prefix public origin gh-pages</code>. Your site should now be available at the domain visible in the settings of your repo.</li>
-<li>To use a custom domain, <a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/">follow the instructions here</a>. In short, you need to add a file called CNAME which contains the full domain name you want to use for the site (e.g. andyshora.com). You&#39;ll also need to alter your DNS to point the domain to your Github account. <strong>I&#39;ve shown mine below...</strong></li>
+<li>To use a custom domain, <a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/">follow the instructions here</a>. In short, you need to add a file called CNAME which contains the full domain name you want to use for the site (e.g. andyshora.com). You&#39;ll also need to alter your DNS to point the domain to your GitHub account. <strong>I&#39;ve shown mine below...</strong></li>
 </ol>
 <p>As the <code>roots clean</code> command can wipe the public directory, make sure you include any files which need to be copied to / in the <a href="https://github.com/andyshora/andyshora-roots/tree/master/views">views</a> directory.</p>
 </section><div class="gallery"><div class="gallery__content"><ul><li><div class="gallery__caption"><strong>Here's the DNS I use for this site:</strong><p>I also have a <a href="https://github.com/andyshora/andyshora-roots/blob/master/public/CNAME">file called CNAME</a> containing my domain name.</p>
@@ -56,4 +56,5 @@ var disqus_shortname = 'andyshora'; // required: replace example with your forum
  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></section></div><div></div><footer><p>&copy; 2015 Andy Shora</p></footer><script src="/js/vendor/prism.js"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet"><script src='/js/main.js'></script></body></html>
+})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></section></div><div></div><footer><p>Built using Roots, and <a href="https://github.com/andyshora/andyshora-roots">Open-sourced on my GitHub</a> | &copy; 2015 Andy Shora</p>
+</footer><script src="/js/vendor/prism.js"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet"><script src='/js/main.js'></script></body></html>
