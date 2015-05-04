@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.22/paper-full.min.js"></script>
+  <meta charset="utf-8">
+  <title>PaperJS Demo</title>
+  <style type="text/css" media="screen">
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    #myCanvas {
+      background: #e74c3c;
+    }
+  </style>
+  <script type="text/paperscript" canvas="myCanvas">
+    
+    // The amount of segment points we want to create:
+    var amount = 50;
+
+    // The maximum height of the wave:
+    var height = 5;
+
+    // Create a new path and style it:
+    var wave = new Path({
+      strokeCap: 'square',
+      fillColor: 'black'
+    });
+
+    
+
+    //  THE LONDON EYE WHEEL
+    var wheel = new Path.Circle({
+      center: [675, 75],
+      radius: 60,
+      strokeColor: 'black',
+      strokeWidth: 12
+    });
+    var londonEye = new Group([ wheel ]);
+    for (var i = 0; i < 24; i++) {
+
+      var theta = Math.PI * 2 * (i / 24);
+      var x = 675 + 60 * Math.cos(theta) - 5;
+      var y = 75 + 60 * Math.sin(theta) - 5;
+
+      var rect = new Path.Rectangle({
+        point: [x, y],
+        size: [10, 10],
+        fillColor: '#e74c3c'
+      });
+      rect.rotate((360 / 24) * i);
+      londonEye.addChild(rect);
+    }
+
+    var river = new Path.Rectangle({
+      point: [0, 105],
+      size: [1000, 50],
+      fillColor: 'black'
+    });
+
+    // Add 5 segment points to the path spread out
+    // over the width of the view:
+    for (var i = 0; i <= amount; i++) {
+      wave.add(new Point(i / amount, 1) * view.size);
+    }
+
+    var lights = [];
+    var lightPath = new Path.Circle({
+      center: view.center,
+      radius: 3,
+      fillColor: 'red'
+    });
+
+    var light = new Symbol(lightPath);
+
+    for (var i = 0; i <= 50; i++) {
+      lights.push(light.place(new Point(125 + (i * 15), 105)));
+    }
+
+    // Select the path, so we can see how it is constructed:
+    wave.selected = false;
+
+    function onFrame(event) {
+      // Loop through the segments of the path:
+      for (var i = 0; i <= amount; i++) {
+        var segment = wave.segments[i];
+
+        // A cylic value between -1 and 1
+        var sinus = Math.sin(event.time * 3 + i);
+        
+        // Change the y position of the segment point:
+        segment.point.y = sinus * height + 180;
+        
+      }
+      river.position.y = wave.segments[0].point.y + 24;
+      
+      wave.smooth();
+
+      londonEye.rotate(.4);
+
+      light.definition.fillColor.hue += 1;
+
+    }
+    
+  </script>
+</head>
+<body>
+<canvas id="myCanvas" width="1000" height="200"></canvas>
+  
+</body>
+</html>
