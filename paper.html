@@ -108,7 +108,10 @@
       fillColor: 'black'
     });
 
-    
+    var segments = [new Point(0, 250), new Point(23, 20), new Point(25, 40), new Point(27, 20), new Point(50, 250)];
+    var shard = new Path(segments);
+    shard.closed = true;
+    shard.fillColor = 'black';
 
     // Add 5 segment points to the path spread out
     // over the width of the view:
@@ -141,7 +144,7 @@
       
       wave.smooth();
 
-      londonEye.rotate(.2);
+      londonEye.rotate(.1);
 
       light.definition.fillColor.hue += 1;
 
