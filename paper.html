@@ -9,11 +9,19 @@
       padding: 0;
       margin: 0;
       text-align: center;
+      background: #fff;
+    }
+    header {
       background: #e74c3c;
+      text-align: center;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      
     }
     #myCanvas {
       background: #e74c3c;
-      margin: 0 auto;
+      margin: 100px auto 0;
     }
     img {
       margin-top: 100px;
@@ -78,6 +86,20 @@
         var d = new Path(dSegments);
         d.closed = true;
         d.fillColor = 'black';
+      },
+
+      drawShard: function() {
+
+        var segments = [
+          new Point(this.positions.shard.x + 0, this.positions.shard.y + 200),
+          new Point(this.positions.shard.x + 23, this.positions.shard.y + 20),
+          new Point(this.positions.shard.x + 25, this.positions.shard.y + 40),
+          new Point(this.positions.shard.x + 27, this.positions.shard.y + 20),
+          new Point(this.positions.shard.x + 50, this.positions.shard.y + 200)
+        ];
+        var shard = new Path(segments);
+        shard.closed = true;
+        shard.fillColor = 'black';
       },
 
       drawCars: function() {
@@ -265,12 +287,18 @@
             size: [109, 1],
             fillColor: 'black'
           });
-          // rect.rotate((360 / 24) * i);
+
+          var rect = new Path.Rectangle({
+            point: [x, y],
+            size: [10, 10],
+            fillColor: '#e74c3c'
+          });
+          rect.rotate((360 / 24) * i);
           spoke.rotate((360 / 24) * i);
 
-          // londonEye.addChild(rect);
+          this.eyeWheel.addChild(rect);
           this.eyeWheel.addChild(spoke);
-          this.eyeWheel.addChild(this.shapes.light.place(new Point(x + 5, y + 5)));
+          // this.eyeWheel.addChild(this.shapes.light.place(new Point(x + 5, y + 5)));
         }
 
         // legs
@@ -304,26 +332,14 @@
 
     London.drawWave();
 
+    London.drawShard();
+
     var river = new Path.Rectangle({
       point: [London.positions.waves.x, 0], // y position set on frame update
       size: [London.positions.waves.width, 50],
       fillColor: 'pink'
     });
 
-    
-
-    
-
-    var segments = [
-      new Point(London.positions.shard.x + 0, London.positions.shard.y + 200),
-      new Point(London.positions.shard.x + 23, London.positions.shard.y + 20),
-      new Point(London.positions.shard.x + 25, London.positions.shard.y + 40),
-      new Point(London.positions.shard.x + 27, London.positions.shard.y + 20),
-      new Point(London.positions.shard.x + 50, London.positions.shard.y + 200)
-    ];
-    var shard = new Path(segments);
-    shard.closed = true;
-    shard.fillColor = 'black';
 
 
     // CARS
@@ -549,7 +565,9 @@
   </script>
 </head>
 <body>
-<canvas id="myCanvas" width="1000" height="200"></canvas>
+  <header>
+    <canvas id="myCanvas" width="1000" height="200"></canvas>
+  </header>
   <img src="http://images.fineartamerica.com/images-medium-large-5/3-london-skyline-michal-boubin.jpg" alt="">
 </body>
 </html>
