@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.22/paper-full.min.js"></script>
+<script src="assets/js/vendor/paper-full.min.js"></script>
   <meta charset="utf-8">
   <title>PaperJS Demo</title>
   <style type="text/css" media="screen">
@@ -43,7 +43,12 @@
         bridge: { x: 300, y: 170, width: 200 },
         wall: { y: 165 },
         shard: { x: 200, y: 0 },
-        wharf: { x: 80, y: 40 }
+        wharf: { x: 80, y: 40 },
+        trees: [
+          { x: 600 },
+          { x: 750 },
+          { x: 800 }
+        ]
       },
 
       drawBanks: function() {
@@ -61,6 +66,7 @@
         var wharf = new Path(wharfSegments);
         wharf.closed = true;
         wharf.fillColor = 'black';
+        this.shapes.light.place(new Point(this.positions.wharf.x + 47, this.positions.wharf.y + 25));
 
         var hsSegments = [
           new Point(this.positions.wharf.x - 50, this.positions.wharf.y + 200),
@@ -100,6 +106,8 @@
         var shard = new Path(segments);
         shard.closed = true;
         shard.fillColor = 'black';
+
+        this.shapes.light.place(new Point(this.positions.shard.x + 27, this.positions.shard.y + 20));
       },
 
       drawCars: function() {
@@ -135,6 +143,12 @@
         var towerTopSymbol = new Symbol(towerLeftSpire);
         towerTopSymbol.place(new Point(this.positions.bridge.x + (this.positions.bridge.width * .3), this.positions.bridge.y - 70));
         towerTopSymbol.place(new Point(this.positions.bridge.x + (this.positions.bridge.width * .7), this.positions.bridge.y - 70));
+
+        // light on bridge top left tower
+        this.shapes.light.place(new Point(this.positions.bridge.x + (this.positions.bridge.width * .3), this.positions.bridge.y - 80));
+
+        // light on bridge top right tower
+        this.shapes.light.place(new Point(this.positions.bridge.x + (this.positions.bridge.width * .7), this.positions.bridge.y - 80));
 
         var bridgeTowerTopLeft = new Path.Rectangle({
           point: [this.positions.bridge.x + (this.positions.bridge.width * .3) - 13, this.positions.bridge.y - 60], // y position set on frame update
@@ -176,7 +190,6 @@
         });
       },
 
-
       drawWave: function() {
         // RIVER
         this.wave = new Path({
@@ -191,6 +204,44 @@
         for (var i = 0; i <= this.positions.waves.num; i++) {
           this.wave.add(new Point(this.positions.waves.x + ((i / this.positions.waves.num) * this.positions.waves.width), 1));
         }
+      },
+
+      drawTrees: function() {
+
+        var treePath = new Path.Circle({
+          center: [0, 0],
+          radius: 6,
+          fillColor: 'black'
+        });
+
+        var treePath2 = new Path.Circle({
+          center: [4, 6],
+          radius: 6,
+          fillColor: 'black'
+        });
+
+        var treePath3 = new Path.Circle({
+          center: [-4, 6],
+          radius: 6,
+          fillColor: 'black'
+        });
+
+        var treeTrunkPath = new Path.Rectangle({
+          point: [-2, 10],
+          size: [4, 10],
+          fillColor: 'black'
+        });
+
+        var treeGroup = new Group([ treePath, treePath2, treePath3, treeTrunkPath ]);
+
+        this.shapes.tree = new Symbol(treeGroup);
+
+        for (var i = 0; i < this.positions.trees.length; i++) {
+
+          this.shapes.tree.place(new Point(this.positions.trees[i].x, this.positions.wall.y - 10));
+
+        }
+
       },
 
       animateWave: function(event) {
@@ -289,8 +340,8 @@
           });
 
           var rect = new Path.Rectangle({
-            point: [x, y],
-            size: [10, 10],
+            point: [x, y - 2],
+            size: [10, 14],
             fillColor: '#e74c3c'
           });
           rect.rotate((360 / 24) * i);
@@ -298,7 +349,10 @@
 
           this.eyeWheel.addChild(rect);
           this.eyeWheel.addChild(spoke);
-          // this.eyeWheel.addChild(this.shapes.light.place(new Point(x + 5, y + 5)));
+
+          var x2 = this.positions.eye.x + 70 * Math.cos(theta) - 5;
+          var y2 = this.positions.eye.y + 70 * Math.sin(theta) - 5;
+          this.eyeWheel.addChild(this.shapes.light.place(new Point(x2 + 5, y2 + 5)));
         }
 
         // legs
@@ -310,13 +364,14 @@
     };
 
     London.drawGround();
+    London.drawTrees();
 
     // LIGHTS
     var lights = [];
     var lightPath = new Path.Circle({
       center: view.center,
-      radius: 3,
-      fillColor: 'red'
+      radius: 2,
+      fillColor: 'white'
     });
 
     var windowPath = new Path.Rectangle({
@@ -537,6 +592,11 @@
     var carDistanceTravelled = 0;
     var carSpeed = 1;
 
+    var brightnessDir = 1;
+    var brightnessDiff = .01;
+    var brightnessMin = .7;
+    var brightness = brightnessMin;
+
     function onFrame(event) {
       
       London.animateWave(event);
@@ -545,7 +605,20 @@
 
       London.animateLondonEye();
 
-      London.shapes.light.definition.fillColor.hue += 1;
+      // London.shapes.light.definition.fillColor.hue += 1;
+      
+      // console.log(London.shapes.light.definition.fillColor.brightness);
+      if (brightness >= 1) {
+        brightness -= brightnessDiff;
+        brightnessDir = -1;
+      } else if (brightness <= brightnessMin) {
+        brightness += brightnessDiff;
+        brightnessDir = 1;
+      } else {
+        brightness += brightnessDir * brightnessDiff;
+      }
+
+      London.shapes.light.definition.fillColor.brightness = brightness;
 
       London.animateCars(carDistanceTravelled, carSpeed);
     
