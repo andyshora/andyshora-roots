@@ -13,38 +13,11 @@ _content: false
 extends layouts/_base
 
 block header
+  script(src='/js/vendor/paper-full.min.js')
+  script(type='text/paperscript' canvas='london-canvas' src='/js/animations.js')
   +large-title-block('Hi,', ' I\'m ', 'Andy Shora.', '', false)
-      p.home__subtitle I'm a Front-end Web Developer based in London.
-      div#skyline
-        div#buildings_wrap
-          div.building#building1
-          div.building#building2
-          div.building#building3
-          div.building#building4
-          div.building#building5
-          div.building#building6
-          div.building#building7
-          div.building#building8
-          div.building#building9
-        div#pods_wrap
-          div#pods
-            div.pod#pod1
-            div.pod#pod2
-            div.pod#pod3
-            div.pod#pod4
-            div.pod#pod5
-            div.pod#pod6
-            div.pod#pod7
-            div.pod#pod8
-            div.pod#pod9
-            div.pod#pod10
-            div.pod#pod11
-            div.pod#pod12
-            div.pod#pod13
-            div.pod#pod14
-            div.pod#pod15
-            div.pod#pod16
-        div#stop_css3 (stop animations)
+    canvas(id='london-canvas' width='1000' height='200')
+    p.home__subtitle I'm a Front-end Web Developer based in London.
 
 block content
   section.section-gutter.home__intro

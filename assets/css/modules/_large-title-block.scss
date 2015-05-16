@@ -1,5 +1,9 @@
 .large-title-block {
   padding: 150px 20px 120px;
+
+  .page--home & {
+    padding: 120px 20px 150px;
+  }
   background: white;
   text-align: center;
   background: $c1;
@@ -16,6 +20,10 @@
 
   @include from-width($breakpoint-medium) {
     padding: 150px 30px 120px;
+
+    .page--home & {
+      padding: 120px 30px 150px;
+    }
   }
   
   
