@@ -17,11 +17,21 @@
       width: 100%;
       height: 300px;
       overflow: hidden;
-      
+      position: relative;
     }
+    /*.header__bottom-line {
+      background: black;
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      bottom: 0;
+      height: 35px;
+    }*/
     #myCanvas {
       background: #e74c3c;
       margin: 100px auto 0;
+      position: relative;
+      z-index: 2;
     }
     img {
       margin-top: 100px;
@@ -38,16 +48,20 @@
       eyeWheel: null,
       shapes: {},
       positions: {
-        eye: { x: 675, y: 110, radius: 60 },
+        eye: { x: 675, y: 100, radius: 60 },
         waves: { x: 300, y: 190, width: 200, height: 5, num: 12 },
         bridge: { x: 300, y: 170, width: 200 },
-        wall: { y: 165 },
+        wall: { y: 170 },
         shard: { x: 200, y: 0 },
         wharf: { x: 80, y: 40 },
         trees: [
-          { x: 600 },
-          { x: 750 },
-          { x: 800 }
+          { x: 17, scale: .5 },
+          { x: 550, scale: .5 },
+          { x: 575, scale: .65 },
+          { x: 600, scale: .8 },
+          { x: 750, scale: .8 },
+          { x: 775, scale: .65 },
+          { x: 800, scale: .5 },
         ]
       },
 
@@ -238,7 +252,10 @@
 
         for (var i = 0; i < this.positions.trees.length; i++) {
 
-          this.shapes.tree.place(new Point(this.positions.trees[i].x, this.positions.wall.y - 10));
+          var scaleOffset = (1 - this.positions.trees[i].scale) * 10;
+
+          var t = this.shapes.tree.place(new Point(this.positions.trees[i].x, this.positions.wall.y - 10 + scaleOffset));
+          t.scale(this.positions.trees[i].scale);
 
         }
 
@@ -639,6 +656,7 @@
 </head>
 <body>
   <header>
+    <div class="header__bottom-line"></div>
     <canvas id="myCanvas" width="1000" height="200"></canvas>
   </header>
   <img src="http://images.fineartamerica.com/images-medium-large-5/3-london-skyline-michal-boubin.jpg" alt="">
