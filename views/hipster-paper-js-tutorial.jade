@@ -1,0 +1,165 @@
+---
+title: "The Hipster's Paper.js Tutorial"
+description: 'How to build awesome flat animated stuff with PaperJS'
+author: andyshora
+date: 14/06/2015
+image: http://i.imgur.com/vyFhUQr.png
+url: 'http://www.andyshora.com/building-static-site-with-roots'
+type: article
+_content: false
+---
+
+extends layouts/_base
+
+block header
+  script(src='/js/vendor/paper-full.min.js')
+  +large-title-block('The', 'Hipster\'s', 'Paper.js Tutorial', 'How to build awesome flat animated stuff with Paper.js.', true, true)
+
+block content
+  section.section-gutter
+    :markdown
+      ##What is Paper.js?
+      **[Paper.js](http://paperjs.org/ "Paper.js") is a delightful way of animating vector graphics on HTML5 Canvas. Think 60fps animations, all written with an easy-to-use JavaScript library.**
+
+      As it's pure Canvas + JS, it works across mobile devices too, with great performance, as it syncs updates with the device's GPU clock with the aim of achieving a silky-smooth 60fps.
+
+      In their own words:
+
+  +quote-block('Paper.js — The Swiss Army Knife of Vector Graphics Scripting.','PaperJS Team')
+
+  section.section-gutter.section-gutter--alt
+    :markdown
+      ##How do I get it?
+      1. [Download Paper.js](http://paperjs.org/download/ "Download Paper.js") from the site and reference locally, or [reference the CDN version](http://cdnjs.com/libraries/paper.js/ "CDN Paper.js").
+      2. Start writing code
+  
+
+  section.section-gutter
+    :markdown
+      ##Show me the code already
+
+      Ok ok. Let's draw some shapes.
+    canvas(id="myCanvas" height="240" width="220")
+
+  +code-block('Paper.js shapes, defined inside <script type="text/paperscript" canvas="myCanvas">')
+    code(class='language-javascript')
+      |// The Path.Circle constructor takes a Point(x, y), and a radius
+      |var myBall = new Path.Circle(new Point(70, 70), 50);
+      |myBall.fillColor = 'tomato';
+      | 
+      |// The Path.Rectangle constructor can take a Point and a Size object
+      |var point = new Point(20, 150);
+      |var size = new Size(100, 50);
+      |var myRectangle = new Path.Rectangle(point, size);
+      |myRectangle.fillColor = 'powderblue';
+      | 
+      |// The Path.Line constructor takes 2 points, defining the start and end of the line.
+      |var from = new Point(160, 20);
+      |var to = new Point(200, 80);
+      |var straightLine = new Path.Line(from, to);
+      |straightLine.strokeColor = 'black';
+      | 
+      |// The Path.Arc constructor takes 3 points, var names describing the obvious.
+      |var from = new Point(170, 120);
+      |var through = new Point(200, 180);
+      |var to = new Point(170, 220);
+      |var curvedPath = new Path.Arc(from, through, to);
+      |curvedPath.strokeColor = 'black';
+
+  section.section-gutter
+    :markdown
+      A circle is a [predefined shape](http://paperjs.org/tutorials/paths/creating-predefined-shapes/ "Predefined Shapes in Paper.js") in Paper.js, which means it has a nice abstracted interface which you can use to create the path.
+      
+      *Other handy predefined shapes: Circle, Rectangle, RoundRectangle, RegularPolygon, Line, Arc, Star.*
+  +gallery()
+    ul
+      li()
+        .gallery__caption
+          strong Obligatory working environment
+          :markdown
+            Missing artisan coffee and sausage dog.
+        img(class='gallery__image' src='http://i.imgur.com/vyFhUQr.png')
+  section.section-gutter
+      :markdown
+        ##Defining Page Variables with Front matter
+        I'm using the [Roots Dynamic Content](https://github.com/carrot/roots-dynamic-content/blob/master/docs/intro.md) extension which allows me to add front matter to the top of each jade file. *(That's all the metadata in between the --- at the top)* The keys specified here will then become available in the template, as well as any base templates which have been extended, under post.key_name.
+
+  
+  section.section-gutter
+      :markdown
+        For example, this page extends my base layout file [layouts/_base.jade](https://github.com/andyshora/andyshora-roots/blob/master/views/layouts/_base.jade), which contains references to variables like the title, description and author.
+
+        Now, take a look at how the front matter defined in the [jade template](https://github.com/andyshora/andyshora-roots/blob/master/views/building-static-site-with-roots.jade) populates this base template during the compilation phase. Magic!
+
+        *Note: if you want programmatic access to all of your posts in a template, for example to create a list of links to them on the homepage, then you'll need to group them into a seperate directory. They will then become available under a site.posts variable as described in the [Roots Dynamic Content Docs](https://github.com/carrot/roots-dynamic-content/blob/master/docs/intro.md).*
+  
+  section.section-gutter
+    :markdown
+      ##Deployment
+      I deploy my Roots site to [GitHub Pages](https://pages.github.com/), and you should too! It's fast, free and easy to do. Assuming your repo is hosted on GitHub:
+      1. Push the public directory using a subtree in Git, to the branch gh-pages: `git subtree push --prefix public origin gh-pages`. Your site should now be available at the domain visible in the settings of your repo.
+      2. To use a custom domain, [follow the instructions here](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/). In short, you need to add a file called CNAME which contains the full domain name you want to use for the site (e.g. andyshora.com). You'll also need to alter your DNS to point the domain to your GitHub account. **I've shown mine below...**
+      
+      As the `roots clean` command can wipe the public directory, make sure you include any files which need to be copied to / in the [views](https://github.com/andyshora/andyshora-roots/tree/master/views) directory.
+  +gallery()
+    ul
+      li()
+        .gallery__caption
+          strong Here's the DNS I use for this site:
+          :markdown
+            I also have a [file called CNAME](https://github.com/andyshora/andyshora-roots/blob/master/public/CNAME) containing my domain name.
+        img(class='gallery__image' src='http://i.imgur.com/3bh1aSh.png')
+  
+
+  section.section-gutter.section-gutter--alt
+    :markdown
+      ##how is Roots better than Jekyll?
+      
+      If you've already got a setup which works for you and delivers the same results, then you're probably looking at the a system pretty similar to what Roots brings. Previously, I had a rather simple SSG I made myself with shell scripts which would extract front matter from posts, pull in static includes and create html pages for me to deploy.
+      
+      The advantage of Roots, is that it has static site compilation in mind from the beginning. **It's been built specifically to build static websites.** Other systems can be very over-reaching, and converting them into something which can generate a simple static website can take a bit of time.
+      
+      Personally, I found Jekyll very difficult to get setup, and pretty heavy and slow once it was up and running. The fact that it was Ruby-based game me some install problems, and I found it difficult to extend due to the lack of my Ruby knowledge.
+      
+      Roots came along and provided me with a nice lightweight alternative. It feels like it has no bloat compared with other big SSGs. Yeah it does pretty much the same thing, but it feels more suited to the job. It feels like the right tool.
+
+  section.section-gutter
+    :markdown
+      ##Other Advantages
+      - `roots watch` comes with fast livereload functionality. If you make a content/style/script change, chances are it's been reloaded in the browser before you can even switch app!
+      - For adding simple build tasks to perform before/after the compilation, you can define before and after functions in the app.coffee file. [Read the config docs](http://roots.cx/docs/configuration) and ensure your functions return a promise.
+      - Roots is easy to extend. The [number of available plugins](http://roots.cx/extensions) is growing fast, and now is a great time to get involved.
+      - The author of Roots, [@jescalan](https://twitter.com/jescalan) is active in a chatroom dedicated to the Roots project. Any queries, [pop him a message in here](https://gitter.im/jenius/roots).
+
+  section.section-gutter
+    :markdown
+      ##Summary
+      Roots is in the early stages of adoption, but the lean approach is provides and the great level of support make it a solid choice for building your next static website.
+      This website is still evolving, so there's no doubt I'll be improving things over the next few months. Any questions? [Send me a tweet](https://twitter.com/andyshora) or leave a comment below!
+
+  +bio-block('Andy Shora', 'andyshora', 'https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg')
+    :markdown
+      I'm a Front-end Web Developer based in London. I currently work with some very talented people over at [R/GA](http://www.rga.com). I love to build sites which are clean and have great performance, and I dabble with whatever technologies are most suitable for the job. [Send me tweets!](https://twitter.com/andyshora)
+  
+  section.section-gutter.section-gutter--full
+    +comments()
+
+  script(type="text/paperscript" canvas="myCanvas")
+    |var myBall = new Path.Circle(new Point(70, 70), 50);
+    |myBall.fillColor = 'tomato';
+    | 
+    |var point = new Point(20, 150);
+    |var size = new Size(100, 50);
+    |var myRectangle = new Path.Rectangle(point, size);
+    |myRectangle.fillColor = 'powderblue';
+    | 
+    |var from = new Point(160, 20);
+    |var to = new Point(200, 80);
+    |var straightLine = new Path.Line(from, to);
+    |straightLine.strokeColor = 'black';
+    | 
+    |var from = new Point(170, 120);
+    |var through = new Point(200, 180);
+    |var to = new Point(170, 220);
+    |var curvedPath = new Path.Arc(from, through, to);
+    |curvedPath.strokeColor = 'black';
