@@ -1,5 +1,5 @@
 ---
-title: "The Hipster's Paper.js Tutorial"
+title: "The Easy Paper.js Tutorial"
 description: 'How to build awesome flat animated stuff with PaperJS'
 author: andyshora
 date: 14/06/2015
@@ -13,7 +13,7 @@ extends layouts/_base
 
 block header
   script(src='/js/vendor/paper-full.min.js')
-  +large-title-block('The', 'Hipster\'s', 'Paper.js Tutorial', 'How to build awesome flat animated stuff with Paper.js.', true, true)
+  +large-title-block('The ', 'Easy', ' Paper.js Tutorial', 'How to build awesome flat animated stuff with Paper.js.', true, true)
 
 block content
   section.section-gutter
@@ -21,17 +21,17 @@ block content
       ##What is Paper.js?
       **[Paper.js](http://paperjs.org/ "Paper.js") is a delightful way of animating vector graphics on HTML5 Canvas. Think 60fps animations, all written with an easy-to-use JavaScript library.**
 
-      As it's pure Canvas + JS, it works across mobile devices too, with great performance, as it syncs updates with the device's GPU clock with the aim of achieving a silky-smooth 60fps.
+      As it's pure Canvas + JS, it works across mobile devices too, with great performance, as it syncs updates with the device's GPU repaint cycle with the aim of achieving a silky-smooth 60fps.
 
-      In their own words:
+      Yeah, it's what I used to make a little [animated header](/) on my homepage! I thought it was pretty cool, so here's an intoduction to using Paper.js which I hope some of you find useful.
 
   +quote-block('Paper.js — The Swiss Army Knife of Vector Graphics Scripting.','PaperJS Team')
 
-  section.section-gutter.section-gutter--alt
+  section.section-gutter
     :markdown
       ##How do I get it?
       1. [Download Paper.js](http://paperjs.org/download/ "Download Paper.js") from the site and reference locally, or [reference the CDN version](http://cdnjs.com/libraries/paper.js/ "CDN Paper.js").
-      2. Start writing code
+      2. Start writing code!
   
 
   section.section-gutter
@@ -81,61 +81,94 @@ block content
         img(class='gallery__image' src='http://i.imgur.com/vyFhUQr.png')
   section.section-gutter
       :markdown
-        ##Defining Page Variables with Front matter
-        I'm using the [Roots Dynamic Content](https://github.com/carrot/roots-dynamic-content/blob/master/docs/intro.md) extension which allows me to add front matter to the top of each jade file. *(That's all the metadata in between the --- at the top)* The keys specified here will then become available in the template, as well as any base templates which have been extended, under post.key_name.
+        ##I Can Haz Animations?
+        Yes, you certainly can.
 
+        To create animations, define the update logic inside a special onFrame handler, which Paper.js calls up to 60 times per second.
+      canvas(id="myCanvas2" height="240" width="220")
+
+  +code-block('Paper.js animation, rotating a rectangle on every frame refresh.')
+    code(class='language-javascript')
+      |// create the shape
+      |var point = new Point(20, 150);
+      |var size = new Size(100, 50);
+      |var myRectangle = new Path.Rectangle(point, size);
+      |myRectangle.fillColor = 'powderblue';
+      | 
+      |function onFrame(event) {
+      |   // On each frame update, rotate the square by 3 degrees:
+      |   myRectangle.rotate(3);
+      |}
   
   section.section-gutter
       :markdown
-        For example, this page extends my base layout file [layouts/_base.jade](https://github.com/andyshora/andyshora-roots/blob/master/views/layouts/_base.jade), which contains references to variables like the title, description and author.
+        ##Advanced Animation Using Event Properties
+        Need to perform an animation dependent on time, or just against a scale? i.e. a shape shooting back and forth? You can make use of the following properties of the event object, which is always passed to the onFrame handler.
+        - **event.count**: *Number* — the number of times the frame *event* was fired.
+        - **event.time**: *Number* — the total amount of time passed since the first frame *event* in seconds.
 
-        Now, take a look at how the front matter defined in the [jade template](https://github.com/andyshora/andyshora-roots/blob/master/views/building-static-site-with-roots.jade) populates this base template during the compilation phase. Magic!
+      canvas(id="myCanvas3" height="100" width="220")
 
-        *Note: if you want programmatic access to all of your posts in a template, for example to create a list of links to them on the homepage, then you'll need to group them into a seperate directory. They will then become available under a site.posts variable as described in the [Roots Dynamic Content Docs](https://github.com/carrot/roots-dynamic-content/blob/master/docs/intro.md).*
+  +code-block('Using event.count and Math.sin() to create a smooth looping animation.')
+    code(class='language-javascript')
+      |var point = new Point(20, 50);
+      |var size = new Size(100, 50);
+      |var myRectangle = new Path.Rectangle(point, size);
+      |myRectangle.fillColor = 'lightBlue';
+      | 
+      |var myBall = new Path.Circle(new Point(10, 90), 10);
+      |myBall.fillColor = 'black';
+      | 
+      |function onFrame(event) {
+      |   // Normalise the event.count property to a 0-359 scale
+      |   // then apply some trigonometry so we get some smoothed values
+      |   // just like going round the edge of a circle
+      |   var x = (1 + Math.cos((event.count * 2 % 360)
+      |     * (Math.PI / 180))) * 100 + 10
+      |   var y = (Math.abs(Math.sin((event.count * 2 % 360)
+      |     * (Math.PI / 180)))) * 80;
+      |   myRectangle.position.x = x;
+      |   myBall.position.x = x;
+      |   myBall.position.y = 90 - y;
+      |}
   
   section.section-gutter
-    :markdown
-      ##Deployment
-      I deploy my Roots site to [GitHub Pages](https://pages.github.com/), and you should too! It's fast, free and easy to do. Assuming your repo is hosted on GitHub:
-      1. Push the public directory using a subtree in Git, to the branch gh-pages: `git subtree push --prefix public origin gh-pages`. Your site should now be available at the domain visible in the settings of your repo.
-      2. To use a custom domain, [follow the instructions here](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/). In short, you need to add a file called CNAME which contains the full domain name you want to use for the site (e.g. andyshora.com). You'll also need to alter your DNS to point the domain to your GitHub account. **I've shown mine below...**
-      
-      As the `roots clean` command can wipe the public directory, make sure you include any files which need to be copied to / in the [views](https://github.com/andyshora/andyshora-roots/tree/master/views) directory.
-  +gallery()
-    ul
-      li()
-        .gallery__caption
-          strong Here's the DNS I use for this site:
-          :markdown
-            I also have a [file called CNAME](https://github.com/andyshora/andyshora-roots/blob/master/public/CNAME) containing my domain name.
-        img(class='gallery__image' src='http://i.imgur.com/3bh1aSh.png')
-  
+      :markdown
+        ##Using Symbols for multiple instances
+        Using symbols allows you to create multiple instances of an item really quickly. This also saves memory, which is really important.
 
-  section.section-gutter.section-gutter--alt
-    :markdown
-      ##how is Roots better than Jekyll?
-      
-      If you've already got a setup which works for you and delivers the same results, then you're probably looking at the a system pretty similar to what Roots brings. Previously, I had a rather simple SSG I made myself with shell scripts which would extract front matter from posts, pull in static includes and create html pages for me to deploy.
-      
-      The advantage of Roots, is that it has static site compilation in mind from the beginning. **It's been built specifically to build static websites.** Other systems can be very over-reaching, and converting them into something which can generate a simple static website can take a bit of time.
-      
-      Personally, I found Jekyll very difficult to get setup, and pretty heavy and slow once it was up and running. The fact that it was Ruby-based game me some install problems, and I found it difficult to extend due to the lack of my Ruby knowledge.
-      
-      Roots came along and provided me with a nice lightweight alternative. It feels like it has no bloat compared with other big SSGs. Yeah it does pretty much the same thing, but it feels more suited to the job. It feels like the right tool.
+        Symbols can then be manipulated individually on the instance, or all together using the symbol definition.
 
+      canvas(id="myCanvas4" height="100" width="220")
+
+  +code-block('Using symbols to create multiple instances of a shape')
+    code(class='language-javascript')
+      |var squarePath = new Path.Rectangle(new Point(20, 20), new Size(20, 20));
+      |squarePath.fillColor = 'aquamarine ';
+      |var squareSymbol = new Symbol(squarePath);
+      | 
+      |// lets place some squares using symbols, and rotate each insstance slightly
+      |for (var i = 0; i < 5; i++) {
+      |   var placedSymbol = squareSymbol.place(new Point(20 + (i * 40), 50));
+      |   placedSymbol.rotate(i * 10); // operation on the instance
+      |}
+      | 
+      |function onFrame(event) {
+      |  // Add 0.2 degrees to the hue
+      |  // of the symbol definition's fillColor:
+      |  squareSymbol.definition.fillColor.hue += 1;
+      |}  
+ 
   section.section-gutter
     :markdown
-      ##Other Advantages
-      - `roots watch` comes with fast livereload functionality. If you make a content/style/script change, chances are it's been reloaded in the browser before you can even switch app!
-      - For adding simple build tasks to perform before/after the compilation, you can define before and after functions in the app.coffee file. [Read the config docs](http://roots.cx/docs/configuration) and ensure your functions return a promise.
-      - Roots is easy to extend. The [number of available plugins](http://roots.cx/extensions) is growing fast, and now is a great time to get involved.
-      - The author of Roots, [@jescalan](https://twitter.com/jescalan) is active in a chatroom dedicated to the Roots project. Any queries, [pop him a message in here](https://gitter.im/jenius/roots).
+      ##That's Shapes, Done.
+      **So, Paper.js is a really easy way to draw vector shapes on canvas, and animate them to your heart's content.**
+      
+      You can access the instances of the shape you've created (or the symbol definition) just like you would with JavaScript variables, meaning you can do stuff on whatever events you desire.
+      
+      Check out loads of [Paper.js examples](http://paperjs.org/examples/ "Paper.js examples") on the official site, and view and edit the source with a simple switch to source view in the top right.
 
-  section.section-gutter
-    :markdown
-      ##Summary
-      Roots is in the early stages of adoption, but the lean approach is provides and the great level of support make it a solid choice for building your next static website.
-      This website is still evolving, so there's no doubt I'll be improving things over the next few months. Any questions? [Send me a tweet](https://twitter.com/andyshora) or leave a comment below!
+      I won't get into animating complex paths just yet, but hopefully this tutorial has given you enough code to mess around with some shapes like I did recently. As usual, send me a tweet or leave a comment below if you need a hand!
 
   +bio-block('Andy Shora', 'andyshora', 'https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg')
     :markdown
@@ -163,3 +196,51 @@ block content
     |var to = new Point(170, 220);
     |var curvedPath = new Path.Arc(from, through, to);
     |curvedPath.strokeColor = 'black';
+
+  script(type="text/paperscript" canvas="myCanvas2")
+    |var point = new Point(20, 150);
+    |var size = new Size(100, 50);
+    |var myRectangle = new Path.Rectangle(point, size);
+    |myRectangle.fillColor = 'powderblue';
+    | 
+    |function onFrame(event) {
+    | // On each frame update, rotate the square by 3 degrees:
+    | myRectangle.rotate(3);
+    |}
+
+  script(type="text/paperscript" canvas="myCanvas3")
+    |var point = new Point(20, 50);
+    |var size = new Size(100, 50);
+    |var myRectangle = new Path.Rectangle(point, size);
+    |myRectangle.fillColor = 'lightBlue';
+    | 
+    |var myBall = new Path.Circle(new Point(10, 90), 10);
+    |myBall.fillColor = 'black';
+    | 
+    |function onFrame(event) {
+    | // Normalise the event.count property to 0-359
+    | // then apply some trigonometry so we get out positions smoothed
+    | // just like the count value us going round the edge of a circle
+    | var x = (1 + Math.cos((event.count * 2 % 360)
+    |   * (Math.PI / 180))) * 100 + 10
+    | var y = (Math.abs(Math.sin((event.count * 2 % 360)
+    |   * (Math.PI / 180)))) * 80;
+    | myRectangle.position.x = x;
+    | myBall.position.x = x;
+    | myBall.position.y = 90 - y;
+    |}
+
+  script(type="text/paperscript" canvas="myCanvas4")
+    |var squarePath = new Path.Rectangle(new Point(20, 20), new Size(20, 20));
+    |squarePath.fillColor = 'aquamarine ';
+    |var squareSymbol = new Symbol(squarePath);
+    | 
+    |for (var i = 0; i < 5; i++) {
+    |   var placedSymbol = squareSymbol.place(new Point(20 + (i * 40), 50));
+    |   placedSymbol.rotate(i * 10); // operation on the instance
+    |}
+    |function onFrame(event) {
+    |  // Add 0.2 degrees to the hue
+    |  // of the symbol definition's fillColor:
+    |  squareSymbol.definition.fillColor.hue += 1;
+    |}
