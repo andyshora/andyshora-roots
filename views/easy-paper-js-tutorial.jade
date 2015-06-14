@@ -1,6 +1,6 @@
 ---
-title: "The Easy Paper.js Tutorial"
-description: 'How to build awesome flat animated stuff with PaperJS'
+title: "The Easy Paper.js Tutorial, building flat animated shapes with @PaperJS"
+description: 'How to build awesome flat animated shapes with PaperJS'
 author: andyshora
 date: 14/06/2015
 image: http://i.imgur.com/vyFhUQr.png
@@ -13,7 +13,7 @@ extends layouts/_base
 
 block header
   script(src='/js/vendor/paper-full.min.js')
-  +large-title-block('The ', 'Easy', ' Paper.js Tutorial', 'How to build awesome flat animated stuff with Paper.js.', true, true)
+  +large-title-block('The ', 'Easy', ' Paper.js Tutorial', 'How to build awesome flat animated shapes with Paper.js.', true, true)
 
 block content
   section.section-gutter
@@ -23,7 +23,7 @@ block content
 
       As it's pure Canvas + JS, it works across mobile devices too, with great performance, as it syncs updates with the device's GPU repaint cycle with the aim of achieving a silky-smooth 60fps.
 
-      Yeah, it's what I used to make a little [animated header](/) on my homepage! I thought it was pretty cool, so here's an intoduction to using Paper.js which I hope some of you find useful.
+      Yeah, it's what I used to make a little [animated London skyline](/) on my homepage! I thought it was pretty cool, so here's an intoduction to using Paper.js which I hope some of you find useful.
 
   +quote-block('Paper.js — The Swiss Army Knife of Vector Graphics Scripting.','PaperJS Team')
 
@@ -82,7 +82,7 @@ block content
   section.section-gutter
       :markdown
         ##I Can Haz Animations?
-        Yes, you certainly can.
+        Yes chap. You certainly can.
 
         To create animations, define the update logic inside a special onFrame handler, which Paper.js calls up to 60 times per second.
       canvas(id="myCanvas2" height="240" width="220")
@@ -147,14 +147,14 @@ block content
       |squarePath.fillColor = 'aquamarine ';
       |var squareSymbol = new Symbol(squarePath);
       | 
-      |// lets place some squares using symbols, and rotate each insstance slightly
+      |// lets place some squares using symbols, and rotate each instance slightly
       |for (var i = 0; i < 5; i++) {
       |   var placedSymbol = squareSymbol.place(new Point(20 + (i * 40), 50));
       |   placedSymbol.rotate(i * 10); // operation on the instance
       |}
       | 
       |function onFrame(event) {
-      |  // Add 0.2 degrees to the hue
+      |  // Add 1 degree to the hue
       |  // of the symbol definition's fillColor:
       |  squareSymbol.definition.fillColor.hue += 1;
       |}  
@@ -174,9 +174,6 @@ block content
     :markdown
       I'm a Front-end Web Developer based in London. I currently work with some very talented people over at [R/GA](http://www.rga.com). I love to build sites which are clean and have great performance, and I dabble with whatever technologies are most suitable for the job. [Send me tweets!](https://twitter.com/andyshora)
   
-  section.section-gutter.section-gutter--full
-    +comments()
-
   script(type="text/paperscript" canvas="myCanvas")
     |var myBall = new Path.Circle(new Point(70, 70), 50);
     |myBall.fillColor = 'tomato';
@@ -244,3 +241,7 @@ block content
     |  // of the symbol definition's fillColor:
     |  squareSymbol.definition.fillColor.hue += 1;
     |}
+
+  section.section-gutter.section-gutter--full
+    +comments()
+
