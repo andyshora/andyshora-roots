@@ -1,0 +1,30 @@
+.rating-block {
+  margin: 30px 0;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.rating-block__caption {
+  display: inline-block;
+  font-weight: bold;
+}
+.rating-block__score {
+  display: inline-block;
+  margin: 0 0 0 10px;
+
+  &:before {
+    margin: 0 20px 0 10px;
+    color: $c1;
+  }
+}
+.rating-block__score--0:before { content: '☆☆☆☆☆☆☆☆☆☆'; }
+.rating-block__score--1:before { content: '★☆☆☆☆☆☆☆☆☆'; }
+.rating-block__score--2:before { content: '★★☆☆☆☆☆☆☆☆'; }
+.rating-block__score--3:before { content: '★★★☆☆☆☆☆☆☆'; }
+.rating-block__score--4:before { content: '★★★★☆☆☆☆☆☆'; }
+.rating-block__score--5:before { content: '★★★★★☆☆☆☆☆'; }
+.rating-block__score--6:before { content: '★★★★★★☆☆☆☆'; }
+.rating-block__score--7:before { content: '★★★★★★★☆☆☆'; }
+.rating-block__score--8:before { content: '★★★★★★★★☆☆'; }
+.rating-block__score--9:before { content: '★★★★★★★★★☆'; }
+.rating-block__score--10:before { content: '★★★★★★★★★★'; }

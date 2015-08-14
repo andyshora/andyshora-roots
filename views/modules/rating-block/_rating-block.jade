@@ -1,0 +1,10 @@
+//- andyshora.com
+//- rating Block Module
+//- rate something out of 10
+//- 
+//- @author Andy Shora
+
+mixin rating-block(caption, score)
+  div.rating-block
+    div.rating-block__caption= caption + ': '
+    div(class='rating-block__score rating-block__score--' + score)= score + '/10'
