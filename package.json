@@ -7,6 +7,8 @@
     "dynamic-content": "^0.2.0",
     "jade": "1.x",
     "js-pipeline": "0.2.x",
+    "jstransformer-markdown": "^1.1.0",
+    "jstransformer-marked": "^1.0.1",
     "marked": "0.3.x",
     "node-sass": "^2.0.1"
   },
