@@ -3,7 +3,7 @@ title: 'Slagging Off JavaScript Frameworks'
 description: 'An analysis of how easy it is to slag off various over-used frameworks, and why.'
 author: andyshora
 date: 14/08/2015
-image: http://i.imgur.com/bXONeC0.png
+image: http://i.imgur.com/cZ8YfU0.png
 url: 'http://www.andyshora.com/slagging-off-javascript-frameworks'
 type: article
 _content: false
@@ -23,7 +23,7 @@ block content
 
       Sure, many frameworks provide layers of abstractions that can provide opinions about how you should structure your code, and how data should flow, but I'd like to take a look at the big players people love to hate, and assess just how much of the criticism comes down to egosistic snobbery.
 
-  +quote-block('Interviewing a new pilot? You better make sure he knows how to fly the plane if the autopilot fails.','Andy Shora')
+  +quote-block('Interviewing a new pilot? You better make sure he knows how to fly the plane if the autopilot fails.',' A wise man')
 
 
   section.section-gutter
@@ -32,7 +32,7 @@ block content
 
       **Dude**: *Do you know what technology you're going to use for this new project?*
 
-      **Me**: *Angular.*
+      **Me**: *[Angular](https://angularjs.org/).*
 
       **Dude**: *But you don't know any of the requirements yet...*
 
@@ -62,11 +62,11 @@ block content
 
       **Dude**: *Do you know what technology you're going to use for this new project?*
 
-      **Me**: *React.*
+      **Me**: *[React](http://facebook.github.io/react/).*
 
       **Dude**: *Oh cool. Is that the thing Facebook made?*
 
-      **Me**: *Yep. I'm basically one of the first to use it. It's awesome for everything.*
+      **Me**: *Yep. I'm basically one of the first to use it. It makes our company bleeding-edge.*
 
     +rating-block('Slagoffability', '2')
     :markdown
@@ -86,7 +86,7 @@ block content
     :markdown
       ##Candidate: jQuery
 
-      **Dude**: *Why did you use jQuery for that?*
+      **Dude**: *Why did you use [jQuery](https://jquery.com/) for that?*
 
       **Me**: *It works, doesn't it?*
 
@@ -100,9 +100,9 @@ block content
 
       If you've been a developer for more than six months, you're probably aware that snippets of jQuery can anger the Web Development Gods and create a storm of ice and fire which can wipe out the largest armies known to man.
 
-      jQuery has it's uses. It abstracts away cross-browser inconsistencies for every function it exposes. It's great for interacting with the DOM, toggling classes, and sending AJAX requests. It's great for prototyping too. The problem is, it does too much, too easily; to the extent where Junior Developers start to use it for the wrong reasons, and don't learn what's really happening under the hood.
+      jQuery has it's uses. It abstracts away cross-browser inconsistencies via an easy-to-use API. It's great for interacting with the DOM, toggling classes, and sending AJAX requests. It's great for prototyping interactions too. The problem is, it does too much, too easily; to the extent where Junior Developers start to use it for the wrong reasons, and don't learn what's really happening under the hood.
 
-      It's also worth noting that the poor quality of the hundreds of thousands of jQuery plugins which are dotted around the web have lowered jQuery's reputation to the extent where we believe that the only people who use the library are either young and naive, or old and behind-the-times. When I do occasionally use jQuery on a project I always have a fight to prove I'm in neither of these boats!
+      It's also worth noting that the poor quality of the hundreds of thousands of jQuery plugins which are dotted around the web have lowered jQuery's reputation to the extent where we believe that the only people who use the library are either young and naive, or old and behind-the-times. When I do occasionally use jQuery on a project I always have a fight to prove I'm in neither of these boats.
   +code-block('Interviewing for a JavaScript position? Best avoid shortcuts like this.')
     code(class='language-javascript')
       |$("#id").html("&lt;span&gt;"+ variable + "&lt;/span&gt;") /* very dangerous */
@@ -115,7 +115,7 @@ block content
     :markdown
       ##Candidate: Underscore.js
 
-      **Dude**: *Did you use Underscore for that?*
+      **Dude**: *I see you used [Underscore](http://underscorejs.org/) there...*
 
       **Me**: *Yeah.*
 
@@ -124,7 +124,7 @@ block content
       **Me**: *Because Underscore is fucking great at providing the best practice implementations of tons of utility functions.*
     
 
-    +rating-block('Slagoffability', '4')
+    +rating-block('Slagoffability', '6')
     :markdown
       ### VERDICT: Stop with all the bashing.
     
@@ -132,7 +132,9 @@ block content
 
       The only bad thing about Underscore is that you can perhaps overuse it. I've seen many examples of Developers using _.each when a simple for loop would suffice.
 
-      It's also not cool to answer interview questions using utility functions from Underscore. Asked to check if a variable is a string? Best avoid any mention of _.isString. You need to be familiar with [what's going on inside Underscore.js](http://underscorejs.org/docs/underscore.html).
+      It's also not cool to answer interview questions using utility functions from Underscore. Asked to check if a variable is a string? Best avoid any mention of _.isString. You need to be familiar with [what's going on inside Underscore.js](http://underscorejs.org/docs/underscore.html). Using Underscore does not make you a bad developer. Used correctly, it makes you a good one.
+
+      It might even be suitable to extract the functions you need from Underscore, just be careful of the dependencies that exist between functions. 
 
   +code-block('Interviewing for a JavaScript position? Best use plain old JavaScript.')
     code(class='language-javascript')
