@@ -1,6 +1,6 @@
 ---
 title: 'Slagging Off JavaScript Frameworks'
-description: 'An analysis of how easy it is to slag off various over-used frameworks, and why.'
+description: 'An analysis of how easy it is to slag off various decent JavaScript Frameworks.'
 author: andyshora
 date: 14/08/2015
 image: http://i.imgur.com/cZ8YfU0.png
@@ -12,7 +12,7 @@ _content: false
 extends layouts/_base
 
 block header
-  +large-title-block('', 'Slagging Off ', 'JavaScript Frameworks', 'An analysis of how easy it is to slag off various over-used frameworks, and why..', true, true)
+  +large-title-block('', 'Slagging Off ', 'JavaScript Frameworks', 'An analysis of how easy it is to slag off various decent JavaScript Frameworks.', true, true)
 
 block content
   section.section-gutter
@@ -23,8 +23,8 @@ block content
 
       Sure, many frameworks provide layers of abstractions that can provide opinions about how you should structure your code, and how data should flow, but I'd like to take a look at the big players people love to hate, and assess just how much of the criticism comes down to egosistic snobbery.
 
-  +quote-block('Interviewing a new pilot? You better make sure he knows how to fly the plane if the autopilot fails.',' A wise man')
 
+  +quote-block('Interviewing a new pilot? You better make sure he knows how to fly the plane if the autopilot fails.',' A wise man')
 
   section.section-gutter
     :markdown
@@ -56,6 +56,7 @@ block content
           :markdown
             [Follow him](https://twitter.com/iamdevloper/status/610191865216786432) if you like satire.
         img(class='gallery__image' src='http://i.imgur.com/qJLg1Pu.png')
+  
   section.section-gutter
     :markdown
       ##Candidate: React
@@ -72,7 +73,7 @@ block content
     :markdown
       ### VERDICT: Great for websites. Difficult to bash unless used naively.
 
-      React is difficult to bash right now, because it's the latest badass framework that all the best Frontend Developers are getting into. Its steep learning curve and requirement for solid engineering principles ensures it hasn't attracted much criticism lately.
+      React is difficult to bash right now, because it's the latest badass framework that all the best Frontend Developers are getting into. Its steep learning curve and requirement for solid engineering principles ensures it hasn't yet attracted much criticism.
 
       In short, React currently falls into the group of frameworks that will only make you look bad if you:
 
@@ -81,6 +82,10 @@ block content
       b) Implement it very badly, hacking trivial code examples into something which resembles your requirements.
 
       React is also pretty heavy. The minified version weighs in at 122kb. This further strengthens the argument that it should really only be used for serious websites which can make use of it's capability of running on the server to pre-render markup, and of running on the client to dynamically update views in response to interactions.
+
+      Put simply, when React is used because the developer wants to show that it's 2015 and they can use React, it's not cool.
+
+  +quote-block('He has a right to criticize, who has a heart to help.',' Abraham Lincoln')
 
   section.section-gutter
     :markdown
@@ -100,9 +105,9 @@ block content
 
       If you've been a developer for more than six months, you're probably aware that snippets of jQuery can anger the Web Development Gods and create a storm of ice and fire which can wipe out the largest armies known to man.
 
-      jQuery has it's uses. It abstracts away cross-browser inconsistencies via an easy-to-use API. It's great for interacting with the DOM, toggling classes, and sending AJAX requests. It's great for prototyping interactions too. The problem is, it does too much, too easily; to the extent where Junior Developers start to use it for the wrong reasons, and don't learn what's really happening under the hood.
+      jQuery has it's uses. It abstracts away cross-browser inconsistencies via an easy-to-use API. It's great for interacting with the DOM, toggling classes, and sending AJAX requests. It's great for prototyping interactions too. The problem is, it does too much, too easily, to the extent where Junior Developers start to use it for the wrong reasons and don't learn what's really happening under the hood.
 
-      It's also worth noting that the poor quality of the hundreds of thousands of jQuery plugins which are dotted around the web have lowered jQuery's reputation to the extent where we believe that the only people who use the library are either young and naive, or old and behind-the-times. When I do occasionally use jQuery on a project I always have a fight to prove I'm in neither of these boats.
+      It's also worth noting that the poor quality of the hundreds of thousands of jQuery plugins which are dotted around the web have lowered jQuery's reputation to a level where we believe that the only people who use the library are either young and naive, or old and behind-the-times. If you do occasionally use jQuery on a project, you're likely to have a battle to prove you're in neither of these boats.
   +code-block('Interviewing for a JavaScript position? Best avoid shortcuts like this.')
     code(class='language-javascript')
       |$("#id").html("&lt;span&gt;"+ variable + "&lt;/span&gt;") /* very dangerous */
@@ -128,9 +133,9 @@ block content
     :markdown
       ### VERDICT: Stop with all the bashing.
     
-      It's difficult to attach a negative *third-party code* connotation to something which has been written and revised over and over by [some of the planet's greatest JavaScript Developers](https://github.com/jashkenas/underscore/graphs/contributors). In my eyes, these are the people recruiters often refer to as the *Ninja Rockstars* of our generation.
+      It's difficult to attach a negative *third-party code* connotation to something which has been written and revised over and over by [some of the planet's greatest JavaScript Developers](https://github.com/jashkenas/underscore/graphs/contributors). In my eyes, these are the people recruiters often refer to as the *Ninja Rockstars* of our generation, and we're basically talking about best practice implementations of small functions.
 
-      The only bad thing about Underscore is that you can perhaps overuse it. I've seen many examples of Developers using _.each when a simple for loop would suffice.
+      The only bad thing about Underscore is that you can perhaps overuse it. For example, I've seen many examples of Developers using _.each when a simple for loop would suffice.
 
       It's also not cool to answer interview questions using utility functions from Underscore. Asked to check if a variable is a string? Best avoid any mention of _.isString. You need to be familiar with [what's going on inside Underscore.js](http://underscorejs.org/docs/underscore.html). Using Underscore does not make you a bad developer. Used correctly, it makes you a good one.
 
@@ -149,15 +154,17 @@ block content
   section.section-gutter
     :markdown
       ##Summary
-      Every JavaScript library has a purpose. Good Frontend Developers should be able to see suitable use cases for each of the frameworks above. If they can't, they're probably elitist arseholes.
+      **Every JavaScript library has a purpose.**
 
-      What we have to do as a community is not be too judgemental the moment we see an Angular include, or a fresh jQuery question on StackOverflow.
+      Experienced Frontend Developers should be able to see suitable use cases for each of the frameworks above. Naive Frontend Developers shriek the moment they see them being used.
 
-      A good answer is not: **Why are you using jQuery?!**
+      What we have to do as a community is not be too judgemental the moment we see a fresh jQuery question on StackOverflow.
 
-      It should be: **Here's how you would do it in jQuery. Have you considered it might be simpler in plain JavaScript?**
+      A good answer is not: *Why are you using jQuery?!*
 
-      Sure, we all have go-to tools for prototyping and rapid app development. Lets just try to avoid slagging off uses of pre-2015 frameworks in an attempt to elevate our ever-scrutinised reputations.
+      It should be: *Here's how you would do it in jQuery. Have you considered it might be simpler in plain JavaScript?*
+
+      Sure, we all have go-to tools for prototyping and rapid app development. Lets just try to avoid slagging off uses of pre-2015 frameworks in an attempt to elevate ourselves into the clouds of frontend snobbery.
 
   +bio-block('Andy Shora', 'andyshora', 'https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg')
     :markdown
