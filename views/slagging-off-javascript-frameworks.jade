@@ -108,13 +108,15 @@ block content
       jQuery has it's uses. It abstracts away cross-browser inconsistencies via an easy-to-use API. It's great for interacting with the DOM, toggling classes, and sending AJAX requests. It's great for prototyping interactions too. The problem is, it does too much, too easily, to the extent where Junior Developers start to use it for the wrong reasons and don't learn what's really happening under the hood.
 
       It's also worth noting that the poor quality of the hundreds of thousands of jQuery plugins which are dotted around the web have lowered jQuery's reputation to a level where we believe that the only people who use the library are either young and naive, or old and behind-the-times. If you do occasionally use jQuery on a project, you're likely to have a battle to prove you're in neither of these boats.
-  +code-block('Interviewing for a JavaScript position? Best avoid shortcuts like this.')
+  +code-block('Interviewing for a JavaScript position? It\'s very easy to go wrong with jQuery. Best avoid shortcuts like this.')
     code(class='language-javascript')
       |$("#id").html("&lt;span&gt;"+ variable + "&lt;/span&gt;") /* very dangerous */
       | 
       |$("#example").text("Hello, world!");
       |$("#example").css("color", "red");
-      |$("#example").addClass("fun"); /* please just stop */
+      |$("#example").addClass("fun"); /* heard of chaining or selector caching? */
+      | 
+      |$("section div a").addClass("highlight"); /* not very efficient */
   
   section.section-gutter
     :markdown
