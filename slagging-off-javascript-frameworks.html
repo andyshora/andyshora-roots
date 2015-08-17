@@ -32,11 +32,13 @@
 <p>If you&#39;ve been a developer for more than six months, you&#39;re probably aware that snippets of jQuery can anger the Web Development Gods and create a storm of ice and fire which can wipe out the largest armies known to man.</p>
 <p>jQuery has it&#39;s uses. It abstracts away cross-browser inconsistencies via an easy-to-use API. It&#39;s great for interacting with the DOM, toggling classes, and sending AJAX requests. It&#39;s great for prototyping interactions too. The problem is, it does too much, too easily, to the extent where Junior Developers start to use it for the wrong reasons and don&#39;t learn what&#39;s really happening under the hood.</p>
 <p>It&#39;s also worth noting that the poor quality of the hundreds of thousands of jQuery plugins which are dotted around the web have lowered jQuery&#39;s reputation to a level where we believe that the only people who use the library are either young and naive, or old and behind-the-times. If you do occasionally use jQuery on a project, you&#39;re likely to have a battle to prove you&#39;re in neither of these boats.</p>
-</section><div class="code-block"><div class="code-block__caption"><span>Interviewing for a JavaScript position? Best avoid shortcuts like this.</span></div><pre><code class="language-javascript">$("#id").html("&lt;span&gt;"+ variable + "&lt;/span&gt;") /* very dangerous */
+</section><div class="code-block"><div class="code-block__caption"><span>Interviewing for a JavaScript position? It's very easy to go wrong with jQuery. Best avoid shortcuts like this.</span></div><pre><code class="language-javascript">$("#id").html("&lt;span&gt;"+ variable + "&lt;/span&gt;") /* very dangerous */
  
 $("#example").text("Hello, world!");
 $("#example").css("color", "red");
-$("#example").addClass("fun"); /* please just stop */</code></pre></div><section class="section-gutter"><h2 id="candidate-underscore-js">Candidate: Underscore.js</h2>
+$("#example").addClass("fun"); /* heard of chaining or selector caching? */
+ 
+$("section div a").addClass("highlight"); /* not very efficient */</code></pre></div><section class="section-gutter"><h2 id="candidate-underscore-js">Candidate: Underscore.js</h2>
 <p><strong>Dude</strong>: <em>I see you used <a href="http://underscorejs.org/">Underscore</a> there...</em></p>
 <p><strong>Me</strong>: <em>Yeah.</em></p>
 <p><strong>Dude</strong>: <em>Why?</em></p>
