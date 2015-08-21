@@ -1,0 +1,13 @@
+//- andyshora.com
+//- Split Code Block Module
+//- Comparison between two languages, or new and old way, etc.
+//- 
+//- @author Andy Shora
+
+mixin code-block(caption)
+  div.split-code-block
+    div.split-code-block__caption
+      span= caption
+    pre
+      if block
+        block
