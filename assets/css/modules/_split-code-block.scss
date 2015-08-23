@@ -6,13 +6,7 @@
     background: $n3;
     overflow: auto;
 
-    &:first-child {
-      > code {
-        background: rgb(246, 246, 246);
-        background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255,255,255,.5) 5px, rgba(255,255,255,.5) 10px);
-        border-bottom: 2px solid #91E891;
-      }
-    }
+    
 
     > code {
       padding: 30px 40px 30px;
@@ -25,8 +19,16 @@
       font-size: .8em;
       position: relative;
 
+      &:first-child {
+        
+          background: rgb(245, 233, 233);
+          background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255,255,255,.5) 5px, rgba(255,255,255,.5) 10px);
+          border-bottom: 2px solid #91E891;
+        
+      }
+
       &:after {
-        content: attr(data-language);
+        content: attr(data-label);
         position: absolute;
         display: inline-block;
         right: 10px;
@@ -56,7 +58,7 @@
   font-style: italic;
 
   @include from-width($breakpoint-large) {
-    padding: 50px 20px 20px 20px;
+    padding: 50px 20px 0;
   }
 
   > span {
@@ -65,6 +67,6 @@
     padding: 50px 40px 20px;
     width: 100%;
     display: block;
-    background: rgb(247, 247, 247);
+    background: white;
   }
 }

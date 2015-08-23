@@ -1,0 +1,120 @@
+---
+title: 'ES6 - Get Excited Now!'
+description: "Here's why you should be excited to use ES6 right now"
+author: andyshora
+date: 14/08/2015
+image: http://i.imgur.com/cZ8YfU0.png
+url: 'http://www.andyshora.com/exciting-features-es6'
+type: article
+_content: false
+---
+
+extends layouts/_base
+
+block header
+  +large-title-block('ES6 - ', 'Get Excited ', 'Now!', 'Why you should be excited to use ES6 right now', true, true)
+
+block content
+  section.section-gutter
+    :markdown
+      ##Should I be using ES6 right now?
+      
+      **Isn't it, like, from the future?**
+
+      Yes, it sure is. It's also available for you to use in production today, and it's one of the most beautifuly documented and supported additions to the world of web development I've ever seen!
+
+      I'm going to quickly show you how to transpile ES6 code using Babel, as well as highlight my favourite ES6 features. You really shouldn't hesitate to **get very excited RIGHT NOW!**
+
+  +quote-block('A transpiler is a type of compiler that transforms the source of one programming language to another, with the output remaining at a similar level of abstraction as the input.',' Andy Shora')
+
+  section.section-gutter
+    :markdown
+      ##How? The answer is Babel
+      
+      **[Babel](http://babeljs.io) is a JavaScript compiler. It allows you to use the next generation JavaScript (ES6) today.**
+      
+      You should think of Babel as a middle layer which transpiles your ES6 code into something all browsers (IE8+) can execute. The output is plain JavaScript with polyfills, allowing new ES6 features to be interpretable by browsers that don't yet support the feature natively.
+
+      The Babel transformation should almost definitely be part of your build process:
+
+      **Pretty ES6 codebase &rarr; BUILD (featuring Babel compilation) &rarr; JavaScript**
+
+  +gallery()
+    ul
+      li()
+        .gallery__caption
+          strong Babel has a huge number of setup options
+          :markdown
+            [Explore tons of ways to setup Babel](http://babeljs.io/docs/setup/) with your project today.
+        img(class='gallery__image' src='http://i.imgur.com/5qwSTuO.png')
+  
+  +code-block('Example showing how to use Babel with Gulp. Install module first with `npm install --save-dev gulp-babel`')
+    code(class='language-javascript')
+      |var gulp = require('gulp');
+      |var babel = require('gulp-babel');
+      | 
+      |gulp.task('default', function () {
+      |  return gulp.src('src/app.js')
+      |    .pipe(babel())
+      |    .pipe(gulp.dest('dist'));
+      |});
+  
+  section.section-gutter
+    :markdown
+      ##String Interpolation
+      Run this [String Interpolation Demo](http://bit.ly/1LqxM8y) online at babeljs.io
+
+  +split-code-block('String Interpolation. Say goodbye to writing all of the + and \' building inline strings!')
+    code(class='language-javascript' data-label='ES5')
+      |var makeHelloStr = function(firstName, lastName) {
+      |  return 'Oh hi there ' + firstName + ' ' + lastName + '!';
+      |};
+    code(class='language-javascript' data-label='ES6')
+      |var makeHelloStr = (firstName, lastName) => `Oh hi there ${firstName} ${lastName}!`
+
+  section.section-gutter
+    :markdown
+      ##Arrow functions, and referencing this
+
+  +split-code-block('Comparing functions in ES5 (old JavaScript) and ES6 (new generation)')
+    code(class='language-javascript' data-label='ES5')
+      |var gulp = require('gulp');
+      |var babel = require('gulp-babel');
+      | 
+      |gulp.task('default', function () {
+      |  return gulp.src('src/app.js')
+      |    .pipe(babel())
+      |    .pipe(gulp.dest('dist'));
+      |});
+    code(class='language-javascript' data-label='ES6')
+      |var gulp = require('gulp');
+      |var babel = require('gulp-babel');
+      | 
+      |gulp.task('default', function () {
+      |  return gulp.src('src/app.js')
+      |    .pipe(babel())
+      |    .pipe(gulp.dest('dist'));
+      |});
+  
+  
+  section.section-gutter
+    :markdown
+      ##Summary
+      **Every JavaScript library has a purpose.**
+
+      Experienced Frontend Developers should be able to see suitable use cases for each of the frameworks above. Naive Frontend Developers shriek the moment they see them being used.
+
+      What we have to do as a community is not be too judgemental the moment we see a fresh jQuery question on StackOverflow.
+
+      A good answer is not: *Why are you using jQuery?!*
+
+      It should be: *Here's how you would do it in jQuery. Have you considered it might be simpler in plain JavaScript?*
+
+      Sure, we all have go-to tools for prototyping and rapid app development. Lets just try to avoid slagging off uses of pre-2015 frameworks in an attempt to elevate ourselves into the clouds of frontend snobbery.
+
+  +bio-block('Andy Shora', 'andyshora', 'https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg')
+    :markdown
+      I'm a Front-end Web Developer based in London. I currently work with some very talented people over at [R/GA](http://www.rga.com). I love to build sites which are clean and have great performance, and I dabble with whatever technologies are most suitable for the job. [Send me tweets!](https://twitter.com/andyshora)
+  
+  section.section-gutter.section-gutter--full
+    +comments()
