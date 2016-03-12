@@ -67,8 +67,8 @@ block content
 
   section.section-gutter
     :markdown
-      ##How do interpolators help us tween paths?
-      We'll get to that in just a minute. First, let's think about the SVG nodes that D3 is generating.
+      ##We don't always need to use interpolators.
+      First, let's think about the SVG nodes that D3 is generating.
 
       Simple geometric shapes have very simple fingerprints, you could take a look at a *circle* or a *rect* node and tell what it's going to look like just from the properties and values.
   
@@ -80,7 +80,7 @@ block content
       |  &lt;circle cx="100" cy="100" r="80" style="fill:tomato" /&gt;
       |&lt;/svg&gt;
 
-  section.section-gutter
+  section.section-gutter.section-gutter--alt
     :markdown
       ###Did you get it right?
       It doesn't take Sherlock Holmes to tell that this is what you were imagining:
@@ -98,208 +98,63 @@ block content
 
       Wait, we have just the thing to do that! **Our interpolator function.**
 
-
-  +code-block('Paper.js shapes, defined inside <script type="text/paperscript" canvas="myCanvas">')
-    code(class='language-javascript')
-      |// The Path.Circle constructor takes a Point(x, y), and a radius
-      |var myBall = new Path.Circle(new Point(70, 70), 50);
-      |myBall.fillColor = 'tomato';
-      | 
-      |// The Path.Rectangle constructor can take a Point and a Size object
-      |var point = new Point(20, 150);
-      |var size = new Size(100, 50);
-      |var myRectangle = new Path.Rectangle(point, size);
-      |myRectangle.fillColor = 'powderblue';
-      | 
-      |// The Path.Line constructor takes 2 points, defining the start and end of the line.
-      |var from = new Point(160, 20);
-      |var to = new Point(200, 80);
-      |var straightLine = new Path.Line(from, to);
-      |straightLine.strokeColor = 'black';
-      | 
-      |// The Path.Arc constructor takes 3 points, var names describing the obvious.
-      |var from = new Point(170, 120);
-      |var through = new Point(200, 180);
-      |var to = new Point(170, 220);
-      |var curvedPath = new Path.Arc(from, through, to);
-      |curvedPath.strokeColor = 'black';
+  +quote-block('Simple geometric shapes can be tweened without using interpolators.','Andy Shora')
 
   section.section-gutter
     :markdown
-      A circle is a [predefined shape](http://paperjs.org/tutorials/paths/creating-predefined-shapes/ "Predefined Shapes in Paper.js") in Paper.js, which means it has a nice abstracted interface which you can use to create the path.
-      
-      *Other handy predefined shapes: Circle, Rectangle, RoundRectangle, RegularPolygon, Line, Arc, Star.*
-  +gallery()
-    ul
-      li()
-        .gallery__caption
-          strong Obligatory working environment
-          :markdown
-            Missing artisan coffee and sausage dog.
-        img(class='gallery__image' src='http://i.imgur.com/vyFhUQr.png')
-  section.section-gutter
-      :markdown
-        ##I Can Haz Animations?
-        Yes chap. You certainly can.
+      ##Simple: Tweening numeric SVG properties
+      **Simple geometric shapes can be tweened without using interpolators.**
 
-        To create animations, define the update logic inside a special onFrame handler, which Paper.js calls up to 60 times per second.
-      canvas(id="myCanvas2" height="240" width="220")
+      *Note: I'm using a .each('end', startTweenFunc); call in this demo to repeat it.*
 
-  +code-block('Paper.js animation, rotating a rectangle on every frame refresh.')
+    svg(height="50" width="300" style="margin:0 auto" id="shapes-container-2")
+      rect(width="0" height="30" x="0" y="20" style="fill:tomato" id="rect-1")
+
+    
+
+  +code-block('Simple shape changes don\'t require interpolators')
     code(class='language-javascript')
-      |// create the shape
-      |var point = new Point(20, 150);
-      |var size = new Size(100, 50);
-      |var myRectangle = new Path.Rectangle(point, size);
-      |myRectangle.fillColor = 'powderblue';
-      | 
-      |function onFrame(event) {
-      |   // On each frame update, rotate the square by 3 degrees:
-      |   myRectangle.rotate(3);
-      |}
-  
-  section.section-gutter
-      :markdown
-        ##Advanced Animation Using Event Properties
-        Need to perform an animation dependent on time, or just against a scale? i.e. a shape shooting back and forth? You can make use of the following properties of the event object, which is always passed to the onFrame handler.
-        - **event.count**: *Number* — the number of times the frame *event* was fired.
-        - **event.time**: *Number* — the total amount of time passed since the first frame *event* in seconds.
+      |// #rect-1 has already been created with width = 0
+      |// you can inspect it to see what's changing
+      |d3.select('#rect-1').transition().duration(1000).attr('width', 250);
 
-      canvas(id="myCanvas3" height="100" width="220")
-
-  +code-block('Using event.count and Math.sin() to create a smooth looping animation.')
-    code(class='language-javascript')
-      |var point = new Point(20, 50);
-      |var size = new Size(100, 50);
-      |var myRectangle = new Path.Rectangle(point, size);
-      |myRectangle.fillColor = 'lightBlue';
-      | 
-      |var myBall = new Path.Circle(new Point(10, 90), 10);
-      |myBall.fillColor = 'black';
-      | 
-      |function onFrame(event) {
-      |   // Normalise the event.count property to a 0-359 scale
-      |   // then apply some trigonometry so we get some smoothed values
-      |   // just like going round the edge of a circle
-      |   var x = (1 + Math.cos((event.count * 2 % 360)
-      |     * (Math.PI / 180))) * 100 + 10
-      |   var y = (Math.abs(Math.sin((event.count * 2 % 360)
-      |     * (Math.PI / 180)))) * 80;
-      |   myRectangle.position.x = x;
-      |   myBall.position.x = x;
-      |   myBall.position.y = 90 - y;
-      |}
-  
-  section.section-gutter
-      :markdown
-        ##Using Symbols for multiple instances
-        Using symbols allows you to create multiple instances of an item really quickly. This also saves memory, which is really important.
-
-        Symbols can then be manipulated individually on the instance, or all together using the symbol definition.
-
-      canvas(id="myCanvas4" height="100" width="220")
-
-  +code-block('Using symbols to create multiple instances of a shape')
-    code(class='language-javascript')
-      |var squarePath = new Path.Rectangle(new Point(20, 20), new Size(20, 20));
-      |squarePath.fillColor = 'aquamarine ';
-      |var squareSymbol = new Symbol(squarePath);
-      | 
-      |// lets place some squares using symbols, and rotate each instance slightly
-      |for (var i = 0; i < 5; i++) {
-      |   var placedSymbol = squareSymbol.place(new Point(20 + (i * 40), 50));
-      |   placedSymbol.rotate(i * 10); // operation on the instance
-      |}
-      | 
-      |function onFrame(event) {
-      |  // Add 1 degree to the hue
-      |  // of the symbol definition's fillColor:
-      |  squareSymbol.definition.fillColor.hue += 1;
-      |}  
- 
   section.section-gutter
     :markdown
-      ##That's Shapes, Done.
-      **So, Paper.js is a really easy way to draw vector shapes on canvas, and animate them to your heart's content.**
-      
-      You can access the instances of the shape you've created (or the symbol definition) just like you would with JavaScript variables, meaning you can do stuff on whatever events you desire.
-      
-      Check out loads of [Paper.js examples](http://paperjs.org/examples/ "Paper.js examples") on the official site, and view and edit the source with a simple switch to source view in the top right.
+      ##Advanced: Tweening parts of the path's data property
+      **Advanced tweening can be done by writing our own interpolator functions.**
 
-      I won't get into animating complex paths just yet, but hopefully this tutorial has given you enough code to mess around with some shapes like I did recently. As usual, send me a tweet or leave a comment below if you need a hand!
+      Don't worry, once you understand how the path is being constructed via the [SVG Mini-language](https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div), you'll know which parts of the string need changing over time to achieve your desired transition.
+
+    svg(height="300" width="300" style="margin:0 auto" id="shapes-container-3")
+      circle(cx="150" cy="170" r="120" style="fill:white;stroke:aquamarine;stroke-width:4" id="face-1")
+      circle(cx="100" cy="120" r="10" style="fill:powderblue" id="eye-1")
+      circle(cx="200" cy="120" r="10" style="fill:powderblue" id="eye-2")
+      path(style="fill:none;stroke:powderblue;stroke-width:4"  id="mouth")
+
+  +code-block('We can use a custom interpolator to tween part of a path\'s data:')
+    code(class='language-javascript')
+      |d3.select('#mouth').transition().duration(1000)
+      |  .attrTween('d', function() {
+      |   // M x y - move cursor to x, y
+      |   // S x2 y2 x y - draw a smooth curve using control point x2, y2, to end point x, y
+      |   return function(t) { return 'M 50 200 s 100 ' + (t * 200 - 100) + ' 200 0'; };
+      |   })
+
+  section.section-gutter
+    :markdown
+      ##That's D3 shape tweening, done.
+      **So, shapes are nice and tween-able if they have distinct properties, or have path commands which share the same structure.**
+      
+      Interpolating numbers on their own, simple structures like arrays of values, or strings containing numbers can all be done with [D3's out-of-the-box interpolator functions](https://github.com/mbostock/d3/wiki/Transitions#_interpolate "Interpolation in D3").
+
+      If you're looking for some more advanced path tweening, such as changing just a subset of a path's *d* (data) property (like fanning out a pie chart segment), then writing a custom interpolator is the solution. Use these interpolators inside a call to *attrTween* on the *d* (data) property.
+      
+      As usual, send me a tweet or leave a comment below if you need a hand!
 
   +bio-block('Andy Shora', 'andyshora', 'https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg')
     :markdown
-      I'm a Front-end Web Developer based in London. I currently work with some very talented people over at [R/GA](http://www.rga.com). I love to build sites which are clean and have great performance, and I dabble with whatever technologies are most suitable for the job. [Send me tweets!](https://twitter.com/andyshora)
+      I'm a Front-end Web Developer based in London. I currently work with some very talented people over at [QuantumBlack](http://www.quantumblack.com) doing data viz. I also love to build sites which are clean and have great performance, and I dabble with whatever technologies are most suitable for the job. [Send me tweets @andyshora](https://twitter.com/andyshora)
   
-  script(type="text/paperscript" canvas="myCanvas")
-    |var myBall = new Path.Circle(new Point(70, 70), 50);
-    |myBall.fillColor = 'tomato';
-    | 
-    |var point = new Point(20, 150);
-    |var size = new Size(100, 50);
-    |var myRectangle = new Path.Rectangle(point, size);
-    |myRectangle.fillColor = 'powderblue';
-    | 
-    |var from = new Point(160, 20);
-    |var to = new Point(200, 80);
-    |var straightLine = new Path.Line(from, to);
-    |straightLine.strokeColor = 'black';
-    | 
-    |var from = new Point(170, 120);
-    |var through = new Point(200, 180);
-    |var to = new Point(170, 220);
-    |var curvedPath = new Path.Arc(from, through, to);
-    |curvedPath.strokeColor = 'black';
-
-  script(type="text/paperscript" canvas="myCanvas2")
-    |var point = new Point(20, 150);
-    |var size = new Size(100, 50);
-    |var myRectangle = new Path.Rectangle(point, size);
-    |myRectangle.fillColor = 'powderblue';
-    | 
-    |function onFrame(event) {
-    | // On each frame update, rotate the square by 3 degrees:
-    | myRectangle.rotate(3);
-    |}
-
-  script(type="text/paperscript" canvas="myCanvas3")
-    |var point = new Point(20, 50);
-    |var size = new Size(100, 50);
-    |var myRectangle = new Path.Rectangle(point, size);
-    |myRectangle.fillColor = 'lightBlue';
-    | 
-    |var myBall = new Path.Circle(new Point(10, 90), 10);
-    |myBall.fillColor = 'black';
-    | 
-    |function onFrame(event) {
-    | // Normalise the event.count property to 0-359
-    | // then apply some trigonometry so we get out positions smoothed
-    | // just like the count value us going round the edge of a circle
-    | var x = (1 + Math.cos((event.count * 2 % 360)
-    |   * (Math.PI / 180))) * 100 + 10
-    | var y = (Math.abs(Math.sin((event.count * 2 % 360)
-    |   * (Math.PI / 180)))) * 80;
-    | myRectangle.position.x = x;
-    | myBall.position.x = x;
-    | myBall.position.y = 90 - y;
-    |}
-
-  script(type="text/paperscript" canvas="myCanvas4")
-    |var squarePath = new Path.Rectangle(new Point(20, 20), new Size(20, 20));
-    |squarePath.fillColor = 'aquamarine ';
-    |var squareSymbol = new Symbol(squarePath);
-    | 
-    |for (var i = 0; i < 5; i++) {
-    |   var placedSymbol = squareSymbol.place(new Point(20 + (i * 40), 50));
-    |   placedSymbol.rotate(i * 10); // operation on the instance
-    |}
-    |function onFrame(event) {
-    |  // Add 0.2 degrees to the hue
-    |  // of the symbol definition's fillColor:
-    |  squareSymbol.definition.fillColor.hue += 1;
-    |}
-
   section.section-gutter.section-gutter--full
     +comments()
 
