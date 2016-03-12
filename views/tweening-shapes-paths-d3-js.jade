@@ -12,13 +12,23 @@ _content: false
 extends layouts/_base
 
 block header
-  script(src='/js/vendor/paper-full.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js')
   +large-title-block('Tweening ', 'Custom Shapes and Paths', ' in D3.js', 'How to smoothly transition between custom shapes and paths in D3.js.', true, true)
 
 block content
+
+  section.section-gutter.section--skinny.center
+    svg(height="100" width="300" style="margin:0 auto" id="shapes-container")
+      circle(cx="20" cy="50" r="20" style="fill:tomato" id="circle-1")
+      circle(cx="50" cy="50" r="5" style="fill:tomato" id="circle-2")
+      path(id='path-1' style="stroke:tomato;stroke-width:4;fill:none;")
+      path(id='path-2' style="stroke:tomato;stroke-width:4;fill:none;")
+      path(id='path-3' style="fill:tomato;")
+      path(id='path-4' style="stroke:tomato;stroke-width:4;fill:none;")
+
   section.section-gutter
     :markdown
-      ##Out-of-the-box Interpolation in D3
+      ##Out-of-the-box Interpolation in D3.js
       **Let's talk [interpolation](https://github.com/mbostock/d3/wiki/Transitions#_interpolate "Interpolation in D3") for a moment.**
 
       Interpolation is simply a function which turns variable **A** into variable **B**. **A** could be a number, a string, an array of Point objects, it could be pretty much any data structure in JavaScript. The single most important requirement to perform the interpolation, is that **the structure of A must match the structure of B**.
@@ -72,15 +82,21 @@ block content
 
   section.section-gutter
     :markdown
-      ###Ok, that was pretty easy.
-
+      ###Did you get it right?
       It doesn't take Sherlock Holmes to tell that this is what you were imagining:
 
-  section.section-gutter
     svg(height="200" width="200" style="margin:0 auto")
-      line(x1="0" y1="0" x2="200" y2="0" style="stroke:tomato")
-      rect(width="10" height="10" x="10" y="10" style="fill:tomato")
+      line(x1="0" y1="190" x2="50" y2="190" style="stroke:tomato")
+      rect(width="10" height="10" x="40" y="40" style="fill:tomato")
       circle(cx="100" cy="100" r="50" style="fill:tomato")
+
+    :markdown
+      ###Mmmm... those properties look very tweenable!
+      - What if we were to increase the **x2** value of the line, over time?
+      - What if we were to increase the **width** value of the rect, over time?
+      - What if we were to decrease the **r** value of the circle, over time?
+
+      Wait, we have just the thing to do that! **Our interpolator function.**
 
 
   +code-block('Paper.js shapes, defined inside <script type="text/paperscript" canvas="myCanvas">')
@@ -286,4 +302,6 @@ block content
 
   section.section-gutter.section-gutter--full
     +comments()
+
+  script(src='/js/shapes.js')
 
