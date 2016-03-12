@@ -1,6 +1,6 @@
 ---
 title: "Tweening Custom Shapes and Paths in D3.js"
-description: 'How to smoothly transition between custom shapes and paths in D3.js.'
+description: 'How to smoothly transition custom shapes and paths in D3.js.'
 author: andyshora
 date: 14/06/2015
 image: http://i.imgur.com/vyFhUQr.png
@@ -13,11 +13,11 @@ extends layouts/_base
 
 block header
   script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js')
-  +large-title-block('Tweening ', 'Custom Shapes and Paths', ' in D3.js', 'How to smoothly transition between custom shapes and paths in D3.js.', true, true)
+  +large-title-block('Tweening ', 'Custom Shapes and Paths', ' in D3.js', 'How to smoothly transition custom shapes and paths in D3.js.', true, true)
 
 block content
 
-  section.section-gutter.section--skinny.center
+  section.section-gutter.section--skinny.center.section--center
     svg(height="100" width="300" style="margin:0 auto" id="shapes-container")
       circle(cx="20" cy="50" r="20" style="fill:tomato" id="circle-1")
       circle(cx="50" cy="50" r="5" style="fill:tomato" id="circle-2")
@@ -33,6 +33,12 @@ block content
 
       Interpolation is simply a function which turns variable **A** into variable **B**. **A** could be a number, a string, an array of Point objects, it could be pretty much any data structure in JavaScript. The single most important requirement to perform the interpolation, is that **the structure of A must match the structure of B**.
 
+      Think about it this way:
+
+        * Turn a small ball into a large ball - easy. *Just increase the radius property.*
+        * Turn a line into a curve - achievable. *The initial line can be a curve, with the control point of the curve set to the mid-point. The control point can shoft out to generate a curve.*
+        * Turn two a bunch of balls into a batman symbol - WOW. *That's near impossible, as the structures don't match. You simply can't generate sensible intermediary states.*
+
   +quote-block('The single most important requirement to perform interpolation in D3.js, is that the structure of A must match the structure of B','Andy Shora')
 
   section.section-gutter
@@ -40,7 +46,7 @@ block content
       ##What does an interpolator look like?
       An interpolator is a function which takes your start state A, and your end state B, and returns a function.
 
-      This function can be passed a time (from 0 to 1) and returns an intermediary state between A and B.
+      This function can be passed a time (from 0 to 1) and returns an intermediary state between A and B. Your interpolator is the function D3 will be calling every 16ms during a transition, in order to tween your shape through lots of intermediary shapes from A to B.
 
       Let's show how a very simple interpolator in D3 works...
   +code-block('A very simple out-of-the-box interpolator in D3.js')
@@ -108,7 +114,7 @@ block content
       *Note: I'm using a .each('end', startTweenFunc); call in this demo to repeat it.*
 
     svg(height="50" width="300" style="margin:0 auto" id="shapes-container-2")
-      rect(width="0" height="30" x="0" y="20" style="fill:tomato" id="rect-1")
+      rect(width="0" height="20" x="0" y="30" style="fill:tomato" id="rect-1")
 
     
 
@@ -117,11 +123,23 @@ block content
       |// #rect-1 has already been created with width = 0
       |// you can inspect it to see what's changing
       |d3.select('#rect-1').transition().duration(1000).attr('width', 250);
+      | 
+      |// alternative - using a pre-made D3 interpolator
+      |d3.select('#rect-1').transition().duration(1000)
+      |  .attrTween('width', function() {
+      |    return d3.interpolateNumber(0, 250);
+      |  });
+      | 
+      |// alternative - writing our own custom interpolator to do the same thing
+      |d3.select('#rect-1').transition().duration(1000)
+      |  .attrTween('width', function() {
+      |    return function(t) { return t * 250; };
+      |  });
 
   section.section-gutter
     :markdown
       ##Advanced: Tweening parts of the path's data property
-      **Advanced tweening can be done by writing our own interpolator functions.**
+      **Advanced tweening can be done by writing our own custom interpolator functions.**
 
       Don't worry, once you understand how the path is being constructed via the [SVG Mini-language](https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div), you'll know which parts of the string need changing over time to achieve your desired transition.
 
@@ -136,9 +154,57 @@ block content
       |d3.select('#mouth').transition().duration(1000)
       |  .attrTween('d', function() {
       |   // M x y - move cursor to x, y
-      |   // S x2 y2 x y - draw a smooth curve using control point x2, y2, to end point x, y
+      |   // s x2 y2 x y - draw a smooth curve using control point x2, y2, to end point x, y
+      |   // (it's a lower case s so use relative coords)
       |   return function(t) { return 'M 50 200 s 100 ' + (t * 200 - 100) + ' 200 0'; };
       |   })
+
+  section.section-gutter
+    :markdown
+      ##Advanced: Tweening paths with some trigonometry
+      **Doing something radial? Then you'll need to brush up on your trigonometry.**
+
+      The thing to remember when tweening shapes with curves, is that you can't ask D3 to interpolate the whole path data with something like *d3.interpolateString*, as there are some parts of the [SVG Mini-language](https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div) which need to change in a non-uniform way.
+
+      In this example, we have to make sure *Math.sin()* and *Math.cos()* are evaluated within our interpolator, as the values they are producing do not change at the same rate as our time, t. We are essentially using these trig functions as our own easing function to tween parts of our path.
+
+    svg(height="300" width="300" style="margin:0 auto" id="shapes-container-4")
+      path(style="fill:powderblue;"  id="pie")
+
+  +code-block('We can use a custom interpolator to tween part of a path\'s data:')
+    code(class='language-javascript')
+      |// helper function to generate the segment as a path
+      |function generateSVGSegment(x, y, r, startAngle, endAngle) {
+      |  // convert angles to Radians
+      |  startAngle *= (Math.PI / 180);
+      |  endAngle *= (Math.PI / 180);
+      | 
+      |  if (startAngle > endAngle) {
+      |    var s = startAngle;
+      |    startAngle = endAngle;
+      |    endAngle = s;
+      |  }
+      | 
+      |  var largeArc = endAngle - startAngle <= Math.PI ? 0 : 1;
+      |  var sweepFlag = 0;
+      | 
+      |  return ['M', x, y, 'L', x + Math.cos(startAngle) * r, y - (Math.sin(startAngle) * r),
+      |          'A', r, r, 0, largeArc, sweepFlag, x + Math.cos(endAngle) * r, y - (Math.sin(endAngle) * r)
+      |         ].join(' ');
+      |}
+      | 
+      |// our custom interpolator, which returns an interpolator function
+      |// which when called with a time (0-1), generates a segment sized according to time
+      |function interpolateSVGSegment(x, y, r, startAngle, endAngle) {
+      |  return function(t) {
+      |    return generateSVGSegment(x, y, r, startAngle, startAngle + ((endAngle - startAngle) * t));
+      |  };
+      |}
+      | 
+      |d3.select('#pie-1').transition().duration(1000)
+      |  .attrTween('d', function() {
+      |    return interpolateSVGSegment(150, 175, 100, 90, -270);
+      |  });
 
   section.section-gutter
     :markdown
@@ -149,7 +215,7 @@ block content
 
       If you're looking for some more advanced path tweening, such as changing just a subset of a path's *d* (data) property (like fanning out a pie chart segment), then writing a custom interpolator is the solution. Use these interpolators inside a call to *attrTween* on the *d* (data) property.
       
-      As usual, send me a tweet or leave a comment below if you need a hand!
+      To source of all the demos on this page are in [/js/shapes.js](/js/shapes.js). As usual, send me a tweet or leave a comment below if you need a hand!
 
   +bio-block('Andy Shora', 'andyshora', 'https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg')
     :markdown
