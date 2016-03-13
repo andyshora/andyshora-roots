@@ -3,7 +3,7 @@ title: "Tweening Custom Shapes and Paths in D3.js"
 description: 'How to smoothly transition custom shapes and paths in D3.js.'
 author: andyshora
 date: 14/06/2015
-image: http://i.imgur.com/vyFhUQr.png
+image: http://i.imgur.com/hh2OEjd.png
 url: 'http://www.andyshora.com/tweening-shapes-paths-d3-js'
 type: article
 _content: false
@@ -25,6 +25,7 @@ block content
       path(id='path-2' style="stroke:tomato;stroke-width:4;fill:none;")
       path(id='path-3' style="fill:tomato;")
       path(id='path-4' style="stroke:tomato;stroke-width:4;fill:none;")
+      path(id='path-5' style="stroke:powderblue;stroke-width:4;fill:none;")
 
   section.section-gutter
     :markdown
@@ -165,31 +166,38 @@ block content
       **Doing something radial? Then you'll need to brush up on your trigonometry.**
 
       The thing to remember when tweening shapes with curves, is that you can't ask D3 to interpolate the whole path data with something like *d3.interpolateString*, as there are some parts of the [SVG Mini-language](https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div) which need to change in a non-uniform way.
-
-      In this example, we have to make sure *Math.sin()* and *Math.cos()* are evaluated within our interpolator, as the values they are producing do not change at the same rate as our time, t. We are essentially using these trig functions as our own easing function to tween parts of our path.
-
+    
     svg(height="300" width="300" style="margin:0 auto" id="shapes-container-4")
       path(style="fill:powderblue;"  id="pie")
+
+    :markdown
+      In this example, we have to make sure *Math.sin()* and *Math.cos()* are evaluated within our interpolator, as the values they are producing do not change at the same rate as our time, t. We are essentially using these trig functions as our own easing function to tween parts of our path.
+
+    
+
+  +gallery()
+    ul
+      li()
+        .gallery__caption
+          strong Drawing SVG Segments
+          :markdown
+            I always sketch custom paths, breaking down each line into its respective [SVG Mini-language](https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div) command.
+        img(class='gallery__image' src='http://i.imgur.com/dODlAkL.jpg')
 
   +code-block('We can use a custom interpolator to tween part of a path\'s data:')
     code(class='language-javascript')
       |// helper function to generate the segment as a path
       |function generateSVGSegment(x, y, r, startAngle, endAngle) {
+      | 
       |  // convert angles to Radians
       |  startAngle *= (Math.PI / 180);
       |  endAngle *= (Math.PI / 180);
       | 
-      |  if (startAngle > endAngle) {
-      |    var s = startAngle;
-      |    startAngle = endAngle;
-      |    endAngle = s;
-      |  }
+      |  var largeArc = endAngle - startAngle <= Math.PI ? 0 : 1; // 1 if angle > 180 degrees
+      |  var sweepFlag = 1; // is arc to be drawn in +ve direction?
       | 
-      |  var largeArc = endAngle - startAngle <= Math.PI ? 0 : 1;
-      |  var sweepFlag = 0;
-      | 
-      |  return ['M', x, y, 'L', x + Math.cos(startAngle) * r, y - (Math.sin(startAngle) * r),
-      |          'A', r, r, 0, largeArc, sweepFlag, x + Math.cos(endAngle) * r, y - (Math.sin(endAngle) * r)
+      |  return ['M', x, y, 'L', x + Math.sin(startAngle) * r, y - (Math.cos(startAngle) * r),
+      |          'A', r, r, 0, largeArc, sweepFlag, x + Math.sin(endAngle) * r, y - (Math.cos(endAngle) * r), 'Z'
       |         ].join(' ');
       |}
       | 
@@ -201,9 +209,10 @@ block content
       |  };
       |}
       | 
+      |// we're ready to kick it off
       |d3.select('#pie-1').transition().duration(1000)
       |  .attrTween('d', function() {
-      |    return interpolateSVGSegment(150, 175, 100, 90, -270);
+      |    return interpolateSVGSegment(150, 175, 100, 0, 270);
       |  });
 
   section.section-gutter
