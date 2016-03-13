@@ -4,7 +4,7 @@ description: 'How to build awesome flat animated shapes with PaperJS'
 author: andyshora
 date: 14/06/2015
 image: http://i.imgur.com/vyFhUQr.png
-url: 'http://www.andyshora.com/building-static-site-with-roots'
+url: 'http://www.andyshora.com/easy-paper-js-tutorial'
 type: article
 _content: false
 ---
@@ -144,7 +144,7 @@ block content
   +code-block('Using symbols to create multiple instances of a shape')
     code(class='language-javascript')
       |var squarePath = new Path.Rectangle(new Point(20, 20), new Size(20, 20));
-      |squarePath.fillColor = 'aquamarine ';
+      |squarePath.fillColor = 'aquamarine';
       |var squareSymbol = new Symbol(squarePath);
       | 
       |// lets place some squares using symbols, and rotate each instance slightly
@@ -157,6 +157,8 @@ block content
       |  // Add 1 degree to the hue
       |  // of the symbol definition's fillColor:
       |  squareSymbol.definition.fillColor.hue += 1;
+      |  // rotate
+      |  squareSymbol.definition.rotate(0.2);
       |}  
  
   section.section-gutter
@@ -172,7 +174,7 @@ block content
 
   +bio-block('Andy Shora', 'andyshora', 'https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg')
     :markdown
-      I'm a Front-end Web Developer based in London. I currently work with some very talented people over at [R/GA](http://www.rga.com). I love to build sites which are clean and have great performance, and I dabble with whatever technologies are most suitable for the job. [Send me tweets!](https://twitter.com/andyshora)
+      I'm a Front-end Web Developer based in London. I currently work with some very talented people over at [QuantumBlack](http://www.quantumblack.com). I love to build sites which are clean and have great performance, and I dabble with whatever technologies are most suitable for the job. [Send me tweets!](https://twitter.com/andyshora)
   
   script(type="text/paperscript" canvas="myCanvas")
     |var myBall = new Path.Circle(new Point(70, 70), 50);
@@ -229,7 +231,7 @@ block content
 
   script(type="text/paperscript" canvas="myCanvas4")
     |var squarePath = new Path.Rectangle(new Point(20, 20), new Size(20, 20));
-    |squarePath.fillColor = 'aquamarine ';
+    |squarePath.fillColor = 'aquamarine';
     |var squareSymbol = new Symbol(squarePath);
     | 
     |for (var i = 0; i < 5; i++) {
@@ -240,6 +242,8 @@ block content
     |  // Add 0.2 degrees to the hue
     |  // of the symbol definition's fillColor:
     |  squareSymbol.definition.fillColor.hue += 1;
+    |  // rotate
+    |  squareSymbol.definition.rotate(0.2);
     |}
 
   section.section-gutter.section-gutter--full

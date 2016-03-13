@@ -59,9 +59,18 @@ html, body {
   padding: 60px 20px;
   max-width: 1000px;
   margin: 0 auto;
+
+  &.section--skinny {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
   
   @include from-width($breakpoint-medium) {
     padding: 50px 20% 50px 20px;
+
+    &.section--center {
+      padding-right: 20px;
+    }
 
     &.section-gutter--alt {
       padding: 60px 20px 60px 20%;
@@ -112,6 +121,10 @@ footer {
   }
 }
 
+.center {
+  text-align: center;
+}
+
 .relative {
   position: relative;
 }
@@ -132,10 +145,8 @@ footer {
 }
 .tweets-count {
   background: black;
-  opacity: 0;
-  @include prefix(transform, translateX(20px));
-  @include prefix(transition, all .6s);
-
+  opacity: 1;
+  
   &:before {
     content: '';
   }
@@ -144,8 +155,4 @@ footer {
     content: ' tweets';
   }
 
-  &.tweets-count--show {
-    opacity: 1;
-    @include prefix(transform, translateX(0));
-  }
 }

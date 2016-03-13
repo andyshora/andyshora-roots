@@ -181,7 +181,7 @@ $(document).ready(function() {
   if (Modernizr.touch) {
       enableShareButton($('.tweet-counter'));
   } else {
-    getRTTotals();
+    // getRTTotals();
   }
 
 

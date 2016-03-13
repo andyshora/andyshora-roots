@@ -1,0 +1,124 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><title>Tweening Custom Shapes and Paths in D3.js</title><meta name="description" content="How to smoothly transition custom shapes and paths in D3.js."><meta name="og:title" content="Tweening Custom Shapes and Paths in D3.js"><meta name="og:url" content="http://www.andyshora.com/tweening-shapes-paths-d3-js"><meta name="og:description" content="How to smoothly transition custom shapes and paths in D3.js."><meta name="og:image" content="http://i.imgur.com/hh2OEjd.png"><meta name="og:type" content="article"><meta name="og:site_name" content="andyshora.com"><meta name="author" content="Andy Shora"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="shortcut icon" href="/favicon.ico"><link rel='stylesheet' href='/css/main.css' /></head><!--    ( ͡° ͜ʖ ͡°)       --><!--                  --><!--    Oh, hi there. Thanks for checking out the source!--><!--    I built this site with roots.cx, it's an awesome way to generate static sites.--><!--    Tweet me this Lenny face and we can be friends for life.--><body class="page--undefined"><header class="header"><script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script><div class="large-title-block"><h1><span class="large-title-block__start xxlarge">Tweening </span><span class="large-title-block__middle xxlarge">Custom Shapes and Paths</span><span class="large-title-block__end xxlarge"> in D3.js</span></h1><p class="large">How to smoothly transition custom shapes and paths in D3.js.</p><a href="/" class="large-title-block__back">&larr; andyshora.com</a><a data-via="andyshora" class="tweet-counter"><span class="tweet-counter__label">worth a tweet?</span><span class="tweet-counter__tweet">+1</span></a></div></header><div class="content"><section class="section-gutter section--skinny center section--center"><svg height="100" width="300" style="margin:0 auto" id="shapes-container"><circle cx="20" cy="50" r="20" style="fill:tomato" id="circle-1"></circle><circle cx="50" cy="50" r="5" style="fill:tomato" id="circle-2"></circle><path id="path-1" style="stroke:tomato;stroke-width:4;fill:none;"></path><path id="path-2" style="stroke:tomato;stroke-width:4;fill:none;"></path><path id="path-3" style="fill:tomato;"></path><path id="path-4" style="stroke:tomato;stroke-width:4;fill:none;"></path><path id="path-5" style="stroke:powderblue;stroke-width:4;fill:none;"></path></svg></section><section class="section-gutter"><h2>Out-of-the-box Interpolation in D3.js</h2>
+
+<p><strong>Let&#39;s talk <a href="https://github.com/mbostock/d3/wiki/Transitions#_interpolate" title="Interpolation in D3">interpolation</a> for a moment.</strong></p>
+
+<p>Interpolation is simply a function which turns variable <strong>A</strong> into variable <strong>B</strong>. <strong>A</strong> could be a number, a string, an array of Point objects, it could be pretty much any data structure in JavaScript. The single most important requirement to perform the interpolation, is that <strong>the structure of A must match the structure of B</strong>.</p>
+
+<p>Think about it this way:</p>
+
+<ul><li>Turn a small ball into a large ball - easy. <em>Just increase the radius property.</em></li><li>Turn a line into a curve - achievable. <em>The initial line can be a curve, with the control point of the curve set to the mid-point. The control point can shoft out to generate a curve.</em></li><li>Turn two a bunch of balls into a batman symbol - WOW. <em>That&#39;s near impossible, as the structures don&#39;t match. You simply can&#39;t generate sensible intermediary states.</em></li></ul></section><div class="quote-block"><div class="quote-block__text"><blockquote class="xlarge">The single most important requirement to perform interpolation in D3.js, is that the structure of A must match the structure of B</blockquote><footer><cite><p>Andy Shora</p></cite></footer></div></div><section class="section-gutter"><h2>What does an interpolator look like?</h2>
+
+<p>An interpolator is a function which takes your start state A, and your end state B, and returns a function.</p>
+
+<p>This function can be passed a time (from 0 to 1) and returns an intermediary state between A and B. Your interpolator is the function D3 will be calling every 16ms during a transition, in order to tween your shape through lots of intermediary shapes from A to B.</p>
+
+<p>Let&#39;s show how a very simple interpolator in D3 works...</p></section><div class="code-block"><div class="code-block__caption"><span>A very simple out-of-the-box interpolator in D3.js</span></div><pre><code class="language-javascript">// create an interpolator which tweens number a into number b over time
+let a = 1;
+let b = 2;
+let myInterpolator = d3.interpolateNumber(a, b);
+ 
+// myInterpolator would now be equivalent to:
+function interpolate(t) {
+ return a * (1 - t) + b * t;
+}
+ 
+// * note how the start and end numbers a and b
+// are now stored within the interpolator function
+ 
+// you could now call the myInterpolator function,
+// passing a value of t (from 0-1) and you'd get back
+// a number inbetween
+let c = myInterpolator(0.5);
+ 
+// c = 1.5</code></pre></div><section class="section-gutter"><h2>We don&#39;t always need to use interpolators.</h2>
+
+<p>First, let&#39;s think about the SVG nodes that D3 is generating.</p>
+
+<p>Simple geometric shapes have very simple fingerprints, you could take a look at a <em>circle</em> or a <em>rect</em> node and tell what it&#39;s going to look like just from the properties and values.</p></section><div class="code-block"><div class="code-block__caption"><span>Can you guess what these SVG Shapes will look like once rendered?</span></div><pre><code class="language-javascript">&lt;svg height="200" width="200"&gt;
+ &lt;line x1="0" y1="0" x2="200" y2="200" style="fill:tomato" /&gt;
+ &lt;rect width="10" height="10" style="fill:tomato" /&gt;
+ &lt;circle cx="100" cy="100" r="80" style="fill:tomato" /&gt;
+&lt;/svg&gt;</code></pre></div><section class="section-gutter section-gutter--alt"><h3>Did you get it right?</h3>
+
+<p>It doesn&#39;t take Sherlock Holmes to tell that this is what you were imagining:</p><svg height="200" width="200" style="margin:0 auto"><line x1="0" y1="190" x2="50" y2="190" style="stroke:tomato"></line><rect width="10" height="10" x="40" y="40" style="fill:tomato"></rect><circle cx="100" cy="100" r="50" style="fill:tomato"></circle></svg><h3>Mmmm... those properties look very tweenable!</h3>
+
+<ul><li>What if we were to increase the <strong>x2</strong> value of the line, over time?</li><li>What if we were to increase the <strong>width</strong> value of the rect, over time?</li><li>What if we were to decrease the <strong>r</strong> value of the circle, over time?</li></ul>
+
+<p>Wait, we have just the thing to do that! <strong>Our interpolator function.</strong></p></section><div class="quote-block"><div class="quote-block__text"><blockquote class="xlarge">Simple geometric shapes can be tweened without using interpolators.</blockquote><footer><cite><p>Andy Shora</p></cite></footer></div></div><section class="section-gutter"><h2>Simple: Tweening numeric SVG properties</h2>
+
+<p><strong>Simple geometric shapes can be tweened without using interpolators.</strong></p>
+
+<p><em>Note: I&#39;m using a .each(&#39;end&#39;, startTweenFunc); call in this demo to repeat it.</em></p><svg height="50" width="300" style="margin:0 auto" id="shapes-container-2"><rect width="0" height="20" x="0" y="30" style="fill:tomato" id="rect-1"></rect></svg></section><div class="code-block"><div class="code-block__caption"><span>Simple shape changes don't require interpolators</span></div><pre><code class="language-javascript">// #rect-1 has already been created with width = 0
+// you can inspect it to see what's changing
+d3.select('#rect-1').transition().duration(1000).attr('width', 250);
+ 
+// alternative - using a pre-made D3 interpolator
+d3.select('#rect-1').transition().duration(1000)
+ .attrTween('width', function() {
+   return d3.interpolateNumber(0, 250);
+ });
+ 
+// alternative - writing our own custom interpolator to do the same thing
+d3.select('#rect-1').transition().duration(1000)
+ .attrTween('width', function() {
+   return function(t) { return t * 250; };
+ });</code></pre></div><section class="section-gutter"><h2>Advanced: Tweening parts of the path&#39;s data property</h2>
+
+<p><strong>Advanced tweening can be done by writing our own custom interpolator functions.</strong></p>
+
+<p>Don&#39;t worry, once you understand how the path is being constructed via the <a href="https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div">SVG Mini-language</a>, you&#39;ll know which parts of the string need changing over time to achieve your desired transition.</p><svg height="300" width="300" style="margin:0 auto" id="shapes-container-3"><circle cx="150" cy="170" r="120" style="fill:white;stroke:aquamarine;stroke-width:4" id="face-1"></circle><circle cx="100" cy="120" r="10" style="fill:powderblue" id="eye-1"></circle><circle cx="200" cy="120" r="10" style="fill:powderblue" id="eye-2"></circle><path style="fill:none;stroke:powderblue;stroke-width:4" id="mouth"></path></svg></section><div class="code-block"><div class="code-block__caption"><span>We can use a custom interpolator to tween part of a path's data:</span></div><pre><code class="language-javascript">d3.select('#mouth').transition().duration(1000)
+ .attrTween('d', function() {
+  // M x y - move cursor to x, y
+  // s x2 y2 x y - draw a smooth curve using control point x2, y2, to end point x, y
+  // (it's a lower case s so use relative coords)
+  return function(t) { return 'M 50 200 s 100 ' + (t * 200 - 100) + ' 200 0'; };
+  })</code></pre></div><section class="section-gutter"><h2>Advanced: Tweening paths with some trigonometry</h2>
+
+<p><strong>Doing something radial? Then you&#39;ll need to brush up on your trigonometry.</strong></p>
+
+<p>The thing to remember when tweening shapes with curves, is that you can&#39;t ask D3 to interpolate the whole path data with something like <em>d3.interpolateString</em>, as there are some parts of the <a href="https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div">SVG Mini-language</a> which need to change in a non-uniform way.</p><svg height="300" width="300" style="margin:0 auto" id="shapes-container-4"><path style="fill:powderblue;" id="pie"></path></svg><p>In this example, we have to make sure <em>Math.sin()</em> and <em>Math.cos()</em> are evaluated within our interpolator, as the values they are producing do not change at the same rate as our time, t. We are essentially using these trig functions as our own easing function to tween parts of our path.</p></section><div class="gallery"><div class="gallery__content"><ul><li><div class="gallery__caption"><strong>Drawing SVG Segments</strong><p>I always sketch custom paths, breaking down each line into its respective <a href="https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div">SVG Mini-language</a> command.</p>
+
+<p>You can hack around your own trigonometry in this <a href="https://jsbin.com/yirimadepo/edit?js,output">D3 Starter on JSBin</a>.</p></div><img src="http://i.imgur.com/dODlAkL.jpg" class="gallery__image"></li></ul></div></div><div class="code-block"><div class="code-block__caption"><span>We can use a custom interpolator to tween part of a path's data:</span></div><pre><code class="language-javascript">// helper function to generate the segment as a path
+function generateSVGSegment(x, y, r, startAngle, endAngle) {
+ 
+ // convert angles to Radians
+ startAngle *= (Math.PI / 180);
+ endAngle *= (Math.PI / 180);
+ 
+ var largeArc = endAngle - startAngle <= Math.PI ? 0 : 1; // 1 if angle > 180 degrees
+ var sweepFlag = 1; // is arc to be drawn in +ve direction?
+ 
+ return ['M', x, y, 'L', x + Math.sin(startAngle) * r, y - (Math.cos(startAngle) * r),
+         'A', r, r, 0, largeArc, sweepFlag, x + Math.sin(endAngle) * r, y - (Math.cos(endAngle) * r), 'Z'
+        ].join(' ');
+}
+ 
+// our custom interpolator, which returns an interpolator function
+// which when called with a time (0-1), generates a segment sized according to time
+function interpolateSVGSegment(x, y, r, startAngle, endAngle) {
+ return function(t) {
+   return generateSVGSegment(x, y, r, startAngle, startAngle + ((endAngle - startAngle) * t));
+ };
+}
+ 
+// we're ready to kick it off
+d3.select('#pie-1').transition().duration(1000)
+ .attrTween('d', function() {
+   return interpolateSVGSegment(150, 175, 100, 0, 270);
+ });</code></pre></div><section class="section-gutter"><h2>That&#39;s D3 shape tweening, done.</h2>
+
+<p><strong>So, shapes are nice and tween-able if they have distinct properties, or have path commands which share the same structure.</strong></p>
+
+<p>Interpolating numbers on their own, simple structures like arrays of values, or strings containing numbers can all be done with <a href="https://github.com/mbostock/d3/wiki/Transitions#_interpolate" title="Interpolation in D3">D3&#39;s out-of-the-box interpolator functions</a>.</p>
+
+<p>If you&#39;re looking for some more advanced path tweening, such as changing just a subset of a path&#39;s <em>d</em> (data) property (like fanning out a pie chart segment), then writing a custom interpolator is the solution. Use these interpolators inside a call to <em>attrTween</em> on the <em>d</em> (data) property.</p>
+
+<p>To source of all the demos on this page are in <a href="/js/shapes.js">/js/shapes.js</a>. I&#39;ve also made a <a href="https://jsbin.com/yirimadepo/edit?js,output">D3 Starter on JSBin</a> to accompany this article, which you can clone and go nuts with! As usual, send me a tweet or leave a comment below if you need a hand!</p></section><div class="bio-block"><div class="bio-block__content"><div class="bio-block__image"><img src="https://pbs.twimg.com/profile_images/572092098691907585/skCkcVFS_400x400.jpeg"/></div><div class="bio-block__info"><h3>by Andy Shora</h3><a href="https://twitter.com/andyshora" class="twitter-link">@andyshora</a><p>I&#39;m a Front-end Web Developer based in London. I currently work with some very talented people over at <a href="http://www.quantumblack.com">QuantumBlack</a> doing data viz. I also love to build sites which are clean and have great performance, and I dabble with whatever technologies are most suitable for the job. <a href="https://twitter.com/andyshora">Send me tweets @andyshora</a></p></div></div></div><section class="section-gutter section-gutter--full"><div class="comments"><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'andyshora'; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+ if ((window.location+'').match(/dev\./g)) return;
+ var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></section><script src="/js/shapes.js"></script></div><div></div><footer><p>Built using Roots, and <a href="https://github.com/andyshora/andyshora-roots">Open-sourced on my GitHub</a> | © 2016 Andy Shora</p></footer><script src="/js/vendor/prism.js"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet"><script src='/js/main.js'></script></body></html>

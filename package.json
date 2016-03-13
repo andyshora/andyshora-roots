@@ -10,7 +10,7 @@
     "jstransformer-markdown": "^1.1.0",
     "jstransformer-marked": "^1.0.1",
     "marked": "0.3.x",
-    "node-sass": "^2.0.1"
+    "node-sass": "^3.3.3"
   },
   "devDependencies": {
     "roots-config": "0.0.2",

@@ -2,7 +2,7 @@
 title: 'Andy Shora, Front-end Web Developer in London'
 description: "Hi, I'm Andy. I try to publish fun stuff about frontend web development as much as I can. Follow me @andyshora"
 author: andyshora
-date: 3/04/2015
+date: 13/03/2016
 image: http://i.imgur.com/fjqwiWi.png
 type: website
 page_class: home
@@ -24,19 +24,61 @@ block content
     :markdown
       ##Some Articles
 
-      Here's a few things I've written. Please follow me [@andyshora](https://twitter.com/andyshora) for my latest articles!
+      Here's a few things I've written. Follow me [@andyshora](https://twitter.com/andyshora) for my latest articles!
+
+    ul
+      li
+        a(href='tweening-shapes-paths-d3-js.html' title='Tweening Custom Shapes and Paths in D3.js') Tweening Custom Shapes and Paths in D3.js
+        span(class="post-tag") JavaScript
+        span(class="post-tag") D3.js
+        span(class="post-tag") Animation
       
-      - [Slagging Off JavaScript Frameworks](slagging-off-javascript-frameworks.html "Slagging Off JavaScript Frameworks")<span class="post-tag">JavaScript</span><span class="post-tag">opinion</span><span class="tweets-count"></span>
-      - [The Easy Paper.js Tutorial](easy-paper-js-tutorial.html "The Easy Paper.js Tutorial")<span class="post-tag">Canvas</span><span class="post-tag">Animation</span><span class="tweets-count"></span>
-      - [Building a Static Website with Roots](building-static-site-with-roots.html "Building a Static Website with Roots")<span class="post-tag">SSG</span><span class="tweets-count"></span>
-      - [The Myth of the Full-stack Developer](full-stack-developers.html "The Myth of the Full-stack Developer")<span class="post-tag">opinion</span><span class="tweets-count"></span>
-      - [Promises in AngularJS, Explained as a Cartoon](promises-angularjs-explained-as-cartoon.html "Promises in AngularJS, Explained as a Cartoon")<span class="post-tag">AngularJS</span><span class="tweets-count"></span>
-      - [Reasons not to serve responsive web apps within iframes](iframes-responsive-web-apps-tips.html "Reasons not to serve responsive web apps within iframes")<span class="post-tag">responsive</span><span class="post-tag">webperf</span><span class="tweets-count"></span>
-      - [Unit and Integration Testing Best Practices in AngularJS](unit-testing-best-practices-angularjs.html "Unit and Integration Testing Best Practices in AngularJS")<span class="post-tag">AngularJS</span><span class="post-tag">testing</span><span class="tweets-count"></span>
-      - [The Problem With Mobile Scroll Events](mobile-scroll-event-problems.html "The Problem With Mobile Scroll Events")<span class="post-tag">browsers</span><span class="post-tag">mobile</span><span class="post-tag">webperf</span><span class="tweets-count"></span>
-      - [Parallax Tutorial using CSS and jQuery](parallax.html "Parallax Tutorial using CSS and jQuery")<span class="post-tag">parallax</span><span class="post-tag">jQuery</span><span class="post-tag">css</span><span class="tweets-count"></span>
-      - [Sizing Fluid Image Containers with a Little CSS Padding Hack](css-image-container-padding-hack.html "Sizing Fluid Image Containers with a Little CSS Padding Hack")<span class="post-tag">css</span><span class="post-tag">responsive</span><span class="tweets-count"></span>
-      - [How to add the iPhone Simulator to the Launchpad in OSX](add-ios-simulator-to-launchpad-osx.html "How to add the iPhone Simulator to the Launchpad in OSX")<span class="post-tag">tip</span><span class="tweets-count"></span>
+      li
+        a(href='slagging-off-javascript-frameworks.html' title='Slagging Off JavaScript Frameworks') Slagging Off JavaScript Frameworks
+        span(class="post-tag") JavaScript
+        span(class="post-tag") opinion
+
+      li
+        a(href='easy-paper-js-tutorial.html' title='The Easy Paper.js Tutorial') The Easy Paper.js Tutorial
+        span(class="post-tag") Canvas
+        span(class="post-tag") Animation
+        span(class="tweets-count") 50+
+      
+      li
+        a(href='building-static-site-with-roots.html' title='Building a Static Website with Roots') Building a Static Website with Roots
+        span(class="post-tag") SSG
+        span(class="tweets-count") 50+
+      
+      li
+        a(href='full-stack-developers.html' title='The Myth of the Full-stack Developer') The Myth of the Full-stack Developer
+        span(class="post-tag") opinion
+        span(class="tweets-count") 2k+
+
+      li
+        a(href='promises-angularjs-explained-as-cartoon.html' title='Promises in AngularJS, Explained as a Cartoon') Promises in AngularJS, Explained as a Cartoon
+        span(class="post-tag") AngularJS
+        span(class="tweets-count") 4k+
+
+      li
+        a(href='iframes-responsive-web-apps-tips.html' title='Reasons not to serve responsive web apps within iframes') Reasons not to serve responsive web apps within iframes
+        span(class="post-tag") responsive
+        span(class="post-tag") webperf
+      
+      li
+        a(href='unit-testing-best-practices-angularjs.html' title='Unit and Integration Testing Best Practices in AngularJS') Unit and Integration Testing Best Practices in AngularJS
+        span(class="post-tag") AngularJS
+        span(class="post-tag") testing
+        span(class="tweets-count") 1.5k+
+      
+      li
+        a(href='css-image-container-padding-hack.html' title='Sizing Fluid Image Containers with a Little CSS Padding Hack') Sizing Fluid Image Containers with a Little CSS Padding Hack
+        span(class="post-tag") css
+        span(class="post-tag") responsive
+      
+      li
+        a(href='add-ios-simulator-to-launchpad-osx.html' title='How to add the iPhone Simulator to the Launchpad in OSX') How to add the iPhone Simulator to the Launchpad in OSX
+        span(class="post-tag") tip
+
 
   //- +gallery()
   //-   ul
@@ -45,28 +87,33 @@ block content
   //-         strong That's me
   //-         p If you see me, say hello. I normally smile, promise.
   //-       img(class='gallery__image' src='http://i.imgur.com/B0T7FM6.jpg')
-  +code-block('// here\'s a few things I like at the moment...')
+  +code-block('// Here\'s a few things I work with at the moment...')
     code(class='language-javascript')
       |[
-      |   { "thing": "React",       "howMuchImLikingItRightNow": 0.8 },
-      |   { "thing": "JavaScript",  "howMuchImLikingItRightNow": 0.7 },
-      |   { "thing": "AngularJS",   "howMuchImLikingItRightNow": 0.6 },
-      |   { "thing": "Sass",        "howMuchImLikingItRightNow": 0.6 },
-      |   { "thing": "WebPerf",     "howMuchImLikingItRightNow": 0.9 },
-      |   { "thing": "NodeJS",      "howMuchImLikingItRightNow": 0.7 },
-      |   { "thing": "D3",          "howMuchImLikingItRightNow": 0.5 }
+      |   { "thing": "React",       "dailyInteraction": 0.9 },
+      |   { "thing": "D3",          "dailyInteraction": 0.9 },
+      |   { "thing": "CSS",         "dailyInteraction": 0.9 },
+      |   { "thing": "WebGL",       "dailyInteraction": 0.8 },
+      |   { "thing": "JavaScript",  "dailyInteraction": 0.7 },
+      |   { "thing": "AngularJS",   "dailyInteraction": 0.5 },
+      |   { "thing": "WebPerf",     "dailyInteraction": 0.5 },
+      |   { "thing": "NodeJS",      "dailyInteraction": 0.5 }
       |]
 
   section.section-gutter
     :markdown
-      ##Some Web Things
+      ##About Me
 
-      I work with a bunch of very talented people at [R/GA London](http://www.rga.com), which has allowed me to work for awesome companies like Google, Nike and Apple in the last few years:
+      I work with a bunch of very talented people at [QuantumBlack](http://www.quantumblack.com), visualising data in [pretty extreme ways](https://twitter.com/andyshora/status/702435886022135808)! Most of the time I'm making web apps with React + Redux + ES6, and making pretty shapes animate around via SVGs made with D3 and CSS.
+
+      I previously worked at [R/GA London](http://www.rga.com) which allowed me to work for awesome companies like Google, Nike and Apple in the last few years:
+
       - [Google Year in Search](http://www.google.com/2014 "Google Year in Search")
       - [Google World Cup](http://www.google.com/worldcup "Google World Cup")
 
       I'm always working on side projects, but I'm pretty average so most of them end up in the 80% complete 'app graveyard', or open-sourced on my [GitHub](http://www.github.com/andyshora). Here are some of the ones I've actually managed to get out of the door:
-      - [De Laddio Free Kicks](http://www.deladdiogames.com "De Laddio Free Kicks for iPhone") &larr; my first iPhone game!
+
+      - [De Laddio Free Kicks](http://www.deladdiogames.com "De Laddio Free Kicks for iPhone") - my first iPhone game!
       - [The City Awards](http://www.thecityawards.com "The City Awards")
       - [Web Performance News](http://www.webperformancenews.com "Web Performance News")
       - [Grunt YSlow - A Grunt Task to Measure and Grade Web Page Performance](grunt-yslow.html "Grunt YSlow - A Grunt Task to Measure and Grade Web Page Performance")
