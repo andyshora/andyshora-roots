@@ -238,7 +238,8 @@ select {
  *    `input` and others.
  */
 button,
-html input[type="button"], input[type="reset"],
+html input[type="button"],
+input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
@@ -955,7 +956,7 @@ pre[class*='language-'] > code[data-language]::before {
         padding: 120px 30px 150px; } }
   .large-title-block > h1 {
     color: white;
-    padding: 0.3em 10px;
+    padding: .3em 10px;
     position: relative;
     z-index: 2;
     width: 90%;
@@ -1005,7 +1006,7 @@ pre[class*='language-'] > code[data-language]::before {
 
 .large-title-block__middle {
   color: #303030;
-  padding: 0 0.1em; }
+  padding: 0 .1em; }
 
 .large-title-block__end {
   color: #fff9f8; }

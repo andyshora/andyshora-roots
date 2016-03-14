@@ -18,7 +18,7 @@ block header
 block content
 
   section.section-gutter.section--skinny.center.section--center
-    svg(height="100" width="300" style="margin:0 auto" id="shapes-container")
+    svg(xmlns="http://www.w3.org/2000/svg" version="1.1" height="100" width="300" style="margin:0 auto" id="shapes-container")
       circle(cx="20" cy="50" r="20" style="fill:tomato" id="circle-1")
       circle(cx="50" cy="50" r="5" style="fill:tomato" id="circle-2")
       path(id='path-1' style="stroke:tomato;stroke-width:4;fill:none;")
@@ -92,7 +92,7 @@ block content
       ###Did you get it right?
       It doesn't take Sherlock Holmes to tell that this is what you were imagining:
 
-    svg(height="200" width="200" style="margin:0 auto")
+    svg(xmlns="http://www.w3.org/2000/svg" version="1.1" height="200" width="200" style="margin:0 auto")
       line(x1="0" y1="190" x2="50" y2="190" style="stroke:tomato")
       rect(width="10" height="10" x="40" y="40" style="fill:tomato")
       circle(cx="100" cy="100" r="50" style="fill:tomato")
@@ -114,7 +114,7 @@ block content
 
       *Note: I'm using a .each('end', startTweenFunc); call in this demo to repeat it.*
 
-    svg(height="50" width="300" style="margin:0 auto" id="shapes-container-2")
+    svg(xmlns="http://www.w3.org/2000/svg" version="1.1" height="50" width="300" style="margin:0 auto" id="shapes-container-2")
       rect(width="0" height="20" x="0" y="30" style="fill:tomato" id="rect-1")
 
     
@@ -144,7 +144,7 @@ block content
 
       Don't worry, once you understand how the path is being constructed via the [SVG Mini-language](https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div), you'll know which parts of the string need changing over time to achieve your desired transition.
 
-    svg(height="300" width="300" style="margin:0 auto" id="shapes-container-3")
+    svg(xmlns="http://www.w3.org/2000/svg" version="1.1" height="300" width="300" style="margin:0 auto" id="shapes-container-3")
       circle(cx="150" cy="170" r="120" style="fill:white;stroke:aquamarine;stroke-width:4" id="face-1")
       circle(cx="100" cy="120" r="10" style="fill:powderblue" id="eye-1")
       circle(cx="200" cy="120" r="10" style="fill:powderblue" id="eye-2")
@@ -167,7 +167,7 @@ block content
 
       The thing to remember when tweening shapes with curves, is that you can't ask D3 to interpolate the whole path data with something like *d3.interpolateString*, as there are some parts of the [SVG Mini-language](https://www.dashingd3js.com/svg-paths-and-d3js#svg-mini-language-div) which need to change in a non-uniform way.
     
-    svg(height="300" width="300" style="margin:0 auto" id="shapes-container-4")
+    svg(xmlns="http://www.w3.org/2000/svg" version="1.1" height="300" width="300" style="margin:0 auto" id="shapes-container-4")
       path(style="fill:powderblue;"  id="pie")
 
     :markdown
