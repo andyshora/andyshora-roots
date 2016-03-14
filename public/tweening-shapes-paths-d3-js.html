@@ -35,12 +35,12 @@ let c = myInterpolator(0.5);
 <p>First, let&#39;s think about the SVG nodes that D3 is generating.</p>
 
 <p>Simple geometric shapes have very simple fingerprints, you could take a look at a <em>circle</em> or a <em>rect</em> node and tell what it&#39;s going to look like just from the properties and values.</p></section><div class="code-block"><div class="code-block__caption"><span>Can you guess what these SVG Shapes will look like once rendered?</span></div><pre><code class="language-javascript">&lt;svg height="200" width="200"&gt;
- &lt;line x1="0" y1="0" x2="200" y2="200" style="fill:tomato" /&gt;
- &lt;rect width="10" height="10" style="fill:tomato" /&gt;
- &lt;circle cx="100" cy="100" r="80" style="fill:tomato" /&gt;
+ &lt;line x1="0" y1="190" x2="50" y2="190" style="fill:tomato" /&gt;
+ &lt;rect width="10" height="10" style="fill:powderblue" /&gt;
+ &lt;circle cx="100" cy="100" r="50" style="fill:thistle" /&gt;
 &lt;/svg&gt;</code></pre></div><section class="section-gutter section-gutter--alt"><h3>Did you get it right?</h3>
 
-<p>It doesn&#39;t take Sherlock Holmes to tell that this is what you were imagining:</p><svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="200" width="200" style="margin:0 auto"><line x1="0" y1="190" x2="50" y2="190" style="stroke:tomato"></line><rect width="10" height="10" x="40" y="40" style="fill:tomato"></rect><circle cx="100" cy="100" r="50" style="fill:tomato"></circle></svg><h3>Mmmm... those properties look very tweenable!</h3>
+<p>It doesn&#39;t take Sherlock Holmes to tell that this is what you were imagining. Bonus points if you knew what color <em>thistle</em> was!</p><svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="200" width="200" style="margin:0 auto"><line x1="0" y1="190" x2="50" y2="190" style="stroke:tomato"></line><rect width="10" height="10" x="40" y="40" style="fill:powderblue"></rect><circle cx="100" cy="100" r="50" style="fill:thistle"></circle></svg><h3>Mmmm... those properties look very tweenable!</h3>
 
 <ul><li>What if we were to increase the <strong>x2</strong> value of the line, over time?</li><li>What if we were to increase the <strong>width</strong> value of the rect, over time?</li><li>What if we were to decrease the <strong>r</strong> value of the circle, over time?</li></ul>
 
