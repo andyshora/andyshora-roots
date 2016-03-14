@@ -1,5 +1,7 @@
 function loadShapes() {
 
+  console.log('loadShapes');
+
   var svg1 = d3.select('#shapes-container'); // intro demo
   var svg2 = d3.select('#shapes-container-2'); // simple demo
   var svg3 = d3.select('#shapes-container-3');  // advanced demo
@@ -35,10 +37,10 @@ function loadShapes() {
   var tween2 = function() {
     c2.transition().duration(DURATION)
       .attrTween('cx', function() {
-        return t => 70 + (Math.cos((t * 360) * (Math.PI / 180)) * 20);
+        return function(t) { return 70 + (Math.cos((t * 360) * (Math.PI / 180)) * 20); };
       })
       .attrTween('cy', function() {
-        return t => 50 + (Math.sin((t * 360) * (Math.PI / 180)) * 20);
+        return function(t) { return 50 + (Math.sin((t * 360) * (Math.PI / 180)) * 20); };
       })
       .each('end', tween2);
   };
