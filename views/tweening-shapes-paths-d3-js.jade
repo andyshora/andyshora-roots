@@ -160,6 +160,15 @@ block content
       |   return function(t) { return 'M 50 200 s 100 ' + (t * 200 - 100) + ' 200 0'; };
       |   })
 
+  +gallery()
+    ul
+      li()
+        .gallery__caption
+          strong Playing with Trigonometry and D3
+          :markdown
+            Need to refamiliarise yourself with the basics? Can't remember how to convert degrees to radians? Fear not! I made a little [D3 + Trigonometry Starter on JSBin](https://jsbin.com/mepatopinu/1/edit?html,js,output). Clone and play!
+        img(class='gallery__image' src='http://i.imgur.com/43Cfogd.png')
+
   section.section-gutter
     :markdown
       ##Advanced: Tweening paths with some trigonometry
@@ -172,8 +181,6 @@ block content
 
     :markdown
       In this example, we have to make sure *Math.sin()* and *Math.cos()* are evaluated within our interpolator, as the values they are producing do not change at the same rate as our time, t. We are essentially using these trig functions as our own easing function to tween parts of our path.
-
-    
 
   +gallery()
     ul
